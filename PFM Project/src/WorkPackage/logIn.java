@@ -22,6 +22,7 @@ public class logIn {
 		System.out.println("Choose 1 to log in");
 		System.out.println("Choose 2 to register as a new user");
 		System.out.println("Choose 3 to continue as guest");
+		System.out.println("What would you want to choose?");
 
 		int Choice = userInputInt.nextInt();
 		switch (Choice) {
