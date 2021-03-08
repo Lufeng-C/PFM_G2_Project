@@ -17,7 +17,9 @@ public class logIn {
 		 * 3. Continue as guest
 		 */
 
+		System.out.println("-----------------------------");
 		System.out.println("Welcome to the car rec system.");
+		System.out.println("-----------------------------");
 		System.out.println("You have 3 choices");
 		System.out.println("Choose 1 to log in");
 		System.out.println("Choose 2 to register as a new user");
