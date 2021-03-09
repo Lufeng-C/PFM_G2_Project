@@ -10,6 +10,7 @@ public class testDrive {
 		// TODO Auto-generated method stub
 				
 		logIn.register();
+		unregisteredUser.test();
 		
 		
 		
