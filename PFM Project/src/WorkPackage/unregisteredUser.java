@@ -7,7 +7,10 @@ public class unregisteredUser {
 	static Scanner userInputInt = new Scanner(System.in); 
 	static Scanner userInputString = new Scanner(System.in); 	
 	
-	int guestID = 0;
+	int guestID = Math ;
+	
+	
+	//Admin has predefined login and username (un: admin, pw: admin123), while loop if un == admin && pw == admin123, bring to admin interface
 	
 	
 }
