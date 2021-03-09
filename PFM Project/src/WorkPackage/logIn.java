@@ -41,8 +41,10 @@ public class logIn {
 	}
 
 	public static void logInWithEmail () {
+		
 		/*
 		 * Take user input
+	
 		 * 
 		 * If == admin code -> then do admin stuff
 		 * Else -> search perm database and compare
@@ -52,7 +54,35 @@ public class logIn {
 		 * -> use a reader to parse his data from text file 
 		 * -> create member object and give proper attributes
 		 *  
+		 *  if unsuccessful, try 0 -> 1. After 3 tries, exit the system.
 		 */
+		
+		while(true) {
+			System.out.println("You picked choice 1: login with email adress and password.");
+			System.out.println("Enter your email adress: ");
+			String entered_email = userInputString.nextLine();
+			
+			System.out.println("Enter your password: ");
+			String entered_password = userInputString.nextLine();
+		}
+			//now call the loginMethod
+			
+			//if (login && password match  -> user.class interface
+		
+			//else -> error, try again! try++
+		
+		
+		/// to check email and password we could use this? We just need to create the arrays in the main that hold the private arrays
+	//public int LoginMethod(String entered_email, String entered_password){ //returns the ID if login correct
+		//for (i=0; i <= email.length; i++){	
+		//if(email[i].equals(entered_email) && password[i].equals(entered_password)){ //
+			//Login Success:
+			//System.out.println("--------------------------------------------------------");
+			//System.out.println("Welcome "+ firstName + " " + lastName);
+			//return(UserID);
+		//}
+			//else return(-1); //this will let the main method now that there is no match.
+			//}
 	}
 
 	public static void guestOption () {
