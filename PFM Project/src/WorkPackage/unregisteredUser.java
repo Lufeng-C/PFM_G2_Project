@@ -11,6 +11,8 @@ public class unregisteredUser {
 	int guestID = (Math.random()*10000) + 1;
 	
 	
+	System.out.println("Hallo");
+	
 	//Call Registration method (logIn)
 	//Admin has predefined login and username (un: admin, pw: admin123), while loop if un == admin && pw == admin123, bring to admin interface
 		
