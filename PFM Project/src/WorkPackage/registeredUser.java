@@ -9,20 +9,23 @@ public class registeredUser {
 	static Scanner userInputString = new Scanner(System.in); 
 	static Scanner userInputDouble = new Scanner(System.in);
 
-	String email, password, firstName, lastName, phoneNumber;
-	int userID = (int) (Math.random() * 10000);
+	private String email, password, phoneNumber;
+	public String firstName, lastName;
+	public int UserID;
 	static int numberOfRegisteredUsers; //to keep count of the number of users
-	int logInID = 0, logInIndex = 1000;
 
+	public registeredUser(int UserID, String firstName, String lastName, String email, String password, String phoneNumber){
+		this.UserID = UserID;
+		this.firstName = firstName;
+		this.lastName = lastName;	
+		this.email = email;			
+		this.password = password;
+		this.phoneNumber = phoneNumber;
+
+	}
+	//idk where to put the rest tbh, nothing I try works:
 
 	public static void logInSystem () {
-		/*
-		 * 0. Prompt welcome message, ask to choose from
-		 * 1. Log in
-		 * 2. Register new user
-		 * 3. Continue as guest
-		 */
-
 
 
 		System.out.println("-----------------------------");
@@ -78,7 +81,7 @@ public class registeredUser {
 
 		}	// end register()
 
-		
+
 		if (Choice == 3) {
 			//enter as guest.
 		}
@@ -95,6 +98,8 @@ public class registeredUser {
 				return(1);
 			}
 			else return(0);
-		}
 
 	}
+}
+
+
