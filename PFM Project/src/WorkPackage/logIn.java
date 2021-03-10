@@ -58,20 +58,27 @@ public class logIn {
 		 */
 
 
-		System.out.println("You picked choice 1: login with email adress and password.");
-		System.out.println("Enter your email adress: ");
-		String entered_email = userInputString.nextLine();
 
-		System.out.println("Enter your password: ");
-		String entered_password = userInputString.nextLine();
 
 		//now call the loginMethod
 
 		//if (login && password match  -> user.class interface
 
 		//else -> error, try again! try++
+		
+		System.out.println("You picked choice 1: login with email adress and password.");
 
+		int loginAttempts = 3;
+		while(loginAttempts > 0) {
+			
+			System.out.print("Enter your email adress: ");
+			String entered_email = userInputString.nextLine();
+
+			System.out.print("Enter your password: ");
+			String entered_password = userInputString.nextLine();
+			
 		int userIndex = checkLogIn(entered_email, entered_password); // is -1 if user not verified
+		
 		if (userIndex != (-1)) {
 			String name = getName (userIndex);
 			System.out.println("--------------------------------------------------------");
@@ -79,8 +86,12 @@ public class logIn {
 		}
 		else if (userIndex == (-1)) {
 			System.out.println("Email/password incorrect. Please try again!");
+			loginAttempts--;
 		}
-
+		System.out.println("You have "+ loginAttempts + " login attempts left.");	
+		System.out.println("");
+		}
+			
 		/// to check email and password we could use this? We just need to create the arrays in the main that hold the private arrays
 		//public int LoginMethod(String entered_email, String entered_password){ //returns the ID if login correct
 		//for (i=0; i <= email.length; i++){	
