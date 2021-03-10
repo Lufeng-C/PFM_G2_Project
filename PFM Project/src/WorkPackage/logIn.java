@@ -83,6 +83,7 @@ public class logIn {
 			String name = getName (userIndex);
 			System.out.println("--------------------------------------------------------");
 			System.out.println("Welcome "+ name + "!");
+			break;
 		}
 		else if (userIndex == (-1)) {
 			System.out.println("Email/password incorrect. Please try again!");
