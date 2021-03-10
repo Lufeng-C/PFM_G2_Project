@@ -41,10 +41,10 @@ public class logIn {
 	}
 
 	public static void logInWithEmail () {
-		
+
 		/*
 		 * Take user input
-	
+
 		 * 
 		 * If == admin code -> then do admin stuff
 		 * Else -> search perm database and compare
@@ -56,33 +56,42 @@ public class logIn {
 		 *  
 		 *  if unsuccessful, try 0 -> 1. After 3 tries, exit the system.
 		 */
-		
-		while(true) {
-			System.out.println("You picked choice 1: login with email adress and password.");
-			System.out.println("Enter your email adress: ");
-			String entered_email = userInputString.nextLine();
-			
-			System.out.println("Enter your password: ");
-			String entered_password = userInputString.nextLine();
+
+
+		System.out.println("You picked choice 1: login with email adress and password.");
+		System.out.println("Enter your email adress: ");
+		String entered_email = userInputString.nextLine();
+
+		System.out.println("Enter your password: ");
+		String entered_password = userInputString.nextLine();
+
+		//now call the loginMethod
+
+		//if (login && password match  -> user.class interface
+
+		//else -> error, try again! try++
+
+		int userIndex = checkLogIn(entered_email, entered_password); // is -1 if user not verified
+		if (userIndex != (-1)) {
+			String name = getName (userIndex);
+			System.out.println("--------------------------------------------------------");
+			System.out.println("Welcome "+ name + "!");
 		}
-			//now call the loginMethod
-			
-			//if (login && password match  -> user.class interface
-		
-			//else -> error, try again! try++
-		
-		
+		else if (userIndex == (-1)) {
+			System.out.println("Email/password incorrect. Please try again!");
+		}
+
 		/// to check email and password we could use this? We just need to create the arrays in the main that hold the private arrays
-	//public int LoginMethod(String entered_email, String entered_password){ //returns the ID if login correct
+		//public int LoginMethod(String entered_email, String entered_password){ //returns the ID if login correct
 		//for (i=0; i <= email.length; i++){	
 		//if(email[i].equals(entered_email) && password[i].equals(entered_password)){ //
-			//Login Success:
-			//System.out.println("--------------------------------------------------------");
-			//System.out.println("Welcome "+ firstName + " " + lastName);
-			//return(UserID);
+		//Login Success:
+		//System.out.println("--------------------------------------------------------");
+		//System.out.println("Welcome "+ firstName + " " + lastName);
+		//return(UserID);
 		//}
-			//else return(-1); //this will let the main method now that there is no match.
-			//}
+		//else return(-1); //this will let the main method now that there is no match.
+		//}
 	}
 
 	public static void guestOption () {
@@ -119,7 +128,164 @@ public class logIn {
 				"\t" + phoneNumber + "\t" + userID + "\t" + logInStatus);
 
 		appendFileTemp(line); // store in temp file, awaiting admin approval
-	}	
+	}	// end register()
+
+	public static int checkLogIn (String email, String password) {
+
+		int h = readEmailList().length;
+		String[] emailList = new String [h];
+		String[] passwordList = new String [h];
+
+		for (int i = 0; i < h; i++) { // create local arrays of email and password
+			emailList [i] = readEmailList()[i];
+			passwordList [i] = readPasswordList()[i];			
+		}
+
+		// look for email
+		int userIndex = -1;
+		boolean emailFound = false;
+		for (int i = 0; i < h; i++) {
+			if (email.equals(emailList[i])) {
+				userIndex = i;
+				emailFound = true;
+				break;
+			}
+		}
+
+		// compare password
+		boolean userVarified = false;
+		if (emailFound) {
+			if (password.equals(passwordList[userIndex])) {
+				userVarified = true;
+			}
+		}
+
+		if (userVarified) {
+			return userIndex;
+		}
+		else {
+			return -1;
+		}
+	} // end checkLogIn()
+
+	public static String[] readEmailList(){ 
+
+		// Determine how many lines are there in the database
+		int countlines = 0;			
+		try {
+			BufferedReader br1 = new BufferedReader (new FileReader ("permRegistration.txt"));
+
+			while ((br1.readLine()) != null) {
+				countlines++;
+			}
+			br1.close();
+
+		} catch (IOException ex) {
+			System.out.println ("Something went wrong for I/O!");
+		}
+
+		String[] emailList = new String [countlines];
+		String[] passwordList = new String [countlines];
+
+		try {
+			String textline; // stores a line of text from the reader function
+			String[] uCurrent = new String [2]; // to store elements of textline
+			BufferedReader br2 = new BufferedReader (new FileReader ("permRegistration.txt"));
+
+			int i = 0;				
+			while ((textline = br2.readLine()) != null) {					
+				uCurrent = textline.split("\t"); // uCurrent [0] is email; [1] password; 
+				//[2]first name; [3] last name; [4] phone; [5] userID [6] logInStatus
+				emailList[i] = uCurrent [0];
+				passwordList[i] = uCurrent [1];			
+				i++;
+			}
+			br2.close();
+
+		}	catch (IOException ex) {
+			System.out.println ("Something went wrong for I/O!");
+		}
+
+		return emailList;
+	}
+
+	public static String[] readPasswordList(){ 
+
+		// Determine how many lines are there in the database
+		int countlines = 0;			
+		try {
+			BufferedReader br1 = new BufferedReader (new FileReader ("permRegistration.txt"));
+
+			while ((br1.readLine()) != null) {
+				countlines++;
+			}
+			br1.close();
+
+		} catch (IOException ex) {
+			System.out.println ("Something went wrong for I/O!");
+		}
+
+		String[] passwordList = new String [countlines];
+
+		try {
+			String textline; // stores a line of text from the reader function
+			String[] uCurrent = new String [2]; // to store elements of textline
+			BufferedReader br2 = new BufferedReader (new FileReader ("permRegistration.txt"));
+
+			int i = 0;				
+			while ((textline = br2.readLine()) != null) {					
+				uCurrent = textline.split("\t"); // uCurrent [0] is email; [1] password; 
+				//[2]first name; [3] last name; [4] phone; [5] userID [6] logInStatus
+				passwordList[i] = uCurrent [1];			
+				i++;
+			}
+			br2.close();
+
+		}	catch (IOException ex) {
+			System.out.println ("Something went wrong for I/O!");
+		}
+
+		return passwordList;
+	}
+
+	// This method takes the index of a verified user and returns its name
+	public static String getName (int userIndex){ 
+
+		int countlines = 0;			
+		try {
+			BufferedReader br1 = new BufferedReader (new FileReader ("permRegistration.txt"));
+
+			while ((br1.readLine()) != null) {
+				countlines++;
+			}
+			br1.close();
+
+		} catch (IOException ex) {
+			System.out.println ("Something went wrong for I/O!");
+		}
+
+		String[] nameList = new String [countlines];
+
+		try {
+			String textline; // stores a line of text from the reader function
+			String[] uCurrent = new String [2]; // to store elements of textline
+			BufferedReader br2 = new BufferedReader (new FileReader ("permRegistration.txt"));
+
+			int i = 0;				
+			while ((textline = br2.readLine()) != null) {					
+				uCurrent = textline.split("\t"); // uCurrent [0] is email; [1] password; 
+				//[2]first name; [3] last name; [4] phone; [5] userID [6] logInStatus
+				nameList[i] = uCurrent [2] + " " + uCurrent [3];			
+				i++;
+			}
+			br2.close();
+
+		}	catch (IOException ex) {
+			System.out.println ("Something went wrong for I/O!");
+		}
+
+		return nameList[userIndex];
+	}
 
 	public static void appendFileTemp (String line) { 
 
