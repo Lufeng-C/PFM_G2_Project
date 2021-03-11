@@ -7,6 +7,7 @@
  * 
  */
 
+
 package WorkPackage;
 
 import java.io.*;
@@ -25,9 +26,9 @@ public class logIn {
 	int phoneNumber;
 	String password;
 	String [] favorites;
-	
+
 	static int newUserID = readEmailList().length;
-	
+
 	public void logInSystem () {
 		/*
 		 * 0. Prompt welcome message, ask to choose from
@@ -77,42 +78,45 @@ public class logIn {
 		 *  if unsuccessful, try 0 -> 1. After 3 tries, exit the system.
 		 */
 
-
-		for (int i = 0; i < newUserID; i++) {
+		
+		/*
+		 * for (int i = 0; i < newUserID; i++) {
 			String userName = "user" + newUserID;
 			logIn user = new logIn ();
-			
+
 		}
-		
-		
-		
-		
+		 */
+
+
+
+
+
 		System.out.println("You picked choice 1: login with email adress and password.");
 
 		int loginAttempts = 3;
 		while(loginAttempts > 0) {
-			
+
 			System.out.print("Enter your email adress: ");
 			String entered_email = userInputString.nextLine();
 
 			System.out.print("Enter your password: ");
 			String entered_password = userInputString.nextLine();
-			
-		int userIndex = checkLogIn(entered_email, entered_password); // is -1 if user not verified
-		
-		if (userIndex != (-1)) {
-			String name = getName (userIndex);
-			System.out.println("--------------------------------------------------------");
-			System.out.println("Welcome "+ name + "!");
+
+			int userIndex = checkLogIn(entered_email, entered_password); // is -1 if user not verified
+
+			if (userIndex != (-1)) {
+				String name = getName (userIndex);
+				System.out.println("--------------------------------------------------------");
+				System.out.println("Welcome "+ name + "!");
+			}
+			else if (userIndex == (-1)) {
+				System.out.println("Email/password incorrect. Please try again!");
+				loginAttempts--;
+			}
+			System.out.println("You have "+ loginAttempts + " login attempts left.");	
+			System.out.println("");
 		}
-		else if (userIndex == (-1)) {
-			System.out.println("Email/password incorrect. Please try again!");
-			loginAttempts--;
-		}
-		System.out.println("You have "+ loginAttempts + " login attempts left.");	
-		System.out.println("");
-		}
-			
+
 		/// to check email and password we could use this? We just need to create the arrays in the main that hold the private arrays
 		//public int LoginMethod(String entered_email, String entered_password){ //returns the ID if login correct
 		//for (i=0; i <= email.length; i++){	
