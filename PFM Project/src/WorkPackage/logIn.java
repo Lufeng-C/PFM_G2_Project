@@ -1,3 +1,12 @@
+/*
+ * 
+ * This class has been abandoned
+ * Codes are here for reference only
+ * 
+ * log in method and registration will be moved to ...User classes
+ * 
+ */
+
 package WorkPackage;
 
 import java.io.*;
@@ -9,7 +18,17 @@ public class logIn {
 	static Scanner userInputString = new Scanner(System.in); 
 	static Scanner userInputDouble = new Scanner(System.in);
 
-	public static void logInSystem () {
+	String firstName;
+	String lastName;
+	String userName;
+	String emailAddress;
+	int phoneNumber;
+	String password;
+	String [] favorites;
+	
+	static int newUserID = readEmailList().length;
+	
+	public void logInSystem () {
 		/*
 		 * 0. Prompt welcome message, ask to choose from
 		 * 1. Log in
@@ -40,11 +59,13 @@ public class logIn {
 		}
 	}
 
-	public static void logInWithEmail () {
+	public void logInWithEmail () {
 
 		/*
+		 * Read the permRegistration file
+		 * Create a whole bunch of registeredUser objects
+		 * 
 		 * Take user input
-
 		 * 
 		 * If == admin code -> then do admin stuff
 		 * Else -> search perm database and compare
@@ -52,19 +73,19 @@ public class logIn {
 		 * Successful 
 		 * -> change logInStatus to TRUE
 		 * -> use a reader to parse his data from text file 
-		 * -> create member object and give proper attributes
 		 *  
 		 *  if unsuccessful, try 0 -> 1. After 3 tries, exit the system.
 		 */
 
 
-
-
-		//now call the loginMethod
-
-		//if (login && password match  -> user.class interface
-
-		//else -> error, try again! try++
+		for (int i = 0; i < newUserID; i++) {
+			String userName = "user" + newUserID;
+			logIn user = new logIn ();
+			
+		}
+		
+		
+		
 		
 		System.out.println("You picked choice 1: login with email adress and password.");
 
@@ -111,7 +132,7 @@ public class logIn {
 		 */
 	}
 
-	public static void register () {
+	public void register () {
 		// ask for input and send to tempRegistration.txt
 
 		System.out.print("Welcome to register process!\nPlease type relevant info when prompted.\n");
@@ -131,7 +152,8 @@ public class logIn {
 		System.out.print("Your phone number: ");
 		String phoneNumber = userInputString.nextLine();		
 
-		int userID = (int) (Math.random() * 10000);
+		int userID = newUserID;
+		newUserID++;
 
 		boolean logInStatus = false; // reserved for any possible future use
 
@@ -141,7 +163,7 @@ public class logIn {
 		appendFileTemp(line); // store in temp file, awaiting admin approval
 	}	// end register()
 
-	public static int checkLogIn (String email, String password) {
+	public int checkLogIn (String email, String password) {
 
 		int h = readEmailList().length;
 		String[] emailList = new String [h];

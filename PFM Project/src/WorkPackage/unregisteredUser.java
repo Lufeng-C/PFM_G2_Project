@@ -9,7 +9,7 @@ public class unregisteredUser {
 	static Scanner userInputString = new Scanner(System.in); 	
 	static Scanner userInputDouble = new Scanner(System.in); 
 	
-	int guestID = (Math.random()*10000) + 1;
+	int guestID = (int) (Math.random()*10000) + 1;
 	
 	public static void test (){
 	System.out.println("Hallo");

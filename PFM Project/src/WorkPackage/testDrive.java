@@ -1,5 +1,7 @@
 package WorkPackage;
 
+import java.util.*;
+
 public class testDrive {
 	
 	/*
@@ -9,8 +11,13 @@ public class testDrive {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 				
-		logIn.logInWithEmail();
+		ArrayList <registeredUser> userList = registeredUser.createObjects();
 		
+		for (int i = 0; i < 5; i++) {
+		System.out.println(userList.get(i).emailAddress);
+		}
+		
+		System.out.println(registeredUser.logIn(userList));
 		
 	}
 
