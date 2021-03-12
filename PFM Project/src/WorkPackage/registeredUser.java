@@ -124,7 +124,7 @@ public class registeredUser {
 			return (userList.get(userIndex).logInStatus);
 		}
 
-	} // end logIn (ArrayList<registeredUser> userList)
+	} // end logIn (ArrayList<registeredUser> userList) -> user UX / admin UX (if username == admin & password == adminPassword)
 
 	// This method asks for input and record in tempRegistration.txt
 	public static void register () {
@@ -154,6 +154,9 @@ public class registeredUser {
 				"\t" + phoneNumber + "\t" + userID + "\t" + logInStatus);
 
 		appendFileTemp(line); // store in temp file, awaiting admin approval
+		// while awaiting aproval, you are redirected to login where you can either wait for approval or continue as guest.
+		// print a message where users find out they are awaiting approval and can either continue as a guest or go back to login screen.
+		
 	}	// end register()
 
 	// This method appends a line to the tempRegistration.txt
