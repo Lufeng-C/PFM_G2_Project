@@ -19,6 +19,17 @@ public class testDrive {
 		
 		System.out.println(registeredUser.logIn(userList));
 		
+		/*
+		 * SO= upon entering the system, in the main class the user gets offered three options:
+		 * 1. login -> enters the login method. So if login == successful -> we store a value = true, which gives you access to addfavourites after recommendation.
+		 * 2. register -> enter the register method
+		 * 3. continue as guest -> move straight to recommendation. 
+		 */
+		
+		
 	}
 
 }
+
+
+
