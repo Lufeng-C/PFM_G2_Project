@@ -1,12 +1,12 @@
-package GroupAssigment;
+package WorkPackage;
 
 import java.util.Arrays;
 import java.util.Scanner;
 
-public class GroupAss {
+public class unregisteredUser {
 	static Scanner userInputInt= new Scanner(System.in);
 
-	public static void main(String[] args) {
+	public static void unregisterUserMethod() {
 		// TODO Auto-generated method stub
 		
 		int userChoice= getUserChoice();
