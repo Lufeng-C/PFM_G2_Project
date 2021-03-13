@@ -3,7 +3,7 @@ package WorkPackage;
 import java.io.*;
 import java.util.*;
 
-public class Admin { //extends unregisteredUser{			
+public class admin { //extends unregisteredUser{			
 	
 	static Scanner userInputInt = new Scanner(System.in); 
 		static Scanner userInputString = new Scanner(System.in); 
