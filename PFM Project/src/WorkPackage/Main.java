@@ -109,6 +109,11 @@ public class Main {
 		//add car
 	    private void addCar(){
 	    	System.out.println("\nYou have chosen to add a new Car to the System: ");
+	        System.out.print("Enter Car ID: ");
+	        String carID=scanner.nextLine();
+	        
+	        System.out.print("Enter Car name: ");
+	        String carName=scanner.nextLine();
 	    	
 	        System.out.print("\nEnter Car Type: ");
 	        String carType=scanner.nextLine();
@@ -135,7 +140,7 @@ public class Main {
 	        System.out.print("Enter Fuel Type: ");
 	        String fuelType=scanner.nextLine();
 
-	        carClass car = new carClass (carType, carModel, electricEquivalent, basePrice, size, sport, bodyType, fuelType);
+	        carClass car = new carClass (carID, carName, carType, carModel, electricEquivalent, basePrice, size, sport, bodyType, fuelType);
 	        carArrayList.add(car); //add to car arrayList
 	    }
 	    private void deleteCar(){
