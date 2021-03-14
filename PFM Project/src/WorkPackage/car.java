@@ -3,6 +3,7 @@ package Benz;
 import java.io.Serializable;
 
 public class carClass implements Serializable {
+	private string carID;
 	private String carName;
     private String carType;
     private String carModel;
@@ -23,6 +24,9 @@ public class carClass implements Serializable {
         this.sport = sport;
         this.bodyType = bodyType;
         this.fuelType = fuelType;
+    }
+    public String getCarID() {
+        return carID;
     }
     public String getCarName() {
         return carName;
@@ -57,6 +61,9 @@ public class carClass implements Serializable {
 
     public String getFuelType() {
         return fuelType;
+    }
+    public String setCarID(String carID) {
+    	this.carID = carID;
     }
     public String setCarName(String carName) {
     	this.carName = carName;
@@ -94,7 +101,8 @@ public class carClass implements Serializable {
     }
     @Override
     public String toString() {
-        return " Car Name= " + carName +
+        return " Car ID= " + carID +
+        		" Car Name= " + carName +
         		"Car Type= " + carType +
                 ", Car Model= " + carModel +
                 ", Electric Equivalent= " + electricEquivalent +
