@@ -15,7 +15,10 @@ public class admin { //extends unregisteredUser{
 		
 
 	 public static void adminMenu () {
-	 
+		 
+		 	Main carOpsDriver = new Main();
+		 	carOpsDriver.main();			//creating instance of class Main (from Abdannor)
+		 
 		 	System.out.println("\n-----------------------------");
 			System.out.println("ADMIN MAIN MENU");
 			System.out.println("-----------------------------");
@@ -33,7 +36,7 @@ public class admin { //extends unregisteredUser{
 				opsUser();
 				break;
 			case 2:
-				opsCar();
+				carOpsDriver.run(); //call Main class to execute
 				break;
 			case 3:
 				adminLogout();
@@ -144,145 +147,6 @@ public class admin { //extends unregisteredUser{
 				break;
 			}
 		}
-
-
-	
-	 
-	 
-	 // CHOICE 2 CAR OPERATIONS
-	 //Method for adding Cars to the recommendation System
-	 
-	 public static void opsCar() {
-		 
-		  	//choices for addCar 
-		 	System.out.println("\n-----------------------------");
-			System.out.println("CAR OPERATIONS");
-			System.out.println("-----------------------------");
-			System.out.println("\nYou have 3 choices:");
-			System.out.println("Choose 1 to add a new car to the system");
-			System.out.println("Choose 2 to remove a new car from the system");
-			System.out.println("Choose 3 to modify a car in the system");
-			System.out.println("\nChoose 0 to return to the main menu");
-			System.out.print("\nWhat would you want to choose? ");
-			
-			int adminchoice = userInputInt.nextInt();
-
-			switch (adminchoice) {
-			case 0: 
-				adminMenu();
-			case 1:
-				addCar();
-				break;
-			case 2:
-				removeCar();
-				break;
-			case 3:
-				modifyCar();
-				break;
-			
-		}	
-	 }
-	 
-	 
-	 
-	//all methods concerning cars		
-			
-		
-	public static void addCar () {
-				
-			System.out.println("\nThis method allows adding cars");
-				
-				
-			System.out.print("\nHow many cars would you like to add? ");
-			int noOfCars = userInputInt.nextInt();
-				
-			for(int i=0; i<noOfCars; i++) {
-				//ASK USER ALL CAR DETAILS
-				System.out.print("\nWhat is the name of the car? ");
-				String carName = userInputInt.next();
-				System.out.print("\nWhat is the type of the car? ");
-				String carType = userInputInt.next();
-//TODO			//create new line which constitutes a car in the file by: carName \t carType \t etc \t
-//TODO			//append new line to car file	
-			}
-			
-			
-			System.out.print("\n\nWould you like to perform another Car operation? Enter: 1: Yes || 2: No (return to Admin Menu): ");
-				int adminchoice = userInputInt.nextInt();
-	
-				switch (adminchoice) {
-				case 1: 
-					opsCar();
-				case 2:
-					adminMenu();
-					break;
-				}
-	}	
-		
-		
-	public static void removeCar () {
-			
-			System.out.println("\nThis method allows removing cars");
-			
-			System.out.print("\nHow many cars would you like to remove? ");
-			int noOfCars = userInputInt.nextInt();
-			
-			for(int i=0; i<noOfCars; i++) {
-				//ASK NAME OF CAR
-				System.out.print("\nWhat is the name of the car you want to remove? ");
-				String carName = userInputString.next();
-				
-			}
-				
-//TODO			//From car file remove lines that contain carName
-//TODO			//As in A3
-			
-			
-			
-			System.out.print("\n\nWould you like to perform another Car operation? Enter: 1: Yes || 2: No (return to Admin Menu): ");
-				int adminchoice = userInputInt.nextInt();
-
-				switch (adminchoice) {
-				case 1: 
-					opsCar();
-				case 2:
-					adminMenu();
-					break;
-			}
-			
-		}	
-			
-			
-	public static void modifyCar () {
-			System.out.println("\nThis method allows modifying cars");
-			
-				System.out.println("\nWhat is the name of the car you want to modify? ");
-				String carName = userInputString.next();
-				
-//TODO			//System print line of car file that contains car name, so print all data of the car
-				System.out.println("\nWhat details of the car would you want to modify? ");
-				String carDetail = userInputString.next();
-				
-				System.out.println("To what would you like to change " + carDetail + "? ");
-				String carDetail2 = userInputString.next();
-				
-				System.out.println("\nFor" + carName + "," + carDetail + "has been changed to " + carDetail2 + ". ");
-				carDetail = carDetail2; //change values
-			
-				
-			System.out.print("\n\nWould you like to perform another Car operation? Enter: 1: Yes || 2: No (return to Admin Menu): ");
-				int adminchoice = userInputInt.nextInt();
-
-				switch (adminchoice) {
-				case 1: 
-					opsCar();
-				case 2:
-					adminMenu();
-					break;
-				}
-		}	
-			
-	
 	
 	public static void adminLogout() {
 		
@@ -291,4 +155,15 @@ public class admin { //extends unregisteredUser{
 		
 		//Go To login first method
 	}
+	
+	
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		admin.adminMenu();
+		
+	    
+	}
 }
+
+
