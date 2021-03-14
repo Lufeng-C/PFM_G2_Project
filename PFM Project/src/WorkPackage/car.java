@@ -3,6 +3,7 @@ package Benz;
 import java.io.Serializable;
 
 public class carClass implements Serializable {
+	private String carName;
     private String carType;
     private String carModel;
     private String electricEquivalent;
@@ -12,8 +13,9 @@ public class carClass implements Serializable {
     private String bodyType;
     private String fuelType;
 
-    public carClass (String carType, String carModel, String electricEquivalent, double basePrice, String size, String sport, String bodyType, String fuelType) {
-        this.carType = carType;
+    public carClass (String carName, String carType, String carModel, String electricEquivalent, double basePrice, String size, String sport, String bodyType, String fuelType) {
+    	this.carName = carName;
+    	this.carType = carType;
         this.carModel = carModel;
         this.electricEquivalent = electricEquivalent;
         this.basePrice = basePrice;
@@ -22,7 +24,9 @@ public class carClass implements Serializable {
         this.bodyType = bodyType;
         this.fuelType = fuelType;
     }
-
+    public String getCarName() {
+        return carName;
+    }
     public String getCarType() {
         return carType;
     }
@@ -54,7 +58,9 @@ public class carClass implements Serializable {
     public String getFuelType() {
         return fuelType;
     }
-
+    public String setCarName(String carName) {
+    	this.carName = carName;
+    }
     public void setCarType(String carType) {
         this.carType = carType;
     }
@@ -88,7 +94,8 @@ public class carClass implements Serializable {
     }
     @Override
     public String toString() {
-        return "Car Type= " + carType +
+        return " Car Name= " + carName +
+        		"Car Type= " + carType +
                 ", Car Model= " + carModel +
                 ", Electric Equivalent= " + electricEquivalent +
                 ", basePrice= " + basePrice +
