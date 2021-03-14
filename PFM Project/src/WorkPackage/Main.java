@@ -1,4 +1,4 @@
-package Benz;
+package WorkPackage;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -15,42 +15,102 @@ public class Main {
 	public void run(){
 		
 		while (true) {
-		System.out.println("WELCOME ADMIN");
-        System.out.println("1) Add Car\n" +
-                "2) View All Cars\n" +
-                "3) Delete Car\n" + 
-                "4) Edit car details\n" +
-                "5) Exit system\n" +
-                "Please enter your choice: ");
+		
+			//choices for addCar 
+		 	System.out.println("\n-----------------------------");
+			System.out.println("CAR OPERATIONS");
+			System.out.println("-----------------------------");
+			System.out.println("\nYou have 4 choices:");
+			System.out.println("Choose 1 to Add a new Car");
+			System.out.println("Choose 2 to View all Cars");
+			System.out.println("Choose 3 to Delete a Car");
+			System.out.println("Choose 4 to Edit a Car");
+			System.out.println("\nChoose 0 to return to the main menu");
+			System.out.print("\nWhat would you want to choose? "); 
 		
 		int Choice = scanner.nextInt();
         scanner.nextLine();
         
 		if (Choice == 1) {
 			addCar();
-			run();
+			
+			System.out.print("\n\nWould you like to perform another Car operation? Enter: 1: Yes || 2: No (return to Admin Menu): ");
+			int adminchoice = scanner.nextInt();
+
+			switch (adminchoice) {
+			case 1: 
+				run();
+				saveCarList();
+				break;
+			case 2:
+				saveCarList();
+				admin.adminMenu();
+				break;
+			}
 		}
 		else if (Choice == 2){
 			viewAllCars();
-			run();
+			
+			System.out.print("\n\nWould you like to perform another Car operation? Enter: 1: Yes || 2: No (return to Admin Menu): ");
+			int adminchoice = scanner.nextInt();
+
+			switch (adminchoice) {
+			case 1: 
+				saveCarList();
+				run();
+				break;
+			case 2:
+				saveCarList();
+				admin.adminMenu();
+				break;
+			}
 		}
 		else if(Choice == 3){
 			deleteCar();
-			run();
+			
+			System.out.print("\n\nWould you like to perform another Car operation? Enter: 1: Yes || 2: No (return to Admin Menu): ");
+			int adminchoice = scanner.nextInt();
+
+			switch (adminchoice) {
+			case 1: 
+				saveCarList();
+				run();
+				break;
+			case 2:
+				saveCarList();
+				admin.adminMenu();
+				break;
+			}
         }
         else if (Choice == 4) {
         	editCar();
-        	run();
+        	
+        	System.out.print("\n\nWould you like to perform another Car operation? Enter: 1: Yes || 2: No (return to Admin Menu): ");
+			int adminchoice = scanner.nextInt();
+
+			switch (adminchoice) {
+			case 1: 
+				run();
+				saveCarList();
+				break;
+			case 2:
+				saveCarList();
+				admin.adminMenu();
+				break;
+			}
 		}
 		else;
 			saveCarList();
+			admin.adminMenu();
 		break;
 		}
       }
 	
 		//add car
 	    private void addCar(){
-	        System.out.print("Enter Car Type: ");
+	    	System.out.println("\nYou have chosen to add a new Car to the System: ");
+	    	
+	        System.out.print("\nEnter Car Type: ");
 	        String carType=scanner.nextLine();
 
 	        System.out.print("Enter Car Model: ");
@@ -79,37 +139,40 @@ public class Main {
 	        carArrayList.add(car); //add to car arrayList
 	    }
 	    private void deleteCar(){
-	        System.out.println("Available Car List...");
+	    	System.out.println("\nYou have chosen to delete a Car from the system.");
+	    	System.out.println("\nThese are all the Cars in the List:\n");
 	        for(int i=0;i<this.carArrayList.size();i++){
 	            System.out.println("Index: "+i+" "+this.carArrayList.get(i).toString());
 	        }
 
-	        System.out.print("Enter Selected index to delete car: ");
+	        System.out.print("\nEnter the index of the car you want to delete: ");
 	        int index=scanner.nextInt();
 	        scanner.nextLine();
 
 	        if(index>=0 && index<this.carArrayList.size()){
 	            //remove from car list
 	            this.carArrayList.remove(index);
-	            System.out.println("Removed!");
+	            System.out.println("\nRemoved!");
 	        }
 	        else {
 	            System.out.println("Invalid Choice!");
 	        }
 	    }
 	    private void viewAllCars(){
+	    	System.out.println("\nHere is a list of all the cars within the System: \n");
 	        for(int i=0;i<this.carArrayList.size();i++){
 	            System.out.println(this.carArrayList.get(i).toString());
 	        }
 	    }
 	    
 	    private void editCar(){
-	        System.out.println("Available Car List");
+	    	System.out.println("\nYou have chosen to Edit a car from the system.");
+	        System.out.println("\nThese are all the Cars in the List:\n");
 	        for(int i=0;i<this.carArrayList.size();i++){
 	            System.out.println("Index: "+ i +" "+this.carArrayList.get(i).toString());
 	        }
 
-	        System.out.print("Enter Selected index to edit car: ");
+	        System.out.print("\nEnter the index of the car you want to edit: ");
 	        int index=scanner.nextInt();
 	        scanner.nextLine();
 
@@ -118,7 +181,7 @@ public class Main {
 	            boolean editCompleted=false;
 	            while(!editCompleted) {
 
-	                System.out.println("What do you need to edit? \n" +
+	                System.out.println("\nWhat do you need to edit? \n" +
 	                        "1) car type\n" +
 	                        "2) car model\n" +
 	                        "3) electric Equivalent:\n" +
@@ -127,67 +190,79 @@ public class Main {
 	                        "6) sport\n" +
 	                        "7) body type\n" +
 	                        "8) fuel type");
-	                System.out.print("Enter choice (number): ");
-	                int choiceEdit = scanner.nextInt();
-	                scanner.nextLine();
+	                
 
+	                while(true) {
+	                	
+	                	System.out.print("\nEnter choice (number): ");
+		                int choiceEdit = scanner.nextInt();
+		                scanner.nextLine();
+		                
 	                if (choiceEdit == 1) {
 	                    System.out.print("Enter Car Type: ");
 	                    String carType = scanner.nextLine();
 
 	                    this.carArrayList.get(index).setCarType(carType);
-	                    System.out.println("Changed!");
+	                    System.out.println("\nChanged!");
+	                    break;
 	                } else if (choiceEdit == 2) {
 	                    System.out.print("Enter Car Model: ");
 	                    String carModel = scanner.nextLine();
 
 	                    this.carArrayList.get(index).setCarModel(carModel);
-	                    System.out.println("Changed!");
+	                    System.out.println("\nChanged!");
+	                    break;
 	                } else if (choiceEdit == 3) {
 	                    System.out.print("Enter electric Equivalent: ");
 	                    String electricEquivalent = scanner.nextLine();
 
 	                    this.carArrayList.get(index).setElectricEquivalent(electricEquivalent);
-	                    System.out.println("Changed!");
+	                    System.out.println("\nChanged!");
+	                    break;
 	                } else if (choiceEdit == 4) {
 	                    System.out.print("Enter Base Price: ");
 	                    double basePrice = scanner.nextDouble();
 	                    scanner.nextLine();
 
 	                    this.carArrayList.get(index).setBasePrice(basePrice);
-	                    System.out.println("Changed!");
+	                    System.out.println("\nChanged!");
+	                    break;
 	                } else if (choiceEdit == 5) {
 	                    System.out.print("Enter Car Size: ");
 	                    String size = scanner.nextLine();
 
 	                    this.carArrayList.get(index).setSize(size);
-	                    System.out.println("Changed!");
+	                    System.out.println("\nChanged!");
+	                    break;
 	                } else if (choiceEdit == 6) {
 	                    System.out.print("Is Sport: ");
 	                    String sport = scanner.nextLine();
 
 	                    this.carArrayList.get(index).setSport(sport);
-	                    System.out.println("Changed!");
+	                    System.out.println("\nChanged!");
+	                    break;
 	                } else if (choiceEdit == 7) {
 	                    System.out.print("Enter Body Type: ");
 	                    String bodyType = scanner.nextLine();
 
 	                    this.carArrayList.get(index).setBodyType(bodyType);
-	                    System.out.println("Changed!");
+	                    System.out.println("\nChanged!");
+	                    break;
 	                } else if (choiceEdit == 8) {
 	                    System.out.print("Enter Fuel Type: ");
 	                    String fuelType = scanner.nextLine();
 
 	                    this.carArrayList.get(index).setFuelType(fuelType);
-	                    System.out.println("Changed!");
+	                    System.out.println("\nChanged!");
+	                    break;
 	                } else {
-	                    System.out.println("Invalid Input!");
+	                    System.out.println("\nInvalid Input!");
+	                	}
 	                }
-
-	                System.out.print("Editing Completed? \n" +
+	                System.out.print("\nEditing Completed? \n" +
 	                        "1) Yes\n" +
 	                        "2) No\n" +
-	                        "Enter number:  ");
+	                        "Enter choice:  ");
 	                int reRun = scanner.nextInt();
 	                scanner.nextLine();
 
@@ -242,11 +317,5 @@ public class Main {
 
 	        return new ArrayList<carClass>();
 	    }
-public static void main(String[] args) {
-	// TODO Auto-generated method stub
-	Main mainDriver = new Main();
-	mainDriver.main();
-    mainDriver.run();
-    
-}
+
 }
