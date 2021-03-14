@@ -14,7 +14,8 @@ public class carClass implements Serializable {
     private String bodyType;
     private String fuelType;
 
-    public carClass (String carName, String carType, String carModel, String electricEquivalent, double basePrice, String size, String sport, String bodyType, String fuelType) {
+    public carClass (String carID, String carName, String carType, String carModel, String electricEquivalent, double basePrice, String size, String sport, String bodyType, String fuelType) {
+    	this.carID = carID;
     	this.carName = carName;
     	this.carType = carType;
         this.carModel = carModel;
