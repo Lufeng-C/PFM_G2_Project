@@ -118,12 +118,6 @@ public class Main {
 	        System.out.print("\nEnter Car Type: ");
 	        String carType=scanner.nextLine();
 
-	        System.out.print("Enter Car Model: ");
-	        String carModel=scanner.nextLine();
-
-	        System.out.print("Enter electric Equivalent: ");
-	        String electricEquivalent=scanner.nextLine();
-
 	        System.out.print("Enter Base Price: ");
 	        double basePrice=scanner.nextDouble();
 	        scanner.nextLine();
@@ -134,13 +128,10 @@ public class Main {
 	        System.out.print("Is Sport: ");
 	        String sport=scanner.nextLine();
 
-	        System.out.print("Enter Body Type: ");
-	        String bodyType=scanner.nextLine();
-
 	        System.out.print("Enter Fuel Type: ");
 	        String fuelType=scanner.nextLine();
 
-	        carClass car = new carClass (carID, carName, carType, carModel, electricEquivalent, basePrice, size, sport, bodyType, fuelType);
+	        carClass car = new carClass (carID, carName, carType, basePrice, size, sport,fuelType);
 	        carArrayList.add(car); //add to car arrayList
 	    }
 	    private void deleteCar(){
@@ -187,14 +178,13 @@ public class Main {
 	            while(!editCompleted) {
 
 	                System.out.println("\nWhat do you need to edit? \n" +
-	                        "1) car type\n" +
-	                        "2) car model\n" +
-	                        "3) electric Equivalent:\n" +
+	                        "1) car ID\n" +
+	                        "2) car name\n" +
+	                        "3) car type:\n" +
 	                        "4) Base price\n" +
 	                        "5) Car size\n" +
 	                        "6) sport\n" +
-	                        "7) body type\n" +
-	                        "8) fuel type");
+	                        "7) fuel type");
 	                
 
 	                while(true) {
@@ -204,24 +194,24 @@ public class Main {
 		                scanner.nextLine();
 		                
 	                if (choiceEdit == 1) {
-	                    System.out.print("Enter Car Type: ");
-	                    String carType = scanner.nextLine();
+	                    System.out.print("Enter Car ID: ");
+	                    String carID = scanner.nextLine();
 
-	                    this.carArrayList.get(index).setCarType(carType);
+	                    this.carArrayList.get(index).setCarID(carID);
 	                    System.out.println("\nChanged!");
 	                    break;
 	                } else if (choiceEdit == 2) {
-	                    System.out.print("Enter Car Model: ");
-	                    String carModel = scanner.nextLine();
+	                    System.out.print("Enter Car Name: ");
+	                    String carName = scanner.nextLine();
 
-	                    this.carArrayList.get(index).setCarModel(carModel);
+	                    this.carArrayList.get(index).setCarName(carName);
 	                    System.out.println("\nChanged!");
 	                    break;
 	                } else if (choiceEdit == 3) {
-	                    System.out.print("Enter electric Equivalent: ");
-	                    String electricEquivalent = scanner.nextLine();
+	                    System.out.print("Enter car type: ");
+	                    String carType = scanner.nextLine();
 
-	                    this.carArrayList.get(index).setElectricEquivalent(electricEquivalent);
+	                    this.carArrayList.get(index).setCarType(carType);
 	                    System.out.println("\nChanged!");
 	                    break;
 	                } else if (choiceEdit == 4) {
@@ -247,13 +237,6 @@ public class Main {
 	                    System.out.println("\nChanged!");
 	                    break;
 	                } else if (choiceEdit == 7) {
-	                    System.out.print("Enter Body Type: ");
-	                    String bodyType = scanner.nextLine();
-
-	                    this.carArrayList.get(index).setBodyType(bodyType);
-	                    System.out.println("\nChanged!");
-	                    break;
-	                } else if (choiceEdit == 8) {
 	                    System.out.print("Enter Fuel Type: ");
 	                    String fuelType = scanner.nextLine();
 
