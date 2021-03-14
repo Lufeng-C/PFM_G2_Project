@@ -63,10 +63,10 @@ public class carClass implements Serializable {
     public String getFuelType() {
         return fuelType;
     }
-    public String setCarID(String carID) {
+    public void setCarID(String carID) {
     	this.carID = carID;
     }
-    public String setCarName(String carName) {
+    public void setCarName(String carName) {
     	this.carName = carName;
     }
     public void setCarType(String carType) {
