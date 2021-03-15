@@ -1,9 +1,9 @@
-package WorkPackage;
+package Benz;
 
 import java.io.*;
 import java.util.*;
 
-public class admin { //registeredUser{			
+public class admin { //extends unregisteredUser{			
 	
 	static Scanner userInputInt = new Scanner(System.in); 
 		static Scanner userInputString = new Scanner(System.in); 
@@ -16,7 +16,7 @@ public class admin { //registeredUser{
 
 	 public static void adminMenu () {
 		 
-		 	carOperations carOpsDriver = new carOperations();
+		 	Main carOpsDriver = new Main();
 		 	carOpsDriver.main();			//creating instance of class Main (from Abdannor)
 		 
 		 	System.out.println("\n-----------------------------");
@@ -86,14 +86,47 @@ public class admin { //registeredUser{
 
 		public static void approveUsers () {
 		
-			System.out.println("\nThis method allows user approval");
+			System.out.println("\nAPPROVE USERS");
 			
-//TODO		read data from temp file, while loop for each noOfusers in tempRegistration.txt ask admin: would you like to approve user: *first_name*, *second_name*
-			//remove line from temp file
-			//then transfer approved users to permRegistration.txt
+			String[] tempFile = readTempFile();
+
+			
+			for (int i=0; i < tempFile.length; i++) {
+				int index = i;
+				System.out.println("\nThe next user is: " + tempFile[i] + "\n"); 		//printing contents of tempRegistration.txt, line by line
+				System.out.print("Would you like to approve this user: 1) Yes 2) No " );
+				
+				int approved = userInputInt.nextInt();
+				
+					if (approved == 1) {
+						appendPermFile(tempFile[i]);  //appending line to PermFile	
+					}
+						
+				String[] newtempFile = new String[tempFile.length]; 
+					newtempFile[i] = "";
+						
+						overWriteTempFile(newtempFile);	
+					}
 			
 			
-			//
+			//Just to check whether tempFile is empty - remove eventually
+			tempFile = readTempFile();
+			System.out.println("\nThese are all the temp file users");
+			for (int j=0; j < tempFile.length; j++) {
+				System.out.println(tempFile[j]);
+			}
+			
+
+			//Just to check whether permFile reads all new registered users
+			String[] permFile = readPermFile();
+			System.out.println("\nThese are all the approved registered users");
+			for (int j=0; j < permFile.length; j++) {
+				System.out.println(permFile[j]); 
+		
+				}	
+		
+				
+			
 			System.out.print("\n\nWould you like to perform another User operation? Enter: 1: Yes || 2: No (return to Admin Menu): ");
 			int adminchoice = userInputInt.nextInt();
 
@@ -105,14 +138,117 @@ public class admin { //registeredUser{
 				break;
 			}
 		}	
-
-		public static void viewUsers () {
-			
-			System.out.println("\nThis method allows viewing users");		
 		
-//TODO		//print list of PermRegistration.txt
+
+		
+		
+		
+		//method for reading temporary File
+		
+			public static String[] readTempFile(){
+			
+			String[] temp = new String[1000]; //temporary array for storing values
+			int lineNumber = 0;
 			
 			
+			try {
+				BufferedReader br = new BufferedReader(new FileReader("tempRegistration.txt"));
+				String sCurrentLine;
+
+				while ((sCurrentLine = br.readLine()) != null){
+					
+					temp[lineNumber]= (sCurrentLine); 
+					lineNumber++;
+				}	
+				
+				br.close();
+				
+			} catch (IOException e) {
+				System.out.println("There is no temporary Users at the moment!");	
+			}
+		
+			String[] tempFile = new String[lineNumber];
+			System.arraycopy(temp, 0, tempFile, 0, lineNumber);
+			return tempFile;
+			
+		}
+			
+			
+			
+		//Method for overWriting TempFile
+			
+			public static void overWriteTempFile(String[] tempFile){
+				
+				try {
+					PrintWriter wr = new PrintWriter(
+							new BufferedWriter (new FileWriter("tempRegistration.txt", false)));
+					
+					for(int i = 0; i < tempFile.length; i++) 
+						wr.println(tempFile[i]); 
+						wr.close();
+					
+				}
+				catch(IOException e) {
+					System.out.print("There is an I/O error in overwriting the file!");		
+				}
+			}
+		
+		
+		
+		
+		//Method to approve user from tempList to permList
+		public static void appendPermFile (String line) { 
+
+			try {
+				PrintWriter wr1 = new PrintWriter ( new BufferedWriter (new FileWriter("permRegistration.txt", true)));
+				wr1.println(line);
+				wr1.close();
+
+			} catch (IOException ex) {
+				System.out.println ("Something went wrong for I/O!");
+			}
+		}
+		
+		
+		
+		public static String[] readPermFile(){
+			
+			String[] temp = new String[100]; //temporary array for storing values
+			int lineNumber = 0;
+			
+			
+			try {
+				BufferedReader br = new BufferedReader(new FileReader("permRegistration.txt"));
+				String sCurrentLine;
+
+				while ((sCurrentLine = br.readLine()) != null){
+					
+					temp[lineNumber]= (sCurrentLine); 
+					lineNumber++;
+				}	
+				
+				br.close();
+				
+			} catch (IOException e) {
+				System.out.println("There is no temporary Users at the moment!");	
+			}
+			String[] permFile = new String[lineNumber];
+			System.arraycopy(temp, 0, permFile, 0, lineNumber);
+			return permFile;
+			
+		}
+		
+
+		
+		//Read and print permRegistered.txt
+		public static void viewUsers () {
+				
+			
+			String[] permFile = readPermFile();
+			System.out.println("\nThese are all the approved registered users\n"); 
+			for (int j=0; j < permFile.length; j++) {
+				System.out.println("[" + j + "]" + permFile[j]); 
+			}
 			
 			System.out.print("\n\nWould you like to perform another User operation? Enter: 1: Yes || 2: No (return to Admin Menu): ");
 			int adminchoice = userInputInt.nextInt();
@@ -129,11 +265,47 @@ public class admin { //registeredUser{
 	
 		public static void removeUsers () {
 			
-			System.out.println("\nThis method allows user removal");
+			System.out.println("REMOVE A USER");
+			
+			String[] permFile = readPermFile();
+			
+			System.out.println("\nThese are all the approved registered users"); 
+			for (int j=0; j < permFile.length; j++) {
+				System.out.println("[" + j + "]" + permFile[j]); 			//Prints list of all users including index
+			}
+			
 		
-//TODO		//print list of PermRegistration.txt and allow admin to remove a line.
+			System.out.print("What is the index [number] of the User you would like to remove? : ");
+			int removedUser = userInputInt.nextInt();
 			
 			
+			int indexSearch = -1;
+			for (int i = 0; i < permFile.length; i++) {
+				if (i ==(removedUser)) {
+					indexSearch = i; //capture index of removed User
+				}
+			}
+			
+			if(indexSearch < 0) {
+				System.out.println("This User is not in the list."); 
+			}
+			
+			else {
+				
+				//create new arrays with .length -1, as one item is removed
+				String[] newpermFile = new String[permFile.length - 1]; 
+			
+				//assign values to new arrays
+				int newindexSearch = 0;
+				for(int i=0; i < permFile.length; i++) {
+					if (i!= indexSearch) {
+						newpermFile[newindexSearch] = permFile[i];
+						newindexSearch++;
+					}
+			}
+				overWritePermFile(newpermFile);
+				System.out.println("\nThe User has successfully been removed!");
+			}
 			
 			System.out.print("\n\nWould you like to perform another User operation? Enter: 1: Yes || 2: No (return to Admin Menu): ");
 			
@@ -148,22 +320,39 @@ public class admin { //registeredUser{
 			}
 		}
 	
+		
+		
+		//Method for overWriting PermFile
+		
+		public static void overWritePermFile(String[] permFile){
+			
+			try {
+				PrintWriter wr = new PrintWriter(
+						new BufferedWriter (new FileWriter("permRegistration.txt", false)));
+				
+				for(int i = 0; i < permFile.length; i++) 
+					wr.println(permFile[i]); //
+					wr.close();
+				
+			}
+			catch(IOException e) {
+				System.out.print("There is an I/O error in overwriting the file!");		
+			}
+		}
+	
+		
+		
+		
+		
 	public static void adminLogout() {
 		
 		System.out.println("\nThanks for your time Admin. You have now been logged out!");
 		System.out.println("Have a great day!");
 		
-		//Go To login first method
-	}
-	
-	
-	
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		admin.adminMenu();
+		//logInSystem();  	it needs to return here, remove dashed lines
 		
-	    
+	
 	}
-}
 
+}
 
