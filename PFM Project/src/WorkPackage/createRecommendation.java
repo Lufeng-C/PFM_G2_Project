@@ -1,12 +1,12 @@
-package rec;
+package WorkPackage;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class rec {
+public class carOperations {
 	Scanner scanner=new Scanner(System.in);
-	private ArrayList<carClass> carArrayList; //car arraylist
+	private ArrayList<car> carArrayList; //car arraylist
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

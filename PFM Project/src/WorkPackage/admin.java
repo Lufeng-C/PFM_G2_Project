@@ -16,7 +16,7 @@ public class admin { //registeredUser{
 
 	 public static void adminMenu () {
 		 
-		 	Main carOpsDriver = new Main();
+		 	carOperations carOpsDriver = new carOperations();
 		 	carOpsDriver.main();			//creating instance of class Main (from Abdannor)
 		 
 		 	System.out.println("\n-----------------------------");
