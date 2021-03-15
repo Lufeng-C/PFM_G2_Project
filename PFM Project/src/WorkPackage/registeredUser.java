@@ -232,6 +232,33 @@ public class registeredUser {
 		// print a message where users find out they are awaiting approval and can either continue as a guest or go back to login screen.
 
 	}	// end register()
+	
+	public static void deleteAccount() {
+		/* confirm email and password? If possible
+		
+		System.out.print("To delete your account, confirm your email address and password: ");
+		System.out.print("Your email address (used for log in): ");
+		String email = userInputString.nextLine();	
+
+		System.out.print("Your password: ");
+		String password = userInputString.nextLine();
+		*/
+		
+		System.out.print("Are you sure you want to delete your account? Enter 1 for yes, enter 2 to cancel and go back to the user interface: ");
+		int confirmation = userInputInt.nextInt();
+		
+		if(confirmation == 1) {
+			admin.removeUsers();  //how does the admin know which object to delete? Or shall we not include the admin at all?
+			
+			System.out.println("Your account was succesfully deleted.");
+			// call back to the login page -> testDrive.main(String[] args);  (doesn't work)
+		}
+		else {
+			userInterface();
+		}
+		
+		//appendFile to the admin. Boolean variable to delete the account.
+	}
 
 	// This method appends a line to the tempRegistration.txt
 	public static void appendFileTemp (String line) { 
