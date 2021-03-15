@@ -6,7 +6,10 @@ import java.util.Scanner;
 import rec.carClass;
 
 public class unregisteredUser {
-	static Scanner userInputInt= new Scanner(System.in);
+	
+	static Scanner userInputInt = new Scanner(System.in); 
+	static Scanner userInputString = new Scanner(System.in); 
+	static Scanner userInputDouble = new Scanner(System.in);
 
 	public static void unregisterUserMethod() {
 		// TODO Auto-generated method stub
@@ -385,5 +388,5 @@ public class unregisteredUser {
 	             System.out.println("Sorry, No matching Found!");
 	         }
 	             return foundCar;
-	    	}
+	    }
 	    
