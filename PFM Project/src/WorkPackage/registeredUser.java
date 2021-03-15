@@ -248,7 +248,7 @@ public class registeredUser {
 		int confirmation = userInputInt.nextInt();
 		
 		if(confirmation == 1) {
-			admin.removeUsers();  //how does the admin know which object to delete? Or shall we not include the admin at all?
+			 //how does the admin know which object to delete? Or shall we not include the admin at all? We could copy most of this from the admin class I suppose
 			
 			System.out.println("Your account was succesfully deleted.");
 			// call back to the login page -> testDrive.main(String[] args);  (doesn't work)
