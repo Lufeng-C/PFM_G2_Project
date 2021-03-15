@@ -9,14 +9,14 @@ public class registeredUser {
 	static Scanner userInputString = new Scanner(System.in); 
 	static Scanner userInputDouble = new Scanner(System.in);
 
-	String emailAddress;
-	String password;
-	String firstName;
-	String lastName;
-	int phoneNumber;
-	int userID;
-	boolean logInStatus;
-	String [] favorites;
+	private String emailAddress;
+	private String password;
+	private String firstName;
+	private String lastName;
+	private int phoneNumber;
+	private int userID;
+	private boolean logInStatus;
+	private String [] favorites;
 
 	static int num_registeredUser = getTotalLines();
 
