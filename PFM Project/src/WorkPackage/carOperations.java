@@ -269,7 +269,7 @@ public class carOperations { //CarOps should be changed (also change in Admin wh
 	            Object obj= this.carArrayList;
 	            FileOutputStream f = null;
 	            try {
-	                f = new FileOutputStream(new File("car_List.dat"));
+	                f = new FileOutputStream(new File("car_List.txt"));
 
 	                ObjectOutputStream o = new ObjectOutputStream(f);
 
@@ -287,7 +287,7 @@ public class carOperations { //CarOps should be changed (also change in Admin wh
 	    public ArrayList<carClass> readCarList(){
 	        FileInputStream fi = null;
 	        try {
-	            fi = new FileInputStream("car_List.dat");
+	            fi = new FileInputStream("car_List.txt");
 
 	            ObjectInputStream oi = new ObjectInputStream(fi);
 
