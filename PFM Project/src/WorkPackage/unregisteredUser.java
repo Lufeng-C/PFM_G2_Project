@@ -57,11 +57,11 @@ public class unregisteredUser {
 			String carType = "Sedan";
 			
 		    System.out.print("what is your budget? Enter Minimum: ");
-	        double minBudget=scanner.nextDouble();
+	        double minBudget = scanner.nextDouble();
 	        scanner.nextLine();
 	        
 			System.out.print("what is your budget? Enter Maximum: ");
-	        double maxBudget=scanner.nextDouble();
+	        double maxBudget = scanner.nextDouble();
 	        scanner.nextLine();
 
 			 System.out.println("What fueltype do you prefer? ");
