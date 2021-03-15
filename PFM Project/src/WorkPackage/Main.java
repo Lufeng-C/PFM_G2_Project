@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Main {
+public class Main { //CarOps should be changed (also change in Admin when calling)
 	private ArrayList<carClass> carArrayList; //car arraylist
 	Scanner scanner=new Scanner(System.in);
 	
