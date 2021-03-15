@@ -1,5 +1,6 @@
 package WorkPackage;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -10,7 +11,11 @@ public class unregisteredUser {
 	static Scanner userInputInt = new Scanner(System.in); 
 	static Scanner userInputString = new Scanner(System.in); 
 	static Scanner userInputDouble = new Scanner(System.in);
-
+	//private ArrayList<carClass> carArrayList; //car arraylist
+	}
+	//public void main() {
+	//this.carArrayList = readCarList();
+	}
 	public static void unregisterUserMethod() {
 		// TODO Auto-generated method stub
 		
