@@ -16,7 +16,7 @@ public class admin { //extends unregisteredUser{
 
 	 public static void adminMenu () {
 		 
-		 	Main carOpsDriver = new Main();
+		 	CarOperations carOpsDriver = new CarOperations();
 		 	carOpsDriver.main();			//creating instance of class Main (from Abdannor)
 		 
 		 	System.out.println("\n-----------------------------");
