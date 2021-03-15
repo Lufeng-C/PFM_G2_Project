@@ -21,7 +21,7 @@ public class registeredUser {
 	static int num_registeredUser = getTotalLines();
 
 	
-	public static userInterface() {
+	public static void userInterface() {
 	
 	System.out.println("                   _____________\r\n"
 			+ "                                  ..---:::::::-----------. ::::;;.\r\n"
@@ -222,6 +222,70 @@ public class registeredUser {
 		} catch (IOException ex) {
 			System.out.println ("Something went wrong for I/O!");
 		}
+	}
+
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public int getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public int getUserID() {
+		return userID;
+	}
+
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
+
+	public boolean isLogInStatus() {
+		return logInStatus;
+	}
+
+	public void setLogInStatus(boolean logInStatus) {
+		this.logInStatus = logInStatus;
+	}
+
+	public String[] getFavorites() {
+		return favorites;
+	}
+
+	public void setFavorites(String[] favorites) {
+		this.favorites = favorites;
 	}
 
 } // end class registeredUser
