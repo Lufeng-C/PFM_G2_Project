@@ -1,8 +1,8 @@
-package Benz;
+package WorkPackage;
 
 import java.io.Serializable;
 
-public class carClass implements Serializable {
+public class car implements Serializable {
 	private string carID;
 	private String carName;
     private String carType;
@@ -11,7 +11,7 @@ public class carClass implements Serializable {
     private String sport;
     private String fuelType;
 
-    public carClass (String carID, String carName, String carType, double basePrice, String size, String sport, String fuelType) {
+    public car (String carID, String carName, String carType, double basePrice, String size, String sport, String fuelType) {
     	this.carID = carID;
     	this.carName = carName;
     	this.carType = carType;
