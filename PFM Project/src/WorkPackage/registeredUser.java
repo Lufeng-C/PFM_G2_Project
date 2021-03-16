@@ -250,13 +250,13 @@ public class registeredUser {
 		if(confirmation == 1) {
 			if 	(deleteUser(user.getUserID()) == true) {
 				//delete object from the userList, call userList, remove user.
-			System.out.println("Your account was succesfully deleted.");
+				System.out.println("Your account was succesfully deleted. You are redirected to the register page.");
+				register();
 			}
 			else {
-				System.out.println("Your account was not deleted.");				
+				System.out.println("Your account was not deleted.");
+				userInterface();
 			}
-			
-			// call back to the login page -> testDrive.main(String[] args);  (doesn't work)
 		}
 		if (confirmation == 2) {
 			System.out.println("\nYour delete request was cancelled, you are returned to the user interface.");
@@ -269,13 +269,13 @@ public class registeredUser {
 	}
 
 
-	
-	
+
+
 	public static boolean deleteUser(int userID) {
-		
+
 		ArrayList <String> userIDList = new ArrayList <String>();
 		ArrayList <String> storedLine = new ArrayList <String>();
-		
+
 		try {
 			String textline; // stores a line of text from the reader function
 			String[] uCurrent = new String [7]; // to store elements of textline
@@ -294,111 +294,111 @@ public class registeredUser {
 		}	catch (IOException ex) {
 			System.out.println ("Something went wrong for I/O!");
 		}
-		
+
 		boolean flag = false;
 		int indx= userIDList.indexOf(userID);
 		if (indx != -1) {
 			flag = true;
 			storedLine.remove(indx);
 		} 
-		
-				
+
+
 		//overwrite the new txt file, with the removed index.
 		try {
 			PrintWriter wr = new PrintWriter(
 					new BufferedWriter (new FileWriter("permRegistration.txt", false)));
-			
+
 			for(int i = 0; i < storedLine.size(); i++) 
 				wr.println(storedLine.get(i)); //
-				wr.close();
+			wr.close();
 		}
 		catch(IOException e) {
 			System.out.print("There is an I/O error in overwriting the file!");		
 		}
-	
+
 		return flag;
 	} 
 
-		
 
 
 
 
-		// This method appends a line to the tempRegistration.txt
-		public static void appendFileTemp (String line) { 
 
-			try {
-				PrintWriter wr1 = new PrintWriter ( new BufferedWriter (new FileWriter("tempRegistration.txt", true)));
-				wr1.println(line);
-				wr1.close();
+	// This method appends a line to the tempRegistration.txt
+	public static void appendFileTemp (String line) { 
 
-			} catch (IOException ex) {
-				System.out.println ("Something went wrong for I/O!");
-			}
+		try {
+			PrintWriter wr1 = new PrintWriter ( new BufferedWriter (new FileWriter("tempRegistration.txt", true)));
+			wr1.println(line);
+			wr1.close();
+
+		} catch (IOException ex) {
+			System.out.println ("Something went wrong for I/O!");
 		}
+	}
 
-		public String getEmailAddress() {
-			return emailAddress;
-		}
+	public String getEmailAddress() {
+		return emailAddress;
+	}
 
-		public void setEmailAddress(String emailAddress) {
-			this.emailAddress = emailAddress;
-		}
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
+	}
 
-		public String getPassword() {
-			return password;
-		}
+	public String getPassword() {
+		return password;
+	}
 
-		public void setPassword(String password) {
-			this.password = password;
-		}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 
-		public String getFirstName() {
-			return firstName;
-		}
+	public String getFirstName() {
+		return firstName;
+	}
 
-		public void setFirstName(String firstName) {
-			this.firstName = firstName;
-		}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-		public String getLastName() {
-			return lastName;
-		}
+	public String getLastName() {
+		return lastName;
+	}
 
-		public void setLastName(String lastName) {
-			this.lastName = lastName;
-		}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
 
-		public int getPhoneNumber() {
-			return phoneNumber;
-		}
+	public int getPhoneNumber() {
+		return phoneNumber;
+	}
 
-		public void setPhoneNumber(int phoneNumber) {
-			this.phoneNumber = phoneNumber;
-		}
+	public void setPhoneNumber(int phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 
-		public int getUserID() {
-			return userID;
-		}
+	public int getUserID() {
+		return userID;
+	}
 
-		public void setUserID(int userID) {
-			this.userID = userID;
-		}
+	public void setUserID(int userID) {
+		this.userID = userID;
+	}
 
-		public boolean isLogInStatus() {
-			return logInStatus;
-		}
+	public boolean isLogInStatus() {
+		return logInStatus;
+	}
 
-		public void setLogInStatus(boolean logInStatus) {
-			this.logInStatus = logInStatus;
-		}
+	public void setLogInStatus(boolean logInStatus) {
+		this.logInStatus = logInStatus;
+	}
 
-		public String[] getFavorites() {
-			return favorites;
-		}
+	public String[] getFavorites() {
+		return favorites;
+	}
 
-		public void setFavorites(String[] favorites) {
-			this.favorites = favorites;
-		}
+	public void setFavorites(String[] favorites) {
+		this.favorites = favorites;
+	}
 
-	} // end class registeredUser
+} // end class registeredUser
