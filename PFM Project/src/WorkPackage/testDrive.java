@@ -14,6 +14,8 @@ public class testDrive {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
+		registeredUser.deleteAccount(null);
+		
 
 		System.out.println(registeredUser.logIn(userList));
 
