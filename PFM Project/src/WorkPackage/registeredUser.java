@@ -63,7 +63,7 @@ public class registeredUser {
 				+ "  |==========================`.        ,'==========================|\r\n"
 				+ "  |============================`--..--'============================|\r\n"
 				+ "   `--------------------------------------------------------------'");
-		System.out.println("Welcome: " + firstName + lastName);
+		System.out.println("Welcome to the user interface!");
 
 		System.out.println("-----------------------------");
 		System.out.println("User Overview");
