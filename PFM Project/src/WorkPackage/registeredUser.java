@@ -64,7 +64,7 @@ public class registeredUser {
 				+ "  |============================`--..--'============================|\r\n"
 				+ "   `--------------------------------------------------------------'");
 		System.out.println("Welcome: " + firstName + lastName);
-		
+
 		System.out.println("-----------------------------");
 		System.out.println("User Overview");
 		System.out.println("-----------------------------");
@@ -232,33 +232,97 @@ public class registeredUser {
 		// print a message where users find out they are awaiting approval and can either continue as a guest or go back to login screen.
 
 	}	// end register()
-	
-	public static void deleteAccount() {
+
+	public static void deleteAccount(registeredUser user) {
 		/* confirm email and password? If possible
-		
+
 		System.out.print("To delete your account, confirm your email address and password: ");
 		System.out.print("Your email address (used for log in): ");
 		String email = userInputString.nextLine();	
 
 		System.out.print("Your password: ");
 		String password = userInputString.nextLine();
-		*/
-		
+		 */
+
 		System.out.print("Are you sure you want to delete your account? Enter 1 for yes, enter 2 to cancel and go back to the user interface: ");
 		int confirmation = userInputInt.nextInt();
-		
+
 		if(confirmation == 1) {
-			 //how does the admin know which object to delete? Or shall we not include the admin at all? We could copy most of this from the admin class I suppose
-			
-			System.out.println("Your account was succesfully deleted.");
-			// call back to the login page -> testDrive.main(String[] args);  (doesn't work)
+			if 	(deleteUser(user.getUserID()) == true) {
+				//delete object from the userList, call userList, remove user.
+				System.out.println("Your account was succesfully deleted. You are redirected to the register page.");
+				register();
+			}
+			else {
+				System.out.println("Your account was not deleted.");
+				userInterface();
+			}
 		}
-		else {
+		if (confirmation == 2) {
+			System.out.println("\nYour delete request was cancelled, you are returned to the user interface.");
 			userInterface();
 		}
-		
-		//appendFile to the admin. Boolean variable to delete the account.
+		else  {
+			System.out.println("\nWARNING: Please enter a valid integer next time.");
+		}
+
 	}
+
+
+
+
+	public static boolean deleteUser(int userID) {
+
+		ArrayList <String> userIDList = new ArrayList <String>();
+		ArrayList <String> storedLine = new ArrayList <String>();
+
+		try {
+			String textline; // stores a line of text from the reader function
+			String[] uCurrent = new String [7]; // to store elements of textline
+			BufferedReader br = new BufferedReader (new FileReader ("permRegistration.txt"));
+
+			int i = 0;				
+			while ((textline = br.readLine()) != null) {
+				storedLine.add(textline);
+				uCurrent = textline.split("\t"); // uCurrent [0] is email; [1] password; 
+				//[2]first name; [3] last name; [4] phone; [5] userID [6] logInStatus
+				userIDList.add(uCurrent[5]);
+				i++;
+			}
+			br.close();
+
+		}	catch (IOException ex) {
+			System.out.println ("Something went wrong for I/O!");
+		}
+
+		boolean flag = false;
+		int indx= userIDList.indexOf(userID);
+		if (indx != -1) {
+			flag = true;
+			storedLine.remove(indx);
+		} 
+
+
+		//overwrite the new txt file, with the removed index.
+		try {
+			PrintWriter wr = new PrintWriter(
+					new BufferedWriter (new FileWriter("permRegistration.txt", false)));
+
+			for(int i = 0; i < storedLine.size(); i++) 
+				wr.println(storedLine.get(i)); //
+			wr.close();
+		}
+		catch(IOException e) {
+			System.out.print("There is an I/O error in overwriting the file!");		
+		}
+
+		return flag;
+	} 
+
+
+
+
+
 
 	// This method appends a line to the tempRegistration.txt
 	public static void appendFileTemp (String line) { 
