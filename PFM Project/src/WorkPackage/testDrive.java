@@ -1,5 +1,8 @@
 package WorkPackage;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.*;
 
 public class testDrive {
@@ -12,7 +15,6 @@ public class testDrive {
 	 */
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		ArrayList<registeredUser> userList = new ArrayList<registeredUser>();
 
@@ -20,12 +22,14 @@ public class testDrive {
 		// permRegistration.txt and store them in userList
 
 		registeredUser delete_me = userList.get(0); //get a user object from userList
+		
+		delete_me.deleteAccount(); //call deleteAccount() on this user
 
-		registeredUser.deleteAccount(delete_me); //choose this user as input
+		
+		
+		//System.out.println(registeredUser.logIn(userList));
 
-
-		System.out.println(registeredUser.logIn(userList));
-
+		/*
 		System.out.println("-----------------------------");
 		System.out.println("Welcome to the car rec system.");
 		System.out.println("-----------------------------");
@@ -41,7 +45,7 @@ public class testDrive {
 			registeredUser.logIn(userList);
 			break;
 		case 2:
-			registeredUser.register();
+			registeredUser.register(userList);
 			break;
 		case 3:
 			unregisteredUser.unregisterUserMethod();
@@ -67,7 +71,7 @@ public class testDrive {
 
 	}
 }
-}
+
 
 
 
