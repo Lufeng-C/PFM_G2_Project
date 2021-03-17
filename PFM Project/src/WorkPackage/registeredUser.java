@@ -147,6 +147,8 @@ public class registeredUser {
 
 			System.out.print("Enter your password: ");
 			String entered_password = userInputString.nextLine();
+			
+//TODO			// create a login option for admin that calls the admin menu.
 
 			for (int i = 0; i < num_registeredUser; i++) {
 				if (entered_email.equals(userList.get(i).emailAddress) 
@@ -156,6 +158,7 @@ public class registeredUser {
 				}
 			} // end for loop
 
+			
 			if (userIndex == -1) {
 				loginAttempts--;
 				System.out.println("Email/password incorrect. Please try again!");
