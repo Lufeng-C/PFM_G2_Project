@@ -11,11 +11,11 @@ public class unregisteredUser {
 	static Scanner userInputInt = new Scanner(System.in); 
 	static Scanner userInputString = new Scanner(System.in); 
 	static Scanner userInputDouble = new Scanner(System.in);
-	//private ArrayList<car> carArrayList; //car arraylist
+	private ArrayList<car> carArrayList; //car arraylist
+	carOperations carOpsDriver = new carOperations();
 
-	//public void main() {
-	//this.carArrayList = readCarList();
-	//}
+	public void main() {
+	}
 	public static void unregisterUserMethod() {
 
 		//this callingObject is used to call non-static method in a static method
@@ -347,10 +347,9 @@ public class unregisteredUser {
 		System.out.print("Enter Fuel Type: ");
 		String fuelType = userInputString.nextLine();
 
-		car car = new car (carID, carName, carType, carModel, electricEquivalent,
-				basePrice, size, sport, bodyType, fuelType);
+		car car = new car (carID, carName, carType, basePrice, size, sport, fuelType);
 		carArrayList.add(car); //add to car arrayList
-		saveCarList();
+		carOpsDriver.saveCarList();
 	}
 	//filter cars by car user Choice
 	private car viewByFilter(Double min, Double max, String sport, String fuelType,
@@ -427,3 +426,4 @@ public class unregisteredUser {
 		}
 		return foundCar;
 	}
+}
