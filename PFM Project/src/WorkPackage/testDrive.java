@@ -32,7 +32,7 @@ public class testDrive {
 		delete_me.deleteAccount(); //call deleteAccount() on this user
 		*/
 		
-
+		admin.adminMenu ();
 		
 		
 		//System.out.println(registeredUser.logIn(userList));
@@ -51,6 +51,7 @@ public class testDrive {
 		switch (Choice) {
 		case 1:
 			registeredUser.logIn(userList);
+			delete_me.userInterface();
 			break;
 		case 2:
 			registeredUser.register(userList);
