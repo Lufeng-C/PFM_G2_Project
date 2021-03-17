@@ -131,7 +131,7 @@ public class carOperations { //CarOps should be changed (also change in Admin wh
 	        System.out.print("Enter Fuel Type: ");
 	        String fuelType=scanner.nextLine();
 
-	        car car = new car (carID, carName, carType, basePrice, size, sport,fuelType);
+	        car car = new car (carID, carName, carType, basePrice, size, sport, fuelType);
 	        carArrayList.add(car); //add to car arrayList
 	    }
 	    private void deleteCar(){
