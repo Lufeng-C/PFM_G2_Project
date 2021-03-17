@@ -12,8 +12,8 @@ public class car implements Serializable {
     private String fuelType;
 
     public car (String carID, String carName, String carType, double basePrice, 
-    		String size, String sport, String fuelType) {
-    	this.carID = carID;
+    		String size, String sport, String fuelType) { 
+    	this.carID = carID; // Might need to use setter methods here
     	this.carName = carName;
     	this.carType = carType;
         this.basePrice = basePrice;
