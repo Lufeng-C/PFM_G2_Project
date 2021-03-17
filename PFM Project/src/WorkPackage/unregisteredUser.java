@@ -370,7 +370,7 @@ public class unregisteredUser {
 					this.carArrayList.get(i).getSize().equalsIgnoreCase(carSize)
 					) {
 
-				System.out.println("Sorry, No match Found! We only found a car outside your price range: "
+				System.out.println("Sorry, No match found! We only found a car outside your price range: "
 						+ "Car name: " + this.carArrayList.get(i).getCarName() + "\t" 
 						+ "Car price: " + this.carArrayList.get(i).getBasePrice());
 				foundCar = this.carArrayList.get(i);
@@ -387,7 +387,7 @@ public class unregisteredUser {
 		}
 
 		if(foundCar==null){
-			System.out.println("Sorry, No matching Found!");
+			System.out.println("Sorry, no match found!");
 		}
 		return foundCar;
 	}
