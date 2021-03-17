@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class carOperations { //CarOps should be changed (also change in Admin when calling)
-	private ArrayList<carClass> carArrayList; //car arraylist
+	private ArrayList<car> carArrayList; //car arraylist
 	Scanner scanner=new Scanner(System.in);
 	
     public void main() {
@@ -131,7 +131,7 @@ public class carOperations { //CarOps should be changed (also change in Admin wh
 	        System.out.print("Enter Fuel Type: ");
 	        String fuelType=scanner.nextLine();
 
-	        carClass car = new carClass (carID, carName, carType, basePrice, size, sport,fuelType);
+	        car car = new car (carID, carName, carType, basePrice, size, sport,fuelType);
 	        carArrayList.add(car); //add to car arrayList
 	    }
 	    private void deleteCar(){
@@ -284,7 +284,7 @@ public class carOperations { //CarOps should be changed (also change in Admin wh
 	            }   
 	        
 	    }
-	    public ArrayList<carClass> readCarList(){
+	    public ArrayList<car> readCarList(){
 	        FileInputStream fi = null;
 	        try {
 	            fi = new FileInputStream("car_List.txt");
@@ -292,7 +292,7 @@ public class carOperations { //CarOps should be changed (also change in Admin wh
 	            ObjectInputStream oi = new ObjectInputStream(fi);
 
 	            // Read objects
-	            ArrayList<carClass> carArrayList = (ArrayList<carClass>) oi.readObject();
+	            ArrayList<car> carArrayList = (ArrayList<car>) oi.readObject();
 
 	            oi.close();
 	            fi.close();
@@ -303,7 +303,7 @@ public class carOperations { //CarOps should be changed (also change in Admin wh
 //	            System.out.println("Error Loading Car List");
 	        }
 
-	        return new ArrayList<carClass>();
+	        return new ArrayList<car>();
 	    }
 
 }

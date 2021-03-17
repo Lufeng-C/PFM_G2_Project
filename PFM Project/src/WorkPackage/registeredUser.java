@@ -16,12 +16,12 @@ public class registeredUser {
 	private int phoneNumber;
 	private int userID;
 	private boolean logInStatus;
-	private String [] favorites;
+	private int favorite;
 
 	static int num_registeredUser = getTotalLines();
 
 
-	public static void userInterface() {
+	public void userInterface() {
 
 		System.out.println("                   _____________\r\n"
 				+ "                                  ..---:::::::-----------. ::::;;.\r\n"
@@ -63,7 +63,7 @@ public class registeredUser {
 				+ "  |==========================`.        ,'==========================|\r\n"
 				+ "  |============================`--..--'============================|\r\n"
 				+ "   `--------------------------------------------------------------'");
-		System.out.println("Welcome to the user interface!");
+		System.out.println("Welcome: " + this.getFirstName() + " " + this.getLastName());
 
 		System.out.println("-----------------------------");
 		System.out.println("User Overview");
@@ -81,17 +81,14 @@ public class registeredUser {
 			unregisteredUser.getUserChoice();
 			break;
 		case 2:
-			registeredUser.viewFavouritesList();
+			registeredUser.viewFavorite();
 			break;
 		case 3:
-			registeredUser.deleteAccount();
+			this.deleteAccount(); //insert a user object here
 			break;
 
-			return ;
 		}
 	}
-
-
 
 
 	// This method creates a number of registeredUser objects with appropriate attributes
@@ -107,44 +104,26 @@ public class registeredUser {
 		return userList;
 	} // end createObjects()
 
-	// This method sees how many perm registered user are there
-	public static int getTotalLines (){ 
-
-		int countlines = 0;			
-		try {
-			BufferedReader br1 = new BufferedReader (new FileReader ("permRegistration.txt"));
-
-			while ((br1.readLine()) != null) {
-				countlines++;
-			}
-			br1.close();
-
-		} catch (IOException ex) {
-			System.out.println ("Something went wrong for I/O!");
-		}
-
-		return countlines;
-	} // end getTotalLines ()
-
 	// This method reads and give proper attributes to the registeredUser objects
 	public static ArrayList<registeredUser> assignAttributes (ArrayList<registeredUser> userList){ 
 
 		try {
 			String textline; // stores a line of text from the reader function
-			String[] uCurrent = new String [2]; // to store elements of textline
+			String[] uCurrent = new String [8]; // to store elements of textline
 			BufferedReader br2 = new BufferedReader (new FileReader ("permRegistration.txt"));
 
 			int i = 0;				
 			while ((textline = br2.readLine()) != null) {					
 				uCurrent = textline.split("\t"); // uCurrent [0] is email; [1] password; 
-				//[2]first name; [3] last name; [4] phone; [5] userID [6] logInStatus
-				userList.get(i).emailAddress = uCurrent [0];
-				userList.get(i).password = uCurrent [1];	
-				userList.get(i).firstName = uCurrent [2];
-				userList.get(i).lastName = uCurrent [3];
-				userList.get(i).phoneNumber = Integer.parseInt(uCurrent [4]);
-				userList.get(i).userID = Integer.parseInt(uCurrent [5]);
-				userList.get(i).logInStatus = false; // default no one is logged in
+				//[2]first name; [3] last name; [4] phone; [5] userID [6] logInStatus [7] favList
+				userList.get(i).setEmailAddress (uCurrent [0]);
+				userList.get(i).setPassword (uCurrent [1]);	
+				userList.get(i).setFirstName (uCurrent [2]);
+				userList.get(i).setLastName (uCurrent [3]);
+				userList.get(i).setPhoneNumber (Integer.parseInt(uCurrent [4]));
+				userList.get(i).setUserID (Integer.parseInt(uCurrent [5]));
+				userList.get(i).setLogInStatus (false); // default no one is logged in
+				userList.get(i).setFavorite (Integer.parseInt(uCurrent[7]));
 				i++;
 			}
 			br2.close();
@@ -201,7 +180,7 @@ public class registeredUser {
 	} // end logIn (ArrayList<registeredUser> userList) -> user UX / admin UX (if username == admin & password == adminPassword)
 
 	// This method asks for input and record in tempRegistration.txt
-	public static void register () {
+	public static void register (ArrayList<registeredUser> userList) {
 
 		System.out.print("Welcome to register process!\nPlease type relevant info when prompted.\n");
 
@@ -220,7 +199,12 @@ public class registeredUser {
 		System.out.print("Your phone number: ");
 		String phoneNumber = userInputString.nextLine();		
 
-		int userID = num_registeredUser;
+		// find out the biggest userID and add 1 
+		ArrayList<Integer> userIDList = new ArrayList<Integer>();
+		for (int i = 0; i < userList.size(); i++) {
+			userIDList.add(userList.get(i).getUserID());
+		}
+		int userID = Collections.max(userIDList) + 1;
 
 		boolean logInStatus = false; // reserved for any possible future use
 
@@ -233,7 +217,7 @@ public class registeredUser {
 
 	}	// end register()
 
-	public static void deleteAccount(registeredUser user) {
+	public void deleteAccount() {
 		/* confirm email and password? If possible
 
 		System.out.print("To delete your account, confirm your email address and password: ");
@@ -248,14 +232,16 @@ public class registeredUser {
 		int confirmation = userInputInt.nextInt();
 
 		if(confirmation == 1) {
-			if 	(deleteUser(user.getUserID()) == true) {
+			boolean flag = removeUser(this.getUserID());
+			if 	(flag) {
 				//delete object from the userList, call userList, remove user.
 				System.out.println("Your account was succesfully deleted. You are redirected to the register page.");
-				register();
+				//register(); // this shouldn't be necessary
 			}
 			else {
 				System.out.println("Your account was not deleted.");
-				userInterface();
+
+				//this.userInterface();
 			}
 		}
 		if (confirmation == 2) {
@@ -271,23 +257,21 @@ public class registeredUser {
 
 
 
-	public static boolean deleteUser(int userID) {
+	public boolean removeUser(int userID) {
 
 		ArrayList <String> userIDList = new ArrayList <String>();
 		ArrayList <String> storedLine = new ArrayList <String>();
 
 		try {
 			String textline; // stores a line of text from the reader function
-			String[] uCurrent = new String [7]; // to store elements of textline
+			String[] uCurrent = new String [8]; // to store elements of textline
 			BufferedReader br = new BufferedReader (new FileReader ("permRegistration.txt"));
 
-			int i = 0;				
 			while ((textline = br.readLine()) != null) {
 				storedLine.add(textline);
 				uCurrent = textline.split("\t"); // uCurrent [0] is email; [1] password; 
-				//[2]first name; [3] last name; [4] phone; [5] userID [6] logInStatus
+				//[2]first name; [3] last name; [4] phone; [5] userID [6] logInStatus [7] favorite
 				userIDList.add(uCurrent[5]);
-				i++;
 			}
 			br.close();
 
@@ -296,12 +280,11 @@ public class registeredUser {
 		}
 
 		boolean flag = false;
-		int indx= userIDList.indexOf(userID);
+		int indx = userIDList.indexOf(Integer.toString(userID));
 		if (indx != -1) {
 			flag = true;
 			storedLine.remove(indx);
 		} 
-
 
 		//overwrite the new txt file, with the removed index.
 		try {
@@ -314,16 +297,65 @@ public class registeredUser {
 		}
 		catch(IOException e) {
 			System.out.print("There is an I/O error in overwriting the file!");		
-		}
-
+		} // end catch & try
 		return flag;
-	} 
+	} //end removeUser(int userID)
 
+	// This method takes a car object and modifies permRegistration.txt
+	public void addFavorite(car carObject) {
+		ArrayList <String> userIDList = new ArrayList <String>();
+		ArrayList <String> favoriteList = new ArrayList <String>();
+		ArrayList <String> storedLine = new ArrayList <String>();
 
+		try {
+			String textline; // stores a line of text from the reader function
+			String[] uCurrent = new String [8]; // to store elements of textline
+			BufferedReader br = new BufferedReader (new FileReader ("permRegistration.txt"));
 
+			while ((textline = br.readLine()) != null) {
+				storedLine.add(textline);
+				uCurrent = textline.split("\t"); // uCurrent [0] is email; [1] password; 
+				//[2]first name; [3] last name; [4] phone; [5] userID [6] logInStatus [7] favorite
+				userIDList.add(uCurrent[5]);
+				favoriteList.add(uCurrent[7]);
+			} //end while loop
+			br.close();
 
+		}	catch (IOException ex) {
+			System.out.println ("Something went wrong for I/O!");
+		} //end catch & try
 
+		// update storedLine with new favorite
+		int indx = userIDList.indexOf(Integer.toString(this.getUserID()));
+		String originalLine = storedLine.get(indx);
+		storedLine.remove(indx);
+		String updatedLine;
+		String [] uCurrent = new String [8];
+		uCurrent = originalLine.split("\t"); // uCurrent [0] is email; [1] password; 
+		//[2]first name; [3] last name; [4] phone; [5] userID [6] logInStatus [7] favorite
+		updatedLine = uCurrent[0] + "\t" + uCurrent[1] + "\t" + uCurrent[2] + "\t" + uCurrent[3] + "\t" 
+				+ uCurrent[4] + uCurrent[5] + "\t" + uCurrent[6] + "\t" + carObject.getCarID();
+		storedLine.add(updatedLine);
 
+		// write the permRegistration database again
+		try {
+			PrintWriter wr = new PrintWriter(
+					new BufferedWriter (new FileWriter("permRegistration.txt", false)));
+
+			for(int i = 0; i < storedLine.size(); i++) 
+				wr.println(storedLine.get(i)); //
+			wr.close();		
+		} 
+		catch(IOException e) {
+			System.out.print("There is an I/O error in overwriting the file!");		
+		} //end catch & try
+
+	} //end addFavorite()
+
+	// This method returns details of a user's fav car
+	public void viewFavorite(car favCar) {
+		System.out.print("Your favorite car model is " + favCar.getCarID());
+	}
 	// This method appends a line to the tempRegistration.txt
 	public static void appendFileTemp (String line) { 
 
@@ -337,68 +369,135 @@ public class registeredUser {
 		}
 	}
 
+	// This method sees how many perm registered user are there
+	public static int getTotalLines (){ 
+
+		int countlines = 0;			
+		try {
+			BufferedReader br1 = new BufferedReader (new FileReader ("permRegistration.txt"));
+
+			while ((br1.readLine()) != null) {
+				countlines++;
+			}
+			br1.close();
+
+		} catch (IOException ex) {
+			System.out.println ("Something went wrong for I/O!");
+		}
+
+		return countlines;
+	} // end getTotalLines ()
+
+
+
+
 	public String getEmailAddress() {
 		return emailAddress;
 	}
+
+
+
 
 	public void setEmailAddress(String emailAddress) {
 		this.emailAddress = emailAddress;
 	}
 
+
+
+
 	public String getPassword() {
 		return password;
 	}
+
+
+
 
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+
+
+
 	public String getFirstName() {
 		return firstName;
 	}
+
+
+
 
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
 
+
+
+
 	public String getLastName() {
 		return lastName;
 	}
+
+
+
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
 
+
+
+
 	public int getPhoneNumber() {
 		return phoneNumber;
 	}
+
+
+
 
 	public void setPhoneNumber(int phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 
+
+
+
 	public int getUserID() {
 		return userID;
 	}
+
+
+
 
 	public void setUserID(int userID) {
 		this.userID = userID;
 	}
 
+
+
+
 	public boolean isLogInStatus() {
 		return logInStatus;
 	}
+
+
+
 
 	public void setLogInStatus(boolean logInStatus) {
 		this.logInStatus = logInStatus;
 	}
 
-	public String[] getFavorites() {
-		return favorites;
+
+
+
+	public int getFavorite() {
+		return favorite;
 	}
 
-	public void setFavorites(String[] favorites) {
-		this.favorites = favorites;
+
+
+
+	public void setFavorite(int favorite) {
+		this.favorite = favorite;
 	}
 
 } // end class registeredUser

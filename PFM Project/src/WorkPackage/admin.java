@@ -31,6 +31,7 @@ public class admin { //extends unregisteredUser{
 	 
 			int adminchoice = userInputInt.nextInt();
 			
+			
 			switch (adminchoice) {
 			case 1:
 				opsUser();
@@ -41,9 +42,12 @@ public class admin { //extends unregisteredUser{
 			case 3:
 				adminLogout();
 				break;
+			default: 
+				System.out.println("\nInvalid Choice!");
+				adminMenu();
+				break;
 			}
-	 }
-	 
+	  }
 	 
 	 
 	 // CHOICE 1 userOverview
@@ -77,6 +81,10 @@ public class admin { //extends unregisteredUser{
 			case 3:
 				removeUsers();
 				break;
+			default: 
+				System.out.println("\nInvalid Choice!");
+				opsUser();
+				break;
 			}
 	 }
 			
@@ -85,58 +93,68 @@ public class admin { //extends unregisteredUser{
 //METHODS FOR CHOICE 1: Approve Users, viewUsers and removeUsers
 
 		public static void approveUsers () {
-		
-			System.out.println("\nAPPROVE USERS");
+			System.out.println("\nLIST OF TO BE APPROVED USERS");
 			
 			String[] tempFile = readTempFile();
 
-			
 			for (int i=0; i < tempFile.length; i++) {
-				int index = i;
-				System.out.println("\nThe next user is: " + tempFile[i] + "\n"); 		//printing contents of tempRegistration.txt, line by line
-				System.out.print("Would you like to approve this user: 1) Yes 2) No " );
-				
-				int approved = userInputInt.nextInt();
-				
-					if (approved == 1) {
-						appendPermFile(tempFile[i]);  //appending line to PermFile	
-					}
-						
-				String[] newtempFile = new String[tempFile.length]; 
-					newtempFile[i] = "";
-						
-						overWriteTempFile(newtempFile);	
-					}
-			
-			
-			//Just to check whether tempFile is empty - remove eventually
-			tempFile = readTempFile();
-			System.out.println("\nThese are all the temp file users");
-			for (int j=0; j < tempFile.length; j++) {
-				System.out.println(tempFile[j]);
+				System.out.println("[" + i + "]" + tempFile[i]); 		//printing contents of tempRegistration.txt, line by line
 			}
-			
-
-			//Just to check whether permFile reads all new registered users
-			String[] permFile = readPermFile();
-			System.out.println("\nThese are all the approved registered users");
-			for (int j=0; j < permFile.length; j++) {
-				System.out.println(permFile[j]); 
 		
-				}	
-		
+				if (tempFile.length < 1) {
+					System.out.println("\nThere are no more users in the list!"
+							+ "Returning to User Operations.");
+					opsUser();
+				}
 				
-			
-			System.out.print("\n\nWould you like to perform another User operation? Enter: 1: Yes || 2: No (return to Admin Menu): ");
-			int adminchoice = userInputInt.nextInt();
-
-			switch (adminchoice) {
-			case 1: 
-				opsUser();
-			case 2:
-				adminMenu();
-				break;
-			}
+				else {
+				System.out.print("\nSelect the index [number] of the user you would like to approve? "); 
+				
+				int approvedUser = userInputInt.nextInt();
+				
+					int indexSearch = -1;
+					for (int i = 0; i < tempFile.length; i++) {
+						if (i ==(approvedUser)) {
+							indexSearch = i; //capture index of removed User
+						}
+					}
+					
+					if(indexSearch < 0) {
+						System.out.println("\nThis User is not in the list."); 
+					}
+					
+					else {
+						//Add user to permanent File
+						appendPermFile(tempFile[approvedUser]);
+						
+						//create new arrays with .length -1, as one item is removed
+						String[] newtempFile = new String[tempFile.length - 1]; 
+					
+						//assign values to new arrays
+						int newindexSearch = 0;
+						for(int i=0; i < tempFile.length; i++) {
+							if (i!= indexSearch) {
+								newtempFile[newindexSearch] = tempFile[i];
+								newindexSearch++;
+							}
+					}
+						overWriteTempFile(newtempFile);
+						System.out.println("\nThe User has successfully been approved!");
+					}	
+				}
+						System.out.print("\nWould you like to approve another user:[1] YES  [2] NO (Return to User Operations)? ");
+						int adminchoice = userInputInt.nextInt();
+						switch (adminchoice) {
+						case 1: 
+							approveUsers();
+						case 2:
+							opsUser();
+							break;
+						default: 
+							System.out.println("\nInvalid Choice! Returning to admin main menu...");
+							adminMenu();
+							break;
+						}
 		}	
 		
 
@@ -245,7 +263,7 @@ public class admin { //extends unregisteredUser{
 				
 			
 			String[] permFile = readPermFile();
-			System.out.println("\nThese are all the approved registered users\n"); 
+			System.out.println("\nThese are all the approved registered users:"); 
 			for (int j=0; j < permFile.length; j++) {
 				System.out.println("[" + j + "]" + permFile[j]); 
 			}
@@ -259,6 +277,10 @@ public class admin { //extends unregisteredUser{
 			case 2:
 				adminMenu();
 				break;
+			default:
+				System.out.println("\nInvalid Choice! Returning to admin main menu...");
+				adminMenu();
+				break;
 			}
 		}
 	
@@ -270,12 +292,12 @@ public class admin { //extends unregisteredUser{
 			String[] permFile = readPermFile();
 			
 			System.out.println("\nThese are all the approved registered users"); 
-			for (int j=0; j < permFile.length; j++) {
-				System.out.println("[" + j + "]" + permFile[j]); 			//Prints list of all users including index
+			for (int i=0; i < permFile.length; i++) {
+				System.out.println("[" + i + "]" + permFile[i]); 			//Prints list of all users including index
 			}
 			
 		
-			System.out.print("What is the index [number] of the User you would like to remove? : ");
+			System.out.print("What is the index [number] of the User you would like to remove? ");
 			int removedUser = userInputInt.nextInt();
 			
 			
@@ -291,7 +313,6 @@ public class admin { //extends unregisteredUser{
 			}
 			
 			else {
-				
 				//create new arrays with .length -1, as one item is removed
 				String[] newpermFile = new String[permFile.length - 1]; 
 			
@@ -307,6 +328,8 @@ public class admin { //extends unregisteredUser{
 				System.out.println("\nThe User has successfully been removed!");
 			}
 			
+			
+			
 			System.out.print("\n\nWould you like to perform another User operation? Enter: 1: Yes || 2: No (return to Admin Menu): ");
 			
 			int adminchoice = userInputInt.nextInt();
@@ -315,6 +338,10 @@ public class admin { //extends unregisteredUser{
 			case 1: 
 				opsUser();
 			case 2:
+				adminMenu();
+				break;
+			default: 
+				System.out.println("\nInvalid Choice! Returning to admin main menu...");
 				adminMenu();
 				break;
 			}
@@ -349,10 +376,7 @@ public class admin { //extends unregisteredUser{
 		System.out.println("\nThanks for your time Admin. You have now been logged out!");
 		System.out.println("Have a great day!");
 		
-		//logInSystem();  	it needs to return here, remove dashed lines
+		testDrive.main(); 	//move back to main menu
 		
 	
 	}
-
-}
-
