@@ -316,41 +316,6 @@ public class unregisteredUser {
 
 		viewByFilter (minBudget, maxBudget, sport, fuelType,carType,carSize);
 	}
-	private void addCar(){
-		System.out.print("Enter Car ID: ");
-		String carID = userInputString.nextLine();
-
-		System.out.print("Enter Car name: ");
-		String carName = userInputString.nextLine();
-
-		System.out.print("Enter Car Type: ");
-		String carType = userInputString.nextLine();
-
-		System.out.print("Enter Car Model: ");
-		String carModel = userInputString.nextLine();
-
-		System.out.print("Enter electric Equivalent: ");
-		String electricEquivalent = userInputString.nextLine();
-
-		System.out.print("Enter Base Price: ");
-		double basePrice = userInputDouble.nextDouble();
-
-		System.out.print("Enter Car Size: ");
-		String size = userInputString.nextLine();
-
-		System.out.print("Is Sport: ");
-		String sport = userInputString.nextLine();
-
-		System.out.print("Enter Body Type: ");
-		String bodyType = userInputString.nextLine();
-
-		System.out.print("Enter Fuel Type: ");
-		String fuelType = userInputString.nextLine();
-
-		car car = new car (carID, carName, carType, basePrice, size, sport, fuelType);
-		carArrayList.add(car); //add to car arrayList
-		carOpsDriver.saveCarList();
-	}
 	//filter cars by car user Choice
 	private car viewByFilter(Double min, Double max, String sport, String fuelType,
 			String carType,String carSize){
