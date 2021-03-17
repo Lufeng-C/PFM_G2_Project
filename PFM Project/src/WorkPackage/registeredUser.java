@@ -81,7 +81,7 @@ public class registeredUser {
 			unregisteredUser.getUserChoice();
 			break;
 		case 2:
-			registeredUser.viewFavorite();
+			getFavorite();
 			break;
 		case 3:
 			this.deleteAccount(); //insert a user object here
@@ -239,19 +239,15 @@ public class registeredUser {
 				//register(); // this shouldn't be necessary
 			}
 			else {
-				System.out.println("Your account was not deleted.");
+				System.out.println("Your account was not deleted. You will return to the user interface");
 
-				//this.userInterface();
+				this.userInterface();
 			}
 		}
 		if (confirmation == 2) {
-			System.out.println("\nYour delete request was cancelled, you are returned to the user interface.");
-			userInterface();
+			System.out.println("\nYour delete request was cancelled. You will return to the user interface.");
+			this.userInterface();
 		}
-		else  {
-			System.out.println("\nWARNING: Please enter a valid integer next time.");
-		}
-
 	}
 
 
