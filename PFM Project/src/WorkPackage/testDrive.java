@@ -37,9 +37,8 @@ public class testDrive {
 		
 		//System.out.println(registeredUser.logIn(userList));
 
-	
-		System.out.println("-----------------------------");
-		System.out.println("Welcome to the car rec system.");
+        System.out.println("#-----------WELCOME--------------#");
+        System.out.println("Mercedes Benz-Recommendation System");
 		System.out.println("-----------------------------");
 		System.out.println("You have 3 choices");
 		System.out.println("Choose 1 to log in");
