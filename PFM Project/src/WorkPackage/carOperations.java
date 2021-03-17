@@ -208,7 +208,7 @@ public class carOperations { //CarOps should be changed (also change in Admin wh
 	                    System.out.println("\nChanged!");
 	                    break;
 	                } else if (choiceEdit == 3) {
-	                    System.out.print("Enter car type: ");
+	                    System.out.print("Enter Car type: ");
 	                    String carType = scanner.nextLine();
 
 	                    this.carArrayList.get(index).setCarType(carType);
@@ -230,7 +230,7 @@ public class carOperations { //CarOps should be changed (also change in Admin wh
 	                    System.out.println("\nChanged!");
 	                    break;
 	                } else if (choiceEdit == 6) {
-	                    System.out.print("Is Sport: ");
+	                    System.out.print("Is sport: ");
 	                    String sport = scanner.nextLine();
 
 	                    this.carArrayList.get(index).setSport(sport);
