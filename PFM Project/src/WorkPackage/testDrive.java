@@ -20,16 +20,24 @@ public class testDrive {
 
 		userList = registeredUser.createObjects(); // creates the user objects from 
 		// permRegistration.txt and store them in userList
-
+		
+		
+		
 		registeredUser delete_me = userList.get(0); //get a user object from userList
 		
+
+		/* for (int i = 0; i < 5; i++) {
+			System.out.println(userList.get(i).getEmailAddress());
+		}
 		delete_me.deleteAccount(); //call deleteAccount() on this user
+		*/
+		
 
 		
 		
 		//System.out.println(registeredUser.logIn(userList));
 
-		/*
+	
 		System.out.println("-----------------------------");
 		System.out.println("Welcome to the car rec system.");
 		System.out.println("-----------------------------");
@@ -48,14 +56,11 @@ public class testDrive {
 			registeredUser.register(userList);
 			break;
 		case 3:
-			unregisteredUser.unregisterUserMethod();
+			unregisteredUser.getUserChoice();
 			break;
 		}
 
-		for (int i = 0; i < 5; i++) {
-			System.out.println(userList.get(i).getEmailAddress());
-		}
-
+		
 		/*
 		 * SO= upon entering the system, in the main class the user gets offered three options:
 		 * 1. login -> enters the login method. So if login == successful -> we store a value = true, which gives you access to addfavourites after recommendation.
