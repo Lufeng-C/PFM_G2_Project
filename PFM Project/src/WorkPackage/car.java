@@ -3,7 +3,7 @@ package WorkPackage;
 import java.io.Serializable;
 
 public class car implements Serializable {
-	private string carID;
+	private String carID;
 	private String carName;
     private String carType;
     private double basePrice;
@@ -78,4 +78,4 @@ public class car implements Serializable {
 
     }
 }
-}
+
