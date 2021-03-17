@@ -198,7 +198,7 @@ public class registeredUser {
 
 		System.out.print("Your phone number: ");
 		String phoneNumber = userInputString.nextLine();		
-		
+
 		// find out the biggest userID and add 1 
 		ArrayList<Integer> userIDList = new ArrayList<Integer>();
 		for (int i = 0; i < userList.size(); i++) {
@@ -240,7 +240,7 @@ public class registeredUser {
 			}
 			else {
 				System.out.println("Your account was not deleted.");
-				
+
 				//this.userInterface();
 			}
 		}
@@ -301,7 +301,7 @@ public class registeredUser {
 		return flag;
 	} //end removeUser(int userID)
 
-
+	// This method takes a car object and modifies permRegistration.txt
 	public void addFavorite(car carObject) {
 		ArrayList <String> userIDList = new ArrayList <String>();
 		ArrayList <String> favoriteList = new ArrayList <String>();
@@ -352,8 +352,10 @@ public class registeredUser {
 
 	} //end addFavorite()
 
-
-
+	// This method returns details of a user's fav car
+	public void viewFavorite(car favCar) {
+		System.out.print("Your favorite car model is " + favCar.getCarID());
+	}
 	// This method appends a line to the tempRegistration.txt
 	public static void appendFileTemp (String line) { 
 
