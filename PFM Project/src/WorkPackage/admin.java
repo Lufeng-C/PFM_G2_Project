@@ -376,7 +376,7 @@ public class admin { //extends unregisteredUser{
 		System.out.println("\nThanks for your time Admin. You have now been logged out!");
 		System.out.println("Have a great day!");
 		
-		testDrive.main(); 	it needs to return here, remove dashed lines
+		testDrive.main(); 	//move back to main menu
 		
 	
 	}
