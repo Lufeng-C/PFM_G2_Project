@@ -115,7 +115,7 @@ public class carOperations { //CarOps should be changed (also change in Admin wh
 	        System.out.print("Enter Car name: ");
 	        String carName=scanner.nextLine();
 	    	
-	        System.out.print("\nEnter Car Type: ");
+	        System.out.print("Enter Car Type: ");
 	        String carType=scanner.nextLine();
 
 	        System.out.print("Enter Base Price: ");
