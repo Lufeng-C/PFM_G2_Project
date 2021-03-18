@@ -8,7 +8,8 @@ public class registeredUser extends unregisteredUser { // created inheritance
 	static Scanner userInputInt = new Scanner(System.in); 
 	static Scanner userInputString = new Scanner(System.in); 
 	static Scanner userInputDouble = new Scanner(System.in);
-
+	private ArrayList<car> carArrayList; //car array list
+	
 	private String emailAddress;
 	private String password;
 	private String firstName;
