@@ -242,7 +242,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 				"\t" + phoneNumber + "\t" + userID + "\t" + logInStatus + "\t" + " ");
 
 		appendFileTemp(line); // store in temp file, awaiting admin approval
-		// while awaiting aproval, you are redirected to login where you can either wait for approval or continue as guest.
+		// while awaiting approval, you are redirected to login where you can either wait for approval or continue as guest.
 		// print a message where users find out they are awaiting approval and can either continue as a guest or go back to login screen.
 
 	}	// end register()
@@ -265,7 +265,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			boolean flag = removeUser(this.getUserID());
 			if 	(flag) {
 				//delete object from the userList, call userList, remove user.
-				System.out.println("Your account was succesfully deleted. You are redirected to the register page.");
+				System.out.println("Your account was succesfully deleted.");
 				//register(); // this shouldn't be necessary
 			}
 			else {
