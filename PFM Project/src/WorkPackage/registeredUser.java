@@ -243,7 +243,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 					"\t" + phoneNumber + "\t" + userID + "\t" + logInStatus + "\t" + " ");
 
 			appendFileTemp(line); // store in temp file, awaiting admin approval
-			System.out.println("Thanks for your registration! :D \n"
+			System.out.println("\n\nThanks for your registration! :D \n"
 					+ "Your request has been recorded and is currently under review.\n"
 					+ "After admin's approval, you will be able to log in to our system.\n"
 					+ "As of right now, you will be redirected to the main menu.\n"
