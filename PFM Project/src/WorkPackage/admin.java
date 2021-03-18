@@ -375,14 +375,9 @@ public class admin { //extends unregisteredUser{
 
 
 	
-	//carOperations transfer attemptscarOperations transfer attemptscarOperations transfer attempts
-	//carOperations transfer attemptscarOperations transfer attemptscarOperations transfer attempts
-	//carOperations transfer attemptscarOperations transfer attemptscarOperations transfer attempts
-	//carOperations transfer attemptscarOperations transfer attemptscarOperations transfer attempts
-	//carOperations transfer attemptscarOperations transfer attemptscarOperations transfer attempts
-	//carOperations transfer attemptscarOperations transfer attemptscarOperations transfer attempts
-	//carOperations transfer attemptscarOperations transfer attemptscarOperations transfer attempts
 	
+	//admin operations concerning cars such as 
+	//adding cars, viewing cars, deleting cars and editing cars
 
 	   
 	public void opsCar(){
@@ -390,7 +385,8 @@ public class admin { //extends unregisteredUser{
 			
 			while (true) {
 			
-				//choices for addCar 
+				//admin choices for car operations (menu)
+				
 			 	System.out.println("\n-----------------------------");
 				System.out.println("CAR OPERATIONS");
 				System.out.println("-----------------------------");
@@ -408,23 +404,32 @@ public class admin { //extends unregisteredUser{
 			if (Choice == 1) {
 				addCar();
 				
+				
+				//return message
 				System.out.print("\n\nWould you like to perform another Car operation? Enter: 1: Yes || 2: No (return to Admin Menu): ");
 				int adminchoice = scanner.nextInt();
 
 				switch (adminchoice) {
 				case 1: 
-					opsCar();
 					saveCarList();
+					opsCar();
 					break;
 				case 2:
 					saveCarList();
-					admin.adminMenu();
+					adminMenu();
 					break;
+				default:
+					saveCarList();
+					System.out.println("\nInvalid Choice! Returning to admin main menu...");
+					adminMenu();	
 				}
 			}
+			
 			else if (Choice == 2){
 				viewAllCars();
 				
+				
+				//return message
 				System.out.print("\n\nWould you like to perform another Car operation? Enter: 1: Yes || 2: No (return to Admin Menu): ");
 				int adminchoice = scanner.nextInt();
 
@@ -435,8 +440,12 @@ public class admin { //extends unregisteredUser{
 					break;
 				case 2:
 					saveCarList();
-					admin.adminMenu();
+					adminMenu();
 					break;
+				default:
+					saveCarList();
+					System.out.println("\nInvalid Choice! Returning to admin main menu...");
+					adminMenu();
 				}
 			}
 			else if(Choice == 3){
@@ -452,8 +461,12 @@ public class admin { //extends unregisteredUser{
 					break;
 				case 2:
 					saveCarList();
-					admin.adminMenu();
+					adminMenu();
 					break;
+				default:
+					saveCarList();
+					System.out.println("\nInvalid Choice! Returning to admin main menu...");
+					adminMenu();
 				}
 	        }
 	        else if (Choice == 4) {
@@ -464,15 +477,20 @@ public class admin { //extends unregisteredUser{
 
 				switch (adminchoice) {
 				case 1: 
-					opsCar();
 					saveCarList();
+					opsCar();
 					break;
 				case 2:
 					saveCarList();
-					admin.adminMenu();
+					adminMenu();
 					break;
+				default:
+					saveCarList();
+					System.out.println("\nInvalid Choice! Returning to admin main menu...");
+					adminMenu();
 				}
 			}
+			
 			else;
 				saveCarList();
 				admin.adminMenu();
@@ -480,7 +498,8 @@ public class admin { //extends unregisteredUser{
 			}
 		}
 		
-			//add car
+			//method for adding car
+	
 		    private void addCar(){
 		    	System.out.println("\nYou have chosen to add a new Car to the System: ");
 		        System.out.print("Enter Car ID: ");
@@ -508,6 +527,9 @@ public class admin { //extends unregisteredUser{
 		        car car = new car (carID, carName, carType, basePrice, size, sport, fuelType);
 		        carArrayList.add(car); //add to car arrayList
 		    }
+		    
+		    //method for deleting a car
+		    
 		    private void deleteCar(){
 		    	System.out.println("\nYou have chosen to delete a Car from the system.");
 		    	System.out.println("\nThese are all the Cars in the List:\n");
@@ -528,12 +550,17 @@ public class admin { //extends unregisteredUser{
 		            System.out.println("Invalid Choice!");
 		        }
 		    }
+		    
+		    //method for viewing all cars
+		    
 		    private void viewAllCars(){
 		    	System.out.println("\nHere is a list of all the cars within the System: \n");
 		        for(int i=0;i<this.carArrayList.size();i++){
 		            System.out.println(this.carArrayList.get(i).toString());
 		        }
 		    }
+		    
+		    //method for editing cars
 		    
 		    private void editCar(){
 		    	System.out.println("\nYou have chosen to Edit a car from the system.");
@@ -638,7 +665,10 @@ public class admin { //extends unregisteredUser{
 		            System.out.println("Invalid Choice!");
 		        }
 		    }
-		        //below codes for save and load car array list
+		    
+		    
+		        //below codes for save and read car array list
+		    
 		        public void saveCarList(){
 		            Object obj= this.carArrayList;
 		            FileOutputStream f = null;
@@ -683,23 +713,18 @@ public class admin { //extends unregisteredUser{
 		    }
 
 	
-		//ENDING
-		//carOperations transfer attemptscarOperations transfer attemptscarOperations transfer attempts
-		//carOperations transfer attemptscarOperations transfer attemptscarOperations transfer attempts
-		//carOperations transfer attemptscarOperations transfer attemptscarOperations transfer attempts
-		//carOperations transfer attemptscarOperations transfer attemptscarOperations transfer attempts
-		//carOperations transfer attemptscarOperations transfer attemptscarOperations transfer attempts
-		//carOperations transfer attemptscarOperations transfer attemptscarOperations transfer attempts
-		//carOperations transfer attemptscarOperations transfer attemptscarOperations transfer attempts
 	
-	
+		        
+		        
+		        
+	//Third admin option: Logout
 	
 	public static void adminLogout() {
 
 		System.out.println("\nThanks for your time Admin. You have now been logged out!");
 		System.out.println("Have a great day!");
 
-		testDrive.main(null); 	//move back to main menu
+		testDrive.main(null); 	//move back to starting screen of application
 
 	}
 
