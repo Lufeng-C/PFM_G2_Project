@@ -52,18 +52,27 @@ public class unregisteredUser {
 			registeredUser.register(userList);
 			break;
 		case 3:
-			unregisteredUser.getUserChoice();
+			unregisteredUserMethod();
 			break;
 		}
 	}
 	
 	// This method is used to create a recommendation
-	public static void unregisterUserMethod() {
+	public static void unregisteredUserMethod() {
 
 		//this callingObject is used to call non-static method in a static method
 		unregisteredUser callingObject = new unregisteredUser(); 
 
-		int userChoice= getUserChoice();
+		System.out.println("\nThese are the car types for Mercedes Benz:" );	
+		System.out.println("(1) Sedan" );
+		System.out.println("(2) Van" );
+		System.out.println("(3) Hatchback" );
+		System.out.println("(4) Luxurious" );
+		System.out.println("(5) SUV" );
+		System.out.print("What cartype would you prefer? ");
+		
+		int userChoice= userInputInt.nextInt();
+		
 		switch (userChoice) {	
 
 		case 1:
@@ -89,34 +98,26 @@ public class unregisteredUser {
 
 	} //end unregisterUserMethod()
 
-	// This method redirects to follow up methods based on desired cartype 
-	public static int getUserChoice()	{
+	
 
-		System.out.println("\nThese are the car types for Mercedes Benz:" );	
-		System.out.println("(1) Sedan" );
-		System.out.println("(2) Van" );
-		System.out.println("(3) Hatchback" );
-		System.out.println("(4) Luxurious" );
-		System.out.println("(5) SUV" );
-		System.out.print("What cartype would you prefer? ");
-		int CarType = userInputInt.nextInt();
-		return CarType;
-
-	}
+	
 	public void Sedan() {
 		String carType = "Sedan";
-
-		System.out.print("what is your budget? Enter Minimum: ");
+		
+		System.out.println("\nYou have chosen the Sedan car type!");
+		
+		System.out.print("\nWhat is your budget? Enter Minimum: ");
 		double minBudget = userInputDouble.nextDouble();
 
-		System.out.print("what is your budget? Enter Maximum: ");
+		System.out.print("What is your budget? Enter Maximum: ");
 		double maxBudget = userInputDouble.nextDouble();
 
-		System.out.println("What fueltype do you prefer? ");
+		System.out.println("\nThese are the fueltypes for car Type " + carType + ":");
 		System.out.println("(1) Petrol"); //c250 or s500
 		System.out.println("(2) Diesel"); //c220d or s400d
 		System.out.println("(3) Hybrid"); //c300e or s400e
 		System.out.println("(4) Electric"); //EQS
+		System.out.print("What fueltype do you prefer? ");
 		int choiceFuel = userInputInt.nextInt();
 
 		String fuelType = "Petrol";//default
@@ -130,9 +131,10 @@ public class unregisteredUser {
 			fuelType = "Electric";
 		}
 
-		System.out.println("What sized car do you prefer? ");
+		System.out.println("\nAvailable car sizes: ");
 		System.out.println("(1) Medium"); //c class
 		System.out.println("(2) Large"); //s class
+		System.out.print("What car size do you prefer? ");
 		int choiceSize = userInputInt.nextInt();
 
 		String carSize="small";//by default
@@ -142,9 +144,10 @@ public class unregisteredUser {
 		else if(choiceSize==2){
 			carSize="Large";
 		}
-		System.out.println("Do you prefer a car sport look? ");
+		System.out.println("\nDo you prefer a car sport look? ");
 		System.out.println("(1) Yes"); //c63 or s63 amg,
 		System.out.println("(2) No"); 
+		System.out.print("Enter your choice: ");
 		int choiceSport = userInputInt.nextInt();
 
 		String sport="No";//by default
@@ -160,17 +163,18 @@ public class unregisteredUser {
 	public void Van () {
 		String carType = "Van";
 
-		System.out.print("what is your budget? Enter Minimum: ");
+		System.out.println("\nYou have chosen the " + carType + " car type!");
+		
+		System.out.print("\nWhat is your budget? Enter Minimum: ");
 		double minBudget = userInputDouble.nextDouble();
 
-
-		System.out.print("what is your budget? Enter Maximum: ");
+		System.out.print("What is your budget? Enter Maximum: ");
 		double maxBudget = userInputDouble.nextDouble();
 
-
-		System.out.println("What fueltype do you prefer? ");
+		System.out.println("\nThese are the fueltypes for car Type " + carType + ":");
 		System.out.println("(1) Diesel"); //v200, v220 or v300
 		System.out.println("(2) Electric"); //eqv
+		System.out.print("What fueltype do you prefer? ");
 		int choiceFuel = userInputInt.nextInt();
 
 		String fuelType = "Diesel";//default
@@ -179,9 +183,10 @@ public class unregisteredUser {
 		} else if (choiceFuel == 2) {
 			fuelType = "Electric";
 		}
-		System.out.println("What sized van do you prefer? ");
+		System.out.println("\nAvailable " + carType + " sizes:");
 		System.out.println("(1) Standard"); //v class
 		System.out.println("(2) Extra long"); //v class L
+		System.out.print("What size " + carType + " do you prefer? ");
 		int choiceSize = userInputInt.nextInt();
 
 		String carSize="Standard";//by default
@@ -191,9 +196,10 @@ public class unregisteredUser {
 		else if(choiceSize==2){
 			carSize="Extra long";
 		}
-		System.out.println("Do you prefer a van with a sport look? ");
+		System.out.println("\nDo you prefer a " + carType + " with a sport look? ");
 		System.out.println("(1) Yes"); //amg line,
 		System.out.println("(2) No"); //default v class
+		System.out.print("Enter your choice: ");
 		int choiceSport = userInputInt.nextInt();
 
 		String sport="No";//by default
@@ -209,16 +215,19 @@ public class unregisteredUser {
 	public void Hatchback() {
 		String carType = "Hatchback";
 
-		System.out.print("what is your budget? Enter Minimum: ");
+		System.out.println("\nYou have chosen the " + carType + " car type!");
+		
+		System.out.print("\nWhat is your budget? Enter Minimum: ");
 		double minBudget = userInputDouble.nextDouble();
 
-		System.out.print("what is your budget? Enter Maximum: ");
+		System.out.print("What is your budget? Enter Maximum: ");
 		double maxBudget = userInputDouble.nextDouble();
 
 
-		System.out.println("What fueltype do you prefer? ");
+		System.out.println("\nThese are the fueltypes for car type " + carType + ":");
 		System.out.println("(1) Petrol"); //a200, a45
 		System.out.println("(2) Diesel"); //a220d
+		System.out.println("What fueltype do you prefer? ");
 		int choiceFuel = userInputInt.nextInt();
 
 		String fuelType = "Petrol";//default
@@ -228,9 +237,10 @@ public class unregisteredUser {
 			fuelType = "Diesel";
 		} 
 
-		System.out.println("What sized car do you prefer? ");
+		System.out.println("\nAvailable " + carType + " sizes:");
 		System.out.println("(1) Small"); //a class
 		System.out.println("(2) Medium"); //gla class
+		System.out.print("What size " + carType + " do you prefer? ");
 		int choiceSize = userInputInt.nextInt();
 
 		String carSize="Small";//by default
@@ -240,9 +250,10 @@ public class unregisteredUser {
 		else if(choiceSize==2){
 			carSize="Medium";
 		}
-		System.out.println("Do you prefer a car with a sport look? ");
+		System.out.println("\nDo you prefer a " + carType + " with a sport look? ");
 		System.out.println("(1) Yes"); //a45 or a220 amg line
 		System.out.println("(2) No"); 
+		System.out.print("Enter choice: "); 
 		int choiceSport = userInputInt.nextInt();
 
 		String sport="No";//by default
@@ -258,17 +269,19 @@ public class unregisteredUser {
 	public void Luxurious() {
 		String carType = "Luxurious";
 
-		System.out.print("what is your budget? Enter Minimum: ");
+		System.out.println("\nYou have chosen the " + carType + " car type!");
+		
+		System.out.print("\nWhat is your budget? Enter Minimum: ");
 		double minBudget = userInputDouble.nextDouble();
 
-		System.out.print("what is your budget? Enter Maximum: ");
+		System.out.print("What is your budget? Enter Maximum: ");
 		double maxBudget = userInputDouble.nextDouble();
 
-
-		System.out.println("What fueltype do you prefer? ");
+		System.out.println("\nThese are the fueltypes for car Type " + carType + ":");
 		System.out.println("(1) Petrol");
 		System.out.println("(2) Diesel");
 		System.out.println("(3) Hybrid");
+		System.out.print("What fueltype do you prefer? ");
 		int choiceFuel = userInputInt.nextInt();
 
 		String fuelType = "Petrol";//default
@@ -280,9 +293,10 @@ public class unregisteredUser {
 			fuelType = "Hybrid";
 		}
 
-		System.out.println("What sized car do you prefer? ");
+		System.out.println("\nAvailable " + carType + " car sizes:");
 		System.out.println("(1) Medium"); //s class
 		System.out.println("(2) Large"); //gls class, v class luxury edition
+		System.out.print("What size " + carType + " do you prefer? ");
 		int choiceSize = userInputInt.nextInt();
 
 		String carSize="Medium";//by default
@@ -292,9 +306,10 @@ public class unregisteredUser {
 		else if(choiceSize==2){
 			carSize="Large";
 		}
-		System.out.println("Do you prefer a car with a sport look? ");
+		System.out.println("\nDo you prefer a " + carType + " car with a sport look? ");
 		System.out.println("(1) Yes"); //amg line
 		System.out.println("(2) No"); 
+		System.out.print("Enter choice: ");
 		int choiceSport = userInputInt.nextInt();
 
 		String sport="No";//by default
@@ -310,17 +325,21 @@ public class unregisteredUser {
 	public void SUV() {
 		String carType = "SUV";
 
-		System.out.print("what is your budget? Enter Minimum: ");
+
+		System.out.println("\nYou have chosen the " + carType + " car type!");
+		
+		System.out.print("\nWhat is your budget? Enter Minimum: ");
 		double minBudget = userInputDouble.nextDouble();
 
-		System.out.print("what is your budget? Enter Maximum: ");
+		System.out.print("What is your budget? Enter Maximum: ");
 		double maxBudget = userInputDouble.nextDouble();
 
 
-		System.out.println("What fueltype do you prefer? "); //all can be gle or gls
+		System.out.println("\nThese are the fueltypes for car Type " + carType + ":");
 		System.out.println("(1) Petrol"); //gle400 //gle63s amg
 		System.out.println("(2) Diesel"); //gle300d
 		System.out.println("(3) Hybrid"); //gle400e
+		System.out.print("What fueltype do you prefer? "); //all can be gle or gls
 		int choiceFuel = userInputInt.nextInt();
 
 		String fuelType = "Petrol";//default
@@ -332,9 +351,10 @@ public class unregisteredUser {
 			fuelType = "Hybrid";
 		}
 
-		System.out.println("What sized car do you prefer? ");
+		System.out.println("\nAvailable " + carType + " sizes:");
 		System.out.println("(1) Medium"); //glc, gle coupe
 		System.out.println("(2) Large"); //gle, gls class
+		System.out.print("What size " + carType + " do you prefer? ");
 		int choiceSize = userInputInt.nextInt();
 
 		String carSize="Medium";//by default
@@ -344,9 +364,10 @@ public class unregisteredUser {
 		else if(choiceSize==2){
 			carSize="Large";
 		}
-		System.out.println("Do you prefer a car with a sport look? ");
+		System.out.println("\nDo you prefer a " + carType + " with a sport look? ");
 		System.out.println("(1) Yes"); //amg
 		System.out.println("(2) No"); 
+		System.out.print("Enter choice: "); 
 		int choiceSport = userInputInt.nextInt();
 
 		String sport="No";//by default
