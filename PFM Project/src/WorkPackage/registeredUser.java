@@ -78,7 +78,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 		int Choice = userInputInt.nextInt();
 		switch (Choice) {
 		case 1:
-			unregisteredUser.getUserChoice();
+			unregisteredUserMethod();
 			break;
 		case 2:
 			viewFavorite();
