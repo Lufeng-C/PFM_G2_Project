@@ -72,6 +72,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 		System.out.println("Choose 1 to request a car recommendation.");
 		System.out.println("Choose 2 to view your list of favourite car recommendations.");
 		System.out.println("Choose 3 to delete your account.");
+		System.out.println("Choose 4 to exit the system.");
 		System.out.println("What do you want to choose?");
 
 
@@ -85,6 +86,12 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			break;
 		case 3:
 			this.deleteAccount(); //insert a user object here
+			break;
+		case 4:
+			break;
+		default: 
+			System.out.println("\nInvalid Choice!");
+			userInterface();
 			break;
 
 		}
