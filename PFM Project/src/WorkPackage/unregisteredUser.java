@@ -43,9 +43,9 @@ public class unregisteredUser {
 				+ "  |==========================`.        ,'==========================|\r\n"
 				+ "  |============================`--..--'============================|\r\n"
 				+ "   `--------------------------------------------------------------'");
-		System.out.println("\n\n--------------------------------");
+		System.out.println("\n\n------------------------------------");
 		System.out.println("Mercedes Benz-Recommendation System");
-		System.out.println("--------------------------------");
+		System.out.println("------------------------------------");
 		System.out.println("\nWelcome! You have 3 choices:\n ");
 		System.out.println("Choose 1 to log in");
 		System.out.println("Choose 2 to register as a new user");
