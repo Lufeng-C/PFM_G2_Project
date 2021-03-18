@@ -79,9 +79,18 @@ public class registeredUser extends unregisteredUser { // created inheritance
 
 
 		int Choice = userInputInt.nextInt();
+		
 		switch (Choice) {
 		case 1:
 			unregisteredUserMethod();
+			/*int ChoiceFavorite = userInputInt.nextInt();
+	        System.out.println("Do you want to save your recommendation? "
+	        		+ "Choose 1 for yes"
+	        		+ "Choose 2 for no");
+	        if (ChoiceFavorite == 1) {
+	        	addFavorite();
+	        }*/
+	        
 			break;
 		case 2:
 			viewFavorite(carArrayList);
