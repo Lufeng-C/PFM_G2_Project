@@ -1,10 +1,8 @@
 package WorkPackage;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*; //combined and import everything
 
-import WorkPackage.car;
+// import WorkPackage.car; Might not be needed
 
 public class unregisteredUser {
 
@@ -14,8 +12,11 @@ public class unregisteredUser {
 	private ArrayList<car> carArrayList; //car arraylist
 	carOperations carOpsDriver = new carOperations();
 
+	// This is reserved space for the main method
 	public void main() {
 	}
+
+	// This method is used to create a recommendation
 	public static void unregisterUserMethod() {
 
 		//this callingObject is used to call non-static method in a static method
@@ -45,8 +46,9 @@ public class unregisteredUser {
 			break;
 		}
 
+	} //end unregisterUserMethod()
 
-	}
+	// This method redirects to follow up methods based on desired cartype 
 	public static int getUserChoice()	{
 
 		System.out.println("What cartype would you prefer ?" );	
@@ -316,7 +318,9 @@ public class unregisteredUser {
 
 		viewByFilter (minBudget, maxBudget, sport, fuelType,carType,carSize);
 	}
-	//filter cars by car user Choice
+
+
+	//This method filters cars by car user choice
 	private car viewByFilter(Double min, Double max, String sport, String fuelType,
 			String carType,String carSize){
 		car foundCar=null;
@@ -353,7 +357,7 @@ public class unregisteredUser {
 					System.out.println("Details of recommended car: " + this.carArrayList.get(i).toString());
 				}		                
 			}
-		}     
+		} //end for loop     
 		if(foundCar==null){;
 		viewByFilterPrice (sport, fuelType, carType, carSize);
 		}      

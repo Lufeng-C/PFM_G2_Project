@@ -3,7 +3,7 @@ package WorkPackage;
 import java.io.*;
 import java.util.*;
 
-public class registeredUser {
+public class registeredUser extends unregisteredUser { // created inheritance
 
 	static Scanner userInputInt = new Scanner(System.in); 
 	static Scanner userInputString = new Scanner(System.in); 
@@ -16,7 +16,7 @@ public class registeredUser {
 	private int phoneNumber;
 	private int userID;
 	private boolean logInStatus;
-	private int favorite;
+	private String favorite;
 
 	static int num_registeredUser = getTotalLines();
 
@@ -123,7 +123,7 @@ public class registeredUser {
 				userList.get(i).setPhoneNumber (Integer.parseInt(uCurrent [4]));
 				userList.get(i).setUserID (Integer.parseInt(uCurrent [5]));
 				userList.get(i).setLogInStatus (false); // default no one is logged in
-				userList.get(i).setFavorite (Integer.parseInt(uCurrent[7]));
+				userList.get(i).setFavorite (uCurrent[7]);
 				i++;
 			}
 			br2.close();
@@ -147,8 +147,8 @@ public class registeredUser {
 
 			System.out.print("Enter your password: ");
 			String entered_password = userInputString.nextLine();
-			
-//TODO			// create a login option for admin that calls the admin menu.
+
+			//TODO create a login option for admin that calls the admin menu.
 
 			for (int i = 0; i < num_registeredUser; i++) {
 				if (entered_email.equals(userList.get(i).emailAddress) 
@@ -158,7 +158,6 @@ public class registeredUser {
 				}
 			} // end for loop
 
-			
 			if (userIndex == -1) {
 				loginAttempts--;
 				System.out.println("Email/password incorrect. Please try again!");
@@ -212,7 +211,7 @@ public class registeredUser {
 		boolean logInStatus = false; // reserved for any possible future use
 
 		String line = (email + "\t" + password + "\t" + firstName + "\t" + lastName + 
-				"\t" + phoneNumber + "\t" + userID + "\t" + logInStatus);
+				"\t" + phoneNumber + "\t" + userID + "\t" + logInStatus + "\t" + " ");
 
 		appendFileTemp(line); // store in temp file, awaiting admin approval
 		// while awaiting aproval, you are redirected to login where you can either wait for approval or continue as guest.
@@ -332,8 +331,8 @@ public class registeredUser {
 		String [] uCurrent = new String [8];
 		uCurrent = originalLine.split("\t"); // uCurrent [0] is email; [1] password; 
 		//[2]first name; [3] last name; [4] phone; [5] userID [6] logInStatus [7] favorite
-		updatedLine = uCurrent[0] + "\t" + uCurrent[1] + "\t" + uCurrent[2] + "\t" + uCurrent[3] + "\t" 
-				+ uCurrent[4] + uCurrent[5] + "\t" + uCurrent[6] + "\t" + carObject.getCarID();
+		updatedLine = (uCurrent[0] + "\t" + uCurrent[1] + "\t" + uCurrent[2] + "\t" + uCurrent[3] + "\t" 
+				+ uCurrent[4] + uCurrent[5] + "\t" + uCurrent[6] + "\t" + carObject.getCarID());
 		storedLine.add(updatedLine);
 
 		// write the permRegistration database again
@@ -351,10 +350,42 @@ public class registeredUser {
 
 	} //end addFavorite()
 
+
 	// This method returns details of a user's fav car
-	public void viewFavorite(car favCar) {
-		System.out.print("Your favorite car model is " + favCar.getCarID());
+	public void viewFavorite(registeredUser user, ArrayList<car> carArrayList) {
+		String favCarID = user.getFavorite();
+		ArrayList<Integer> carIDList = new ArrayList<Integer>();
+		for (int i = 0; i < carArrayList.size(); i++) {
+			carIDList.add(Integer.parseInt(carArrayList.get(i).getCarID()));
+		}
+		int indx = carIDList.indexOf(favCarID);
+		car favCar = carArrayList.get(indx);
+
+		System.out.print("Your favorite car model is " + favCar.getCarName() 
+		+ ". Would you like to view more details? \n(1)Yes\n(2)No");
+
+		int choiceDetails = userInputInt.nextInt();
+		switch (choiceDetails) {
+		case 1:
+			System.out.printf("Car Name: %s\n"
+					+ "Car Type: %s\n"
+					+ "Base Price: %s\n"
+					+ "Size: %s\n"
+					// + "Sport: %s\n"
+					+ "Fuel Type: %s\n",
+					favCar.getCarName(), favCar.getCarType(), favCar.getBasePrice(), 
+					favCar.getSize(), favCar.getFuelType());
+			//TODO return to last menu
+		case 2:
+			//TODO return to last menu
+		default: 
+			System.out.println("\nInvalid Choice!");
+			viewFavorite(); //TODO missing input here
+			break;
+		}
 	}
+
+
 	// This method appends a line to the tempRegistration.txt
 	public static void appendFileTemp (String line) { 
 
@@ -389,7 +420,7 @@ public class registeredUser {
 
 
 
-
+	// Getters & setters
 	public String getEmailAddress() {
 		return emailAddress;
 	}
@@ -486,16 +517,12 @@ public class registeredUser {
 	}
 
 
-
-
-	public int getFavorite() {
+	public String getFavorite() {
 		return favorite;
 	}
 
 
-
-
-	public void setFavorite(int favorite) {
+	public void setFavorite(String favorite) {
 		this.favorite = favorite;
 	}
 
