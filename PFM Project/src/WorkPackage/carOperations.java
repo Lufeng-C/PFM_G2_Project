@@ -5,16 +5,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 //public class carOperations { 
-	private ArrayList<car> carArrayList; //car arraylist
+	//private ArrayList<car> carArrayList; //car arraylist
 	Scanner scanner=new Scanner(System.in);
 	
     public void main() {
     this.carArrayList = readCarList();
- 
+
     }
 	//public void run(){
 		
-		while (true) {
+		//while (true) {
 		
 			//choices for addCar 
 		 	System.out.println("\n-----------------------------");
