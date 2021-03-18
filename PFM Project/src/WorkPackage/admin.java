@@ -10,7 +10,7 @@ public class admin { //extends unregisteredUser{
 	static Scanner userInputDouble = new Scanner(System.in);
 
 	private final static String adminID = "adminPFM";
-	private final static String AdminPassword = "admin";
+	private final static String adminPassword = "admin";
 
 
 
@@ -378,5 +378,15 @@ public class admin { //extends unregisteredUser{
 
 		testDrive.main(null); 	//move back to main menu
 
+	}
+
+
+	public static String getAdminID() {
+		return adminID;
+	}
+
+
+	public static String getAdminPassword() {
+		return adminPassword;
 	}
 }

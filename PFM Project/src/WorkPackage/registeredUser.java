@@ -81,7 +81,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			unregisteredUser.getUserChoice();
 			break;
 		case 2:
-			getFavorite();
+			viewFavorite();
 			break;
 		case 3:
 			this.deleteAccount(); //insert a user object here
@@ -123,12 +123,12 @@ public class registeredUser extends unregisteredUser { // created inheritance
 				userList.get(i).setPhoneNumber (Integer.parseInt(uCurrent [4]));
 				userList.get(i).setUserID (Integer.parseInt(uCurrent [5]));
 				userList.get(i).setLogInStatus (false); // default no one is logged in
-				userList.get(i).setFavorite (uCurrent[7]);
+				userList.get(i).setFavorite(uCurrent [7]);
 				i++;
 			}
 			br2.close();
 
-		}	catch (IOException ex) {
+		}	catch (Exception ex) {
 			System.out.println ("Something went wrong for I/O!");
 		}
 
@@ -136,10 +136,14 @@ public class registeredUser extends unregisteredUser { // created inheritance
 	} // end assignAttributes (ArrayList<registeredUser> userList)
 
 	// This method asks for input and try to log in
-	public static boolean logIn (ArrayList<registeredUser> userList) {
+	public static registeredUser logIn (ArrayList<registeredUser> userList) {
 
 		int loginAttempts = 3;			
 		int userIndex = -1; 
+		boolean adminIsHere = false;
+		registeredUser dummy = new registeredUser();
+		dummy.setUserID(99999);
+
 		while (loginAttempts > 0) {
 
 			System.out.print("Enter your email adress: ");
@@ -148,36 +152,53 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			System.out.print("Enter your password: ");
 			String entered_password = userInputString.nextLine();
 
-			//TODO create a login option for admin that calls the admin menu.
-
-			for (int i = 0; i < num_registeredUser; i++) {
-				if (entered_email.equals(userList.get(i).emailAddress) 
-						&& entered_password.equals(userList.get(i).password)) {
-					userIndex = i;
-					break;
-				}
-			} // end for loop
-
-			if (userIndex == -1) {
-				loginAttempts--;
-				System.out.println("Email/password incorrect. Please try again!");
-				System.out.println("You have " + loginAttempts + " login attempts left.");	
-				System.out.println("");
+			// special log in for admin
+			if (entered_email.equals(admin.getAdminID()) 
+					&& entered_password.equals(admin.getAdminPassword())) {
+				admin.adminMenu();
+				adminIsHere = true;
+				break;
 			}
-			else if (userIndex != (-1)) break;
-		} // end while loop
+			else {
+				for (int i = 0; i < num_registeredUser; i++) {
+					if (entered_email.equals(userList.get(i).emailAddress) 
+							&& entered_password.equals(userList.get(i).password)) {
+						userIndex = i;
+						break;
+					}
+				} // end for loop
 
-		if (userIndex == -1) {
-			System.out.println("You failed 3 times. This session is terminated!");
-			return false;
+				if (userIndex == -1) {
+					loginAttempts--;
+					System.out.println("Email/password incorrect. Please try again!");
+					System.out.println("You have " + loginAttempts + " login attempts left.");	
+					System.out.println("");
+				}
+				else if (userIndex != (-1)) break;
+			}// end else: normal user
+		}// end while loop
+
+		// here determines what to return
+		if (!adminIsHere) {
+			if (userIndex == -1) {
+				System.out.println("You failed 3 times. This session is terminated!"
+						+ "\nYou are now being redirected to the front page!\n\n");
+				return dummy;
+			}
+			else {
+				System.out.println("Login Successful! Welcome, " 
+						+ userList.get(userIndex).firstName 
+						+ " " + userList.get(userIndex).lastName);
+				userList.get(userIndex).logInStatus = true;	
+				registeredUser itsMe = userList.get(userIndex);
+				return (itsMe);
+			}
 		}
-		else {
-			System.out.println("Login Successful! Welcome, " 
-					+ userList.get(userIndex).firstName 
-					+ " " + userList.get(userIndex).lastName);
-			userList.get(userIndex).logInStatus = true;	
-			return (userList.get(userIndex).logInStatus);
+		else if (adminIsHere) {
+			System.out.println("Thanks for checking in admin!" 
+					+"\nYou are now being redirected to the front page!\n\n");
 		}
+		return dummy;
 
 	} // end logIn (ArrayList<registeredUser> userList) -> user UX / admin UX (if username == admin & password == adminPassword)
 
@@ -352,13 +373,13 @@ public class registeredUser extends unregisteredUser { // created inheritance
 
 
 	// This method returns details of a user's fav car
-	public void viewFavorite(registeredUser user, ArrayList<car> carArrayList) {
-		String favCarID = user.getFavorite();
+	public void viewFavorite (ArrayList<car> carArrayList) {
+		String favCarID = this.getFavorite();
 		ArrayList<Integer> carIDList = new ArrayList<Integer>();
 		for (int i = 0; i < carArrayList.size(); i++) {
 			carIDList.add(Integer.parseInt(carArrayList.get(i).getCarID()));
 		}
-		int indx = carIDList.indexOf(favCarID);
+		int indx = carIDList.indexOf(Integer.parseInt(favCarID));
 		car favCar = carArrayList.get(indx);
 
 		System.out.print("Your favorite car model is " + favCar.getCarName() 
@@ -375,12 +396,12 @@ public class registeredUser extends unregisteredUser { // created inheritance
 					+ "Fuel Type: %s\n",
 					favCar.getCarName(), favCar.getCarType(), favCar.getBasePrice(), 
 					favCar.getSize(), favCar.getFuelType());
-			//TODO return to last menu
+			this.userInterface();
 		case 2:
-			//TODO return to last menu
+			this.userInterface();
 		default: 
 			System.out.println("\nInvalid Choice!");
-			viewFavorite(); //TODO missing input here
+			this.viewFavorite(carArrayList); //TODO missing input here
 			break;
 		}
 	}

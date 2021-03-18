@@ -15,7 +15,47 @@ public class unregisteredUser {
 	// This is reserved space for the main method
 	public void main() {
 	}
+	
+	// This is the very first menu
+	public static void beginMenu(ArrayList<registeredUser> userList) {
+		System.out.println("#-----------WELCOME--------------#");
+		System.out.println("Mercedes Benz-Recommendation System");
+		System.out.println("-----------------------------");
+		System.out.println("   ,--------------------------------------------------------------.\r\n"
+				+ "  |============================,------.============================|\r\n"
+				+ "  |==========================,'   ::   `.==========================|\r\n"
+				+ "  |=========================/     ::     \\=========================|\r\n"
+				+ "  |========================:      ::      :========================|\r\n"
+				+ "  |=======================:       ::       :=======================|\r\n"
+				+ "  |=======================|      .::.      |=======================|\r\n"
+				+ "  |=======================:    .:'  `:.    :=======================|\r\n"
+				+ "  |========================: .:'      `:. :========================|\r\n"
+				+ "  |=========================\\            /=========================|\r\n"
+				+ "  |==========================`.        ,'==========================|\r\n"
+				+ "  |============================`--..--'============================|\r\n"
+				+ "   `--------------------------------------------------------------'");
+		System.out.println("You have 3 choices");
+		System.out.println("Choose 1 to log in");
+		System.out.println("Choose 2 to register as a new user");
+		System.out.println("Choose 3 to continue as guest");
+		System.out.println("What do you want to choose?");
 
+		int Choice = userInputInt.nextInt();
+		switch (Choice) {
+		case 1:
+			registeredUser me = registeredUser.logIn(userList);
+			if (me.getUserID() != 99999) me.userInterface();
+			else beginMenu(userList);
+			break;
+		case 2:
+			registeredUser.register(userList);
+			break;
+		case 3:
+			unregisteredUser.getUserChoice();
+			break;
+		}
+	}
+	
 	// This method is used to create a recommendation
 	public static void unregisterUserMethod() {
 
