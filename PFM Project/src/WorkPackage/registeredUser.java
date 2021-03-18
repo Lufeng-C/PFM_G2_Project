@@ -81,7 +81,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			unregisteredUserMethod();
 			break;
 		case 2:
-			viewFavorite();
+			//viewFavorite();
 			break;
 		case 3:
 			this.deleteAccount(); //insert a user object here
