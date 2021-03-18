@@ -19,8 +19,9 @@ public class registeredUser extends unregisteredUser { // created inheritance
 	private String favorite;
 
 	static int num_registeredUser = getTotalLines();
+	admin runcarOps = new admin();
 
-
+	
 	public void userInterface() {
 
 		System.out.println("                   _____________\r\n"
