@@ -82,7 +82,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			unregisteredUserMethod();
 			break;
 		case 2:
-			//viewFavorite();
+			viewFavorite(carArrayList);
 			break;
 		case 3:
 			this.deleteAccount(); //insert a user object here
@@ -212,39 +212,45 @@ public class registeredUser extends unregisteredUser { // created inheritance
 	// This method asks for input and record in tempRegistration.txt
 	public static void register (ArrayList<registeredUser> userList) {
 
-		System.out.print("Welcome to register process!\nPlease type relevant info when prompted.\n");
+		try {
+			System.out.print("Welcome to register process!\nPlease type relevant info when prompted.\n");
 
-		System.out.print("Your email address (used for log in): ");
-		String email = userInputString.nextLine();	
+			System.out.print("Your email address (used for log in): ");
+			String email = userInputString.nextLine();	
 
-		System.out.print("Your password: ");
-		String password = userInputString.nextLine();		
+			System.out.print("Your password: ");
+			String password = userInputString.nextLine();		
 
-		System.out.print("Your first name: ");
-		String firstName = userInputString.nextLine();	
+			System.out.print("Your first name: ");
+			String firstName = userInputString.nextLine();	
 
-		System.out.print("Your last name: ");
-		String lastName = userInputString.nextLine();
+			System.out.print("Your last name: ");
+			String lastName = userInputString.nextLine();
 
-		System.out.print("Your phone number: ");
-		String phoneNumber = userInputString.nextLine();		
+			System.out.print("Your phone number: ");
+			String phoneNumber = userInputString.nextLine();
 
-		// find out the biggest userID and add 1 
-		ArrayList<Integer> userIDList = new ArrayList<Integer>();
-		for (int i = 0; i < userList.size(); i++) {
-			userIDList.add(userList.get(i).getUserID());
+			// find out the biggest userID and add 1 
+			ArrayList<Integer> userIDList = new ArrayList<Integer>();
+			for (int i = 0; i < userList.size(); i++) {
+				userIDList.add(userList.get(i).getUserID());
+			}
+			int userID = Collections.max(userIDList) + 1;
+
+			boolean logInStatus = false; // reserved for any possible future use
+
+			String line = (email + "\t" + password + "\t" + firstName + "\t" + lastName + 
+					"\t" + phoneNumber + "\t" + userID + "\t" + logInStatus + "\t" + " ");
+
+			appendFileTemp(line); // store in temp file, awaiting admin approval
+			System.out.println("\n\nThanks for your registration! :D \n"
+					+ "Your request has been recorded and is currently under review.\n"
+					+ "After admin's approval, you will be able to log in to our system.\n"
+					+ "As of right now, you will be redirected to the main menu.\n"
+					+ "You can either continue as a guest, or wait patiently for the registration results.\n");
+		} catch (Exception ex) {
+			System.out.println("Something went wrong for I/O!");
 		}
-		int userID = Collections.max(userIDList) + 1;
-
-		boolean logInStatus = false; // reserved for any possible future use
-
-		String line = (email + "\t" + password + "\t" + firstName + "\t" + lastName + 
-				"\t" + phoneNumber + "\t" + userID + "\t" + logInStatus + "\t" + " ");
-
-		appendFileTemp(line); // store in temp file, awaiting admin approval
-		// while awaiting approval, you are redirected to login where you can either wait for approval or continue as guest.
-		// print a message where users find out they are awaiting approval and can either continue as a guest or go back to login screen.
-
 	}	// end register()
 
 	public void deleteAccount() {

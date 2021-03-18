@@ -50,6 +50,7 @@ public class unregisteredUser {
 			break;
 		case 2:
 			registeredUser.register(userList);
+			beginMenu(userList);
 			break;
 		case 3:
 			unregisteredUserMethod();
