@@ -18,9 +18,7 @@ public class unregisteredUser {
 	
 	// This is the very first menu
 	public static void beginMenu(ArrayList<registeredUser> userList) {
-		System.out.println("#-----------WELCOME--------------#");
-		System.out.println("Mercedes Benz-Recommendation System");
-		System.out.println("-----------------------------");
+		
 		System.out.println("   ,--------------------------------------------------------------.\r\n"
 				+ "  |============================,------.============================|\r\n"
 				+ "  |==========================,'   ::   `.==========================|\r\n"
@@ -34,11 +32,14 @@ public class unregisteredUser {
 				+ "  |==========================`.        ,'==========================|\r\n"
 				+ "  |============================`--..--'============================|\r\n"
 				+ "   `--------------------------------------------------------------'");
-		System.out.println("You have 3 choices");
+		System.out.println("\n\n--------------------------------");
+		System.out.println("Mercedes Benz-Recommendation System");
+		System.out.println("--------------------------------");
+		System.out.println("\nWelcome! You have 3 choices:\n ");
 		System.out.println("Choose 1 to log in");
 		System.out.println("Choose 2 to register as a new user");
 		System.out.println("Choose 3 to continue as guest");
-		System.out.println("What do you want to choose?");
+		System.out.print("What do you want to choose? ");
 
 		int Choice = userInputInt.nextInt();
 		switch (Choice) {
@@ -91,13 +92,13 @@ public class unregisteredUser {
 	// This method redirects to follow up methods based on desired cartype 
 	public static int getUserChoice()	{
 
-		System.out.println("What cartype would you prefer ?" );	
+		System.out.println("\nThese are the car types for Mercedes Benz:" );	
 		System.out.println("(1) Sedan" );
 		System.out.println("(2) Van" );
 		System.out.println("(3) Hatchback" );
 		System.out.println("(4) Luxurious" );
 		System.out.println("(5) SUV" );
-
+		System.out.print("What cartype would you prefer? ");
 		int CarType = userInputInt.nextInt();
 		return CarType;
 
