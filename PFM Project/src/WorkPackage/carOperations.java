@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class carOperations { //CarOps should be changed (also change in Admin when calling)
+//public class carOperations { 
 	private ArrayList<car> carArrayList; //car arraylist
 	Scanner scanner=new Scanner(System.in);
 	
@@ -12,7 +12,7 @@ public class carOperations { //CarOps should be changed (also change in Admin wh
     this.carArrayList = readCarList();
  
     }
-	public void run(){
+	//public void run(){
 		
 		while (true) {
 		
