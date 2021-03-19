@@ -74,7 +74,6 @@ public class registeredUser extends unregisteredUser { // created inheritance
 		System.out.println("Choose 2 to view your list of favourite car recommendations.");
 		System.out.println("Choose 3 to delete your account.");
 		System.out.println("Choose 4 to log out and return to the last menu.");
-		System.out.println("Choose 5 to exit the system.");
 		System.out.println("What do you want to choose?");
 
 
@@ -115,14 +114,11 @@ public class registeredUser extends unregisteredUser { // created inheritance
 		case 4:
 			unregisteredUser.beginMenu(mainClass.userList);
 			break;
-		/*case 5:
-			System.out.println("\n\nThanks for using our system."
-					+ "\nSee you next time!");
-			break;
-		/*default: 
+
+		default: 
 			System.out.println("\nInvalid Choice!");
 			userInterface();
-			break;*/
+			break;
 			
 
 		}//end switch
