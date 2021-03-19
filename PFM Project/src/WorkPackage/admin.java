@@ -148,7 +148,7 @@ public class admin { //extends unregisteredUser{
 				System.out.println("\nThe User has successfully been approved!");
 			}	
 		}
-		System.out.print("\nWould you like to approve another user:[1] YES  [2] NO (Return to User Operations)? ");
+		System.out.print("\nWould you like to approve another user:[Enter: 1: Yes || 2: No (return to User Operations): ");
 		int adminchoice = userInputInt.nextInt();
 		switch (adminchoice) {
 		case 1: 
