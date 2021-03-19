@@ -88,10 +88,11 @@ public class unregisteredUser {
 			beginMenu(userList);
 			break;
 		case 3:
-			System.out.println("Welcome guest, please register for more facilities.\n" +
-					"for now, you can create one recommendation. Thank You!");
+			System.out.println("\n-----------------------------");
+			System.out.println("\nWelcome guest, please register for more facilities.\n" +
+					"For now, you can create one recommendation. Thank You!");
 			unregisteredUserMethod();
-			System.out.println("You created one recommendation. Please register for more facilities. You exited the system now.");
+			System.out.println("\nYou created one recommendation. Please re-run the system register for more facilities. You have exited the system now. ");
 			System.exit(0);
 			break;
 		case 4:
@@ -193,7 +194,7 @@ public class unregisteredUser {
 		else if(choiceSize==2){
 			carSize="Large";
 		}
-		System.out.println("\nDo you prefer a car sport look? ");
+		System.out.println("\nDo you prefer a " + carType + " with a sport look? ");
 		System.out.println("(1) Yes"); 
 		System.out.println("(2) No"); 
 		System.out.print("Enter your choice: ");
@@ -276,7 +277,7 @@ public class unregisteredUser {
 		System.out.println("\nThese are the fueltypes for car type " + carType + ":");
 		System.out.println("(1) Petrol"); 
 		System.out.println("(2) Diesel"); 
-		System.out.println("What fueltype do you prefer? ");
+		System.out.print("What fueltype do you prefer? ");
 		int choiceFuel = userInputInt.nextInt();
 
 		String fuelType = "Petrol";//default
@@ -436,12 +437,12 @@ public class unregisteredUser {
 
 		System.out.println("\nYour filters were: ");
 		System.out.println("Car Type = " + carType +"\n"+
-				"Min Price = €" + min +"\n"+
-				"Max Price = €" + max +"\n"+
+				"Min Price = $" + min +"\n"+
+				"Max Price = $" + max +"\n"+
 				"Size = "+ sport +"\n"+
 				"Size = "+ carSize +"\n"+
 				"FuelType = " + fuelType+"\n");
-		System.out.println("Searching our database. please wait....");
+		System.out.println("Searching our database. Please wait...");
 
 		for(int i = 0;i < carArrayList.size(); i++){
 			if(carArrayList.get(i).getBasePrice() <=max && carArrayList.get(i).getBasePrice() >=min &&
@@ -451,20 +452,21 @@ public class unregisteredUser {
 					carArrayList.get(i).getSize().equalsIgnoreCase(carSize)
 					){
 
-				System.out.println("Congratulations! Found a match. Recommended car for you: \n****"
-						 + carArrayList.get(i).getCarName() + "****" +
-						"\n****€" + carArrayList.get(i).getBasePrice() + "****");
+				System.out.println("\nCongratulations! We found your dream car! Recommended car for you:");
+				System.out.println("\nCar: "
+						 + carArrayList.get(i).getCarName() +
+						"\nPrice: $" + carArrayList.get(i).getBasePrice());
 				foundCar = carArrayList.get(i);
 
-				System.out.println("Do you want to see all the details of the recommended car?:\n"
+				System.out.println("\nDo you want to see all the details of the recommended car?:\n"
 						+ "(1) Yes\n"
 						+ "(2) No");
 				int choiceDetails = userInputInt.nextInt();
 
 				if(choiceDetails == 1){
-					System.out.printf("Car name: %s\n"
+					System.out.printf("\nCar name: %s\n"
 							+ "Car type: %s\n"
-							+ "Base price: €%s\n"
+							+ "Base price: $%s\n"
 							+ "Size: %s\n"
 							+ "Sport: %s\n"
 							+ "Fuel type: %s\n",
@@ -489,20 +491,20 @@ public class unregisteredUser {
 					carArrayList.get(i).getSize().equalsIgnoreCase(carSize)
 					) {
 
-				System.out.println("Sorry, No match found! We only found a car outside your price range: \n****"
-						+ carArrayList.get(i).getCarName() + "****" 
-						+ "\n****€" + carArrayList.get(i).getBasePrice() + "****");
+				System.out.println("\nSorry, No match found! We only found a car outside your price range: \n\nCar: "
+						+ carArrayList.get(i).getCarName() 
+						+ "\nPrice: $" + carArrayList.get(i).getBasePrice());
 				foundCar = carArrayList.get(i);
 
-				System.out.println("Do you want to see all the details of the recommended car?\n"
+				System.out.println("\nDo you want to see all the details of the recommended car?\n"
 						+ "(1) Yes\n"
 						+ "(2) No");
 				int choiceDetails = userInputInt.nextInt();
 
 				if(choiceDetails == 1){
-					System.out.printf("Car name: %s\n"
+					System.out.printf("\nCar name: %s\n"
 							+ "Car type: %s\n"
-							+ "Base price: €%s\n"
+							+ "Base price: $%s\n"
 							+ "Size: %s\n"
 							+ "Sport: %s\n"
 							+ "Fuel type: %s\n",
@@ -515,7 +517,7 @@ public class unregisteredUser {
 		}
 
 		if(foundCar==null){
-			System.out.println("Sorry, no match found!");
+			System.out.println("\nSorry, no match found!");
 		}
 
 		return foundCar;
