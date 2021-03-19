@@ -17,11 +17,14 @@ public class unregisteredUser {
 	static Scanner userInputDouble = new Scanner(System.in);
 	private static ArrayList<car> carArrayList; //car arraylist
 	admin runcarOps = new admin();
-
-
+	
+	public static void main() {
+	carArrayList = readCarList();
+	}
 	// This is the very first menu
+	
 	public static void beginMenu(ArrayList<registeredUser> userList) {
-
+		main();
 		System.out.println("                   _____________\r\n"
 				+ "                                  ..---:::::::-----------. ::::;;.\r\n"
 				+ "                               .'\"\"\"\"\"\"                  ;;   \\  \":.\r\n"
@@ -447,9 +450,9 @@ public class unregisteredUser {
 					carArrayList.get(i).getSize().equalsIgnoreCase(carSize)
 					){
 
-				System.out.println("Congratulations! Found a match. Recommended car for you: " 
-						+ "Car name: " + carArrayList.get(i).getCarName() + "\t" +
-						"Car price: " + carArrayList.get(i).getBasePrice());
+				System.out.println("******Congratulations! Found a match. Recommended car for you: \n"
+						 + carArrayList.get(i).getCarName() + "\t" +
+						"\n€ " + carArrayList.get(i).getBasePrice() + "*********");
 				foundCar = carArrayList.get(i);
 
 				System.out.println("Do you want to see all the details of the recommended car?:\n"
@@ -478,9 +481,9 @@ public class unregisteredUser {
 					carArrayList.get(i).getSize().equalsIgnoreCase(carSize)
 					) {
 
-				System.out.println("Sorry, No match found! We only found a car outside your price range: "
-						+ "Car name: " + carArrayList.get(i).getCarName() + "\t" 
-						+ "Car price: " + carArrayList.get(i).getBasePrice());
+				System.out.println("Sorry, No match found! We only found a car outside your price range: \n"
+						+ carArrayList.get(i).getCarName() + "\t" 
+						+ "\n€" + carArrayList.get(i).getBasePrice());
 				foundCar = carArrayList.get(i);
 
 				System.out.println("Do you want to see all the details of the recommended car?\n"
