@@ -51,7 +51,11 @@ public class registeredUser extends unregisteredUser { // created inheritance
 				if (ChoiceFavorite == 1) {
 					this.addFavorite(carFound);
 					System.out.println("\nYour favorite car has been saved successfully."
-							+ "\nYou may view your favorite car any time you wish."
+							+ "\nYou may view your favorite car any time you wish.\n"
+							+ "\n We have sent the car details of your recommended car to your email and phonenumber: "
+							+ "\nEmail: " + this.getEmailAddress()
+							+ "\nPhonenumber: " + this.getPhoneNumber()
+							+ "\n"
 							+ "\nYou are now being redirected to the last menu.\n\n");
 					this.userInterface();
 					break;
@@ -359,8 +363,12 @@ public class registeredUser extends unregisteredUser { // created inheritance
 		catch(IOException e) {
 			System.out.print("There is an I/O error in overwriting the file!"
 					+ "Catch source: addFavorite, registeredUser:399");		
+			
+			
 		} //end catch & try
-
+		
+		this.setFavorite(carObject.getCarID());
+		
 	} //end addFavorite()
 
 
