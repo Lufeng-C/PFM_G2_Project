@@ -58,7 +58,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 							+ "\n"
 							+ "\nWhat do you want to do?\n"
 							+ "Choose 1 to return to the user menu\n"
-							+ "Choose 2 to return to the main menu"
+							+ "Choose 2 to return to the main menu\n"
 							+ "What do you want to choose? ");
 					int ChoiceMenu = userInputInt.nextInt();
 						if (ChoiceMenu == 1)
