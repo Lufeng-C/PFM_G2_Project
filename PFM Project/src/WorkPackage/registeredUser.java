@@ -24,57 +24,17 @@ public class registeredUser extends unregisteredUser { // created inheritance
 
 	public void userInterface() {
 
-		System.out.println("                   _____________\r\n"
-				+ "                                  ..---:::::::-----------. ::::;;.\r\n"
-				+ "                               .'\"\"\"\"\"\"                  ;;   \\  \":.\r\n"
-				+ "                            .''                          ;     \\   \"\\__.\r\n"
-				+ "                          .'                            ;;      ;   \\\\\";\r\n"
-				+ "                        .'                              ;   _____;   \\\\/\r\n"
-				+ "                      .'                               :; ;\"     \\ ___:'.\r\n"
-				+ "                    .'--...........................    : =   ____:\"    \\ \\\r\n"
-				+ "               ..-\"\"                               \"\"\"'  o\"\"\"     ;     ; :\r\n"
-				+ "          .--\"\"  .----- ..----...    _.-    --.  ..-\"     ;       ;     ; ;\r\n"
-				+ "       .\"\"_-     \"--\"\"-----'\"\"    _-\"        .-\"\"         ;        ;    .-.\r\n"
-				+ "    .'  .'                      .\"         .\"              ;       ;   /. |\r\n"
-				+ "   /-./'                      .\"          /           _..  ;       ;   ;;;|\r\n"
-				+ "  :  ;-.______               /       _________==.    /_  \\ ;       ;   ;;;;\r\n"
-				+ "  ;  / |      \"\"\"\"\"\"\"\"\"\"\".---.\"\"\"\"\"\"\"          :    /\" \". |;       ; _; ;;;\r\n"
-				+ " /\"-/  |                /   /                  /   /     ;|;      ;-\" | ;';\r\n"
-				+ ":-  :   \"\"\"----______  /   /              ____.   .  .\"'. ;;   .-\"..T\"   .\r\n"
-				+ "'. \"  ___            \"\":   '\"\"\"\"\"\"\"\"\"\"\"\"\"\"    .   ; ;    ;; ;.\" .\"   '--\"\r\n"
-				+ " \",   __ \"\"\"  \"\"---... :- - - - - - - - - ' '  ; ;  ;    ;;\"  .\"\r\n"
-				+ "  /. ;  \"\"\"---___                             ;  ; ;     ;|.\"\"\r\n"
-				+ " :  \":           \"\"\"----.    .-------.       ;   ; ;     ;:\r\n"
-				+ "  \\  '--__               \\   \\        \\     /    | ;     ;;\r\n"
-				+ "   '-..   \"\"\"\"---___      :   .______..\\ __/..-\"\"|  ;   ; ;\r\n"
-				+ "       \"\"--..       \"\"\"--\"                      .   \". . ;\r\n"
-				+ "             \"\"------...                  ..--\"\"      \" :\r\n"
-				+ "                        \"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"    \\        /\r\n"
-				+ "                                               \"------\"");
-		System.out.println("   ,--------------------------------------------------------------.\r\n"
-				+ "  |============================,------.============================|\r\n"
-				+ "  |==========================,'   ::   `.==========================|\r\n"
-				+ "  |=========================/     ::     \\=========================|\r\n"
-				+ "  |========================:      ::      :========================|\r\n"
-				+ "  |=======================:       ::       :=======================|\r\n"
-				+ "  |=======================|      .::.      |=======================|\r\n"
-				+ "  |=======================:    .:'  `:.    :=======================|\r\n"
-				+ "  |========================: .:'      `:. :========================|\r\n"
-				+ "  |=========================\\            /=========================|\r\n"
-				+ "  |==========================`.        ,'==========================|\r\n"
-				+ "  |============================`--..--'============================|\r\n"
-				+ "   `--------------------------------------------------------------'");
 		System.out.println("Welcome: " + this.getFirstName() + " " + this.getLastName());
 
 		System.out.println("-----------------------------");
 		System.out.println("User Overview");
 		System.out.println("-----------------------------");
-		System.out.println("You have 3 choices");
+		System.out.println("You have 4 choices");
 		System.out.println("Choose 1 to request a car recommendation.");
 		System.out.println("Choose 2 to view your list of favourite car recommendations.");
 		System.out.println("Choose 3 to delete your account.");
 		System.out.println("Choose 4 to log out and return to the last menu.");
-		System.out.println("What do you want to choose?");
+		System.out.print("What do you want to choose? ");
 
 
 		int Choice = userInputInt.nextInt();
@@ -600,6 +560,12 @@ public class registeredUser extends unregisteredUser { // created inheritance
 	public void setFavorite(String favorite) {
 		this.favorite = favorite;
 	}
+
+
+	public static void setNum_registeredUser() {
+		registeredUser.num_registeredUser = getTotalLines();
+	}
+
 
 	// This method is the equivalent of unregisteredUserMethod() from super class
 	public car registeredUserMethod() {

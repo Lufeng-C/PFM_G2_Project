@@ -21,16 +21,31 @@ public class mainClass {
 		 */
 	
 		userList = registeredUser.createObjects(); 
-		carArrayList = unregisteredUser.main();
+		carArrayList = unregisteredUser.readCarList();
+		    	
 		
 		
 		// go to the first menu (and subsequent ones from there)
 		unregisteredUser.beginMenu(userList);
 
-
 	}
+
+	public static ArrayList<car> getCarArrayList() {
+		return carArrayList;
+	}
+
+	public static ArrayList<registeredUser> getUserList() {
+		return userList;
+	}
+
+	public static void setUserList(ArrayList<registeredUser> userList) {
+		mainClass.userList = userList;
+	}
+
+	public static void setCarArrayList(ArrayList<car> carArrayList) {
+		mainClass.carArrayList = carArrayList;
+	}
+
 }
-
-
 
 

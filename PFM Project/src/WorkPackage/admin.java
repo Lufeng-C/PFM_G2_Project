@@ -15,15 +15,10 @@ public class admin { //extends unregisteredUser{
 	private ArrayList<car> carArrayList; //car array list
 	Scanner scanner=new Scanner(System.in);
 		
-	   public void main() {
-	   this.carArrayList = readCarList();
-	 
-	    }
+
 
 	public static void adminMenu () {
-
 		admin runcarOps = new admin();
-		runcarOps.main();
 		
 		System.out.println("\n-----------------------------");
 		System.out.println("ADMIN MAIN MENU");
@@ -673,7 +668,7 @@ public class admin { //extends unregisteredUser{
 		        //below codes for save and read car array list
 		    
 		        public void saveCarList(){
-		            Object obj= this.carArrayList;
+		        Object obj= this.carArrayList;
 		            FileOutputStream f = null;
 		            try {
 		                f = new FileOutputStream(new File("car_List.txt"));
@@ -711,7 +706,7 @@ public class admin { //extends unregisteredUser{
 		            e.printStackTrace();
 		            System.out.println("Error Loading Car List");
 		        }
-
+		     mainClass.setCarArrayList(carArrayList);
 		        return new ArrayList<car>();
 		    }
 
@@ -726,9 +721,10 @@ public class admin { //extends unregisteredUser{
 
 		System.out.println("\nThanks for your time Admin. You have now been logged out!");
 		System.out.println("Have a great day!");
-
-		mainClass.main(null); 	//move back to starting screen of application
-
+		registeredUser.setNum_registeredUser();
+		mainClass.setUserList(registeredUser.createObjects());
+		unregisteredUser.beginMenu(mainClass.userList); 	//move back to starting screen of application
+	
 	}
 
 
