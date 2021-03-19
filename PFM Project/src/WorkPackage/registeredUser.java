@@ -50,7 +50,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 				int ChoiceFavorite = userInputInt.nextInt();
 				if (ChoiceFavorite == 1) {
 					this.addFavorite(carFound);
-					System.out.println("\nYour favorite car has been saved successfully."
+					System.out.print("\nYour favorite car has been saved successfully."
 							+ "\nYou may view your favorite car any time you wish.\n"
 							+ "\nWe have sent the car details of your recommended car to your email and phonenumber: "
 							+ "\nEmail: " + this.getEmailAddress()
@@ -58,13 +58,27 @@ public class registeredUser extends unregisteredUser { // created inheritance
 							+ "\n"
 							+ "\nWhat do you want to do?\n"
 							+ "Choose 1 to return to the user menu\n"
-							+ "Choose 2 to return to the main menu");
+							+ "Choose 2 to return to the main menu"
+							+ "What do you want to choose? ");
 					int ChoiceMenu = userInputInt.nextInt();
 						if (ChoiceMenu == 1)
 							this.userInterface();
 								else if (ChoiceMenu == 2)
 									unregisteredUser.beginMenu(null);
 					break;
+				}
+					else if (ChoiceFavorite == 2) {
+						
+						System.out.print("\nWhat do you want to do?\n"
+								+ "Choose 1 to return to the user menu\n"
+								+ "Choose 2 to return to the main menu\n"
+								+ "What do you want to choose? ");
+						int ChoiceMenu2 = userInputInt.nextInt();
+						if (ChoiceMenu2 == 1)
+							this.userInterface();
+								else if (ChoiceMenu2 == 2)
+									unregisteredUser.beginMenu(null);
+						
 				}
 			}//end if
 			else {
