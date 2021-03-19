@@ -172,7 +172,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 
 		while (loginAttempts > 0) {
 
-			System.out.print("Enter your email adress: ");
+			System.out.print("\nEnter your email adress: ");
 			String entered_email = userInputString.nextLine();
 
 			System.out.print("Enter your password: ");
