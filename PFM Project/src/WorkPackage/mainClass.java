@@ -13,12 +13,8 @@ public class mainClass {
 	
 	public static void main(String[] args) {
 		
-		/*
-		 *  creates user & car objects
-		 *  
-		 * TODO !!! These arrayLists should be updated after relevant admin operations
-		 * 
-		 */
+		// creates user & car objects
+		
 	
 		userList = registeredUser.createObjects(); 
 		carArrayList = unregisteredUser.readCarList();
