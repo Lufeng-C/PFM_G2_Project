@@ -435,11 +435,11 @@ public class unregisteredUser {
 
 		System.out.println("\nYour filters were: ");
 		System.out.println("Car Type = " + carType +"\n"+
-				"Min Price= " + min +"\n"+
-				"Max Price= " + max +"\n"+
-				"Size= "+ sport +"\n"+
-				"Size= "+ carSize +"\n"+
-				"FuelType= " + fuelType+"\n");
+				"Min Price = €" + min +"\n"+
+				"Max Price = €" + max +"\n"+
+				"Size = "+ sport +"\n"+
+				"Size = "+ carSize +"\n"+
+				"FuelType = " + fuelType+"\n");
 		System.out.println("Searching our database. please wait....");
 
 		for(int i = 0;i < carArrayList.size(); i++){
@@ -463,7 +463,7 @@ public class unregisteredUser {
 				if(choiceDetails == 1){
 					System.out.printf("Car name: %s\n"
 							+ "Car type: %s\n"
-							+ "Base price: %s\n"
+							+ "Base price: €%s\n"
 							+ "Size: %s\n"
 							+ "Sport: %s\n"
 							+ "Fuel type: %s\n",
@@ -501,7 +501,7 @@ public class unregisteredUser {
 				if(choiceDetails == 1){
 					System.out.printf("Car name: %s\n"
 							+ "Car type: %s\n"
-							+ "Base price: %s\n"
+							+ "Base price: €%s\n"
 							+ "Size: %s\n"
 							+ "Sport: %s\n"
 							+ "Fuel type: %s\n",
