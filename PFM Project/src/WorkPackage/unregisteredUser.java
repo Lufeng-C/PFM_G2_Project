@@ -73,6 +73,7 @@ public class unregisteredUser {
 		case 4:
 			System.out.println("\n\nThanks for using our system."
 					+ "\nSee you next time!");
+			System.exit(0);
 			break;
 		}
 	}
