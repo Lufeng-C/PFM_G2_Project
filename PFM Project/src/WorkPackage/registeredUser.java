@@ -8,7 +8,6 @@ public class registeredUser extends unregisteredUser { // created inheritance
 	static Scanner userInputInt = new Scanner(System.in); 
 	static Scanner userInputString = new Scanner(System.in); 
 	static Scanner userInputDouble = new Scanner(System.in);
-	//private static ArrayList<car> carArrayList; //car array list
 
 	private String emailAddress;
 	private String password;
@@ -116,15 +115,15 @@ public class registeredUser extends unregisteredUser { // created inheritance
 		case 4:
 			unregisteredUser.beginMenu(mainClass.userList);
 			break;
-		case 5:
+		/*case 5:
 			System.out.println("\n\nThanks for using our system."
 					+ "\nSee you next time!");
 			break;
-			/*default: 
+		/*default: 
 			System.out.println("\nInvalid Choice!");
 			userInterface();
-			break;
-			 */
+			break;*/
+			
 
 		}//end switch
 	}
@@ -283,15 +282,6 @@ public class registeredUser extends unregisteredUser { // created inheritance
 	}	// end register()
 
 	public void deleteAccount() {
-		/* confirm email and password? If possible
-
-		System.out.print("To delete your account, confirm your email address and password: ");
-		System.out.print("Your email address (used for log in): ");
-		String email = userInputString.nextLine();	
-
-		System.out.print("Your password: ");
-		String password = userInputString.nextLine();
-		 */
 
 		System.out.print("Are you sure you want to delete your account? Enter 1 for yes, enter 2 to cancel and go back to the user interface: ");
 		int confirmation = userInputInt.nextInt();
@@ -453,9 +443,9 @@ public class registeredUser extends unregisteredUser { // created inheritance
 							+ "\nYou are now being redirected to the previous menu." 
 							+ "\n*******************************\n\n");
 					this.userInterface();
-				default: 
+				/*default: 
 					System.out.println("\nInvalid Choice!");
-					this.viewFavorite(carArrayList);
+					this.viewFavorite(carArrayList);*/
 					break;
 				}//end switch
 			} catch (Exception ex) {
@@ -632,29 +622,25 @@ public class registeredUser extends unregisteredUser { // created inheritance
 
 		case 1:
 			return this.Sedan();
-			//break;
 
 		case 2:
 			return this.Van();
-			//break;
 
 		case 3:
 			return this.Hatchback();
-			//break;
-
+			
 		case 4:
 			return this.Luxurious();
-			//break;
-
+			
 		case 5:
 			return this.SUV();
-			//break;
+			
 		default: 
 			System.out.println("\nInvalid Choice!");
 			registeredUserMethod();
 			return null;
-			//break;
-
+			
+		
 		} //end switch
 	} //end registerUserMethod()
 
