@@ -1,6 +1,6 @@
 # PFM_G2_Project Instruction
 
-Hi Yashar/Ayman!
+Hi Yashar/Ayman/Project Evaluator!
 
 Thank you for trying the Mercedes-Benz car-recommendation system.
 This system is designed to provide you with the best possible Mercedes car for your needs. The system consists of a few parts (classes), we will cover them one by one:
