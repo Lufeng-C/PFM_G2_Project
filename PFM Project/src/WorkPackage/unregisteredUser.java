@@ -452,7 +452,7 @@ public class unregisteredUser {
 
 				System.out.println("Congratulations! Found a match. Recommended car for you: \n****"
 						 + carArrayList.get(i).getCarName() + "****" +
-						"\n****€ " + carArrayList.get(i).getBasePrice() + "****");
+						"\n****€" + carArrayList.get(i).getBasePrice() + "****");
 				foundCar = carArrayList.get(i);
 
 				System.out.println("Do you want to see all the details of the recommended car?:\n"
@@ -461,7 +461,14 @@ public class unregisteredUser {
 				int choiceDetails = userInputInt.nextInt();
 
 				if(choiceDetails == 1){
-					System.out.println("Details of recommended car: " + carArrayList.get(i).toString());
+					System.out.printf("Car name: %s\n"
+							+ "Car type: %s\n"
+							+ "Base price: %s\n"
+							+ "Size: %s\n"
+							+ "Sport: %s\n"
+							+ "Fuel type: %s\n",
+							foundCar.getCarName(), foundCar.getCarType(), foundCar.getBasePrice(), 
+							foundCar.getSize(), foundCar.isSport(), foundCar.getFuelType());
 				}
 			}
 		} //end for loop     
@@ -492,7 +499,15 @@ public class unregisteredUser {
 				int choiceDetails = userInputInt.nextInt();
 
 				if(choiceDetails == 1){
-					System.out.println("Details of recommended car: " + carArrayList.get(i).toString());
+					System.out.printf("Car name: %s\n"
+							+ "Car type: %s\n"
+							+ "Base price: %s\n"
+							+ "Size: %s\n"
+							+ "Sport: %s\n"
+							+ "Fuel type: %s\n",
+							foundCar.getCarName(), foundCar.getCarType(), foundCar.getBasePrice(), 
+							foundCar.getSize(), foundCar.isSport(), foundCar.getFuelType());
+
 
 				}		                
 			}
