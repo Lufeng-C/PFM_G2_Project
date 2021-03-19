@@ -52,7 +52,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 					this.addFavorite(carFound);
 					System.out.println("\nYour favorite car has been saved successfully."
 							+ "\nYou may view your favorite car any time you wish.\n"
-							+ "\n We have sent the car details of your recommended car to your email and phonenumber: "
+							+ "\nWe have sent the car details of your recommended car to your email and phonenumber: "
 							+ "\nEmail: " + this.getEmailAddress()
 							+ "\nPhonenumber: " + this.getPhoneNumber()
 							+ "\n"
