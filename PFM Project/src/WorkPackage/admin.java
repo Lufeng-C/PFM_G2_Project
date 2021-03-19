@@ -42,7 +42,7 @@ public class admin { //extends unregisteredUser{
 			opsUser();
 			break;
 		case 2:
-			runcarOps.opsCar(); //call Main class to execute
+			runcarOps.opsCar();
 			break;
 		case 3:
 			adminLogout();
