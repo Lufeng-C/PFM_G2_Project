@@ -17,19 +17,19 @@ public class unregisteredUser {
 	static Scanner userInputDouble = new Scanner(System.in);
 	private static ArrayList<car> carArrayList; //car arraylist
 	admin runcarOps = new admin();
-	
+
 
 	// This is reserved space for the main method
 
-	public static void main() {
-		carArrayList = readCarList();
-		
+	public static ArrayList<car> main() {
+		return carArrayList = readCarList();
+
 	}
-	
+
 	// This is the very first menu
 	public static void beginMenu(ArrayList<registeredUser> userList) {
 
-        
+
 		System.out.println("   ,--------------------------------------------------------------.\r\n"
 				+ "  |============================,------.============================|\r\n"
 				+ "  |==========================,'   ::   `.==========================|\r\n"
@@ -50,6 +50,7 @@ public class unregisteredUser {
 		System.out.println("Choose 1 to log in");
 		System.out.println("Choose 2 to register as a new user");
 		System.out.println("Choose 3 to continue as guest");
+		System.out.println("Choose 4 to exit the system");
 		System.out.print("What do you want to choose? ");
 
 		int Choice = userInputInt.nextInt();
@@ -64,20 +65,24 @@ public class unregisteredUser {
 			beginMenu(userList);
 			break;
 		case 3:
-	        System.out.println("Welcome guest, please register for more facilities.\n" +
-	                "for now, you can create one recommendation. Thank You!");
+			System.out.println("Welcome guest, please register for more facilities.\n" +
+					"for now, you can create one recommendation. Thank You!");
 			unregisteredUserMethod();
 			System.out.println("You created one recommendation. Please register for more facilities. You exited the system now");
 			break;
+		case 4:
+			System.out.println("\n\nThanks for using our system."
+					+ "\nSee you next time!");
+			break;
 		}
 	}
-	
+
 	// This method is used to create a recommendation
 	public static void unregisteredUserMethod() {
 
 		//this callingObject is used to call non-static method in a static method
 		unregisteredUser callingObject = new unregisteredUser(); 
-		
+
 
 		System.out.println("\nThese are the car types for Mercedes Benz:" );	
 		System.out.println("(1) Sedan" );
@@ -86,10 +91,10 @@ public class unregisteredUser {
 		System.out.println("(4) Luxurious" );
 		System.out.println("(5) SUV" );
 		System.out.print("What cartype would you prefer? ");
-		
+
 		int userChoice= userInputInt.nextInt();
 		switch (userChoice) {	
-		
+
 
 		case 1:
 			callingObject.Sedan();
@@ -115,16 +120,16 @@ public class unregisteredUser {
 			unregisteredUserMethod();
 			break;
 
-			} //end unregisterUserMethod()
-		}
-	
+		} //end unregisterUserMethod()
+	}
 
-	
-	public void Sedan() {
+
+
+	public car Sedan() {
 		String carType = "Sedan";
-		
+
 		System.out.println("\nYou have chosen the Sedan car type!");
-		
+
 		System.out.print("\nWhat is your budget? Enter Minimum: ");
 		double minBudget = userInputDouble.nextDouble();
 
@@ -177,13 +182,13 @@ public class unregisteredUser {
 			sport="No";
 		}
 
-		viewByFilter (minBudget, maxBudget, sport, fuelType,carType,carSize);
+		return viewByFilter (minBudget, maxBudget, sport, fuelType,carType,carSize);
 	}
-	public void Van () {
+	public car Van () {
 		String carType = "Van";
 
 		System.out.println("\nYou have chosen the " + carType + " car type!");
-		
+
 		System.out.print("\nWhat is your budget? Enter Minimum: ");
 		double minBudget = userInputDouble.nextDouble();
 
@@ -229,13 +234,13 @@ public class unregisteredUser {
 			sport="No";
 		}
 
-		viewByFilter (minBudget, maxBudget, sport, fuelType,carType,carSize);
+		return viewByFilter (minBudget, maxBudget, sport, fuelType,carType,carSize);
 	}
-	public void Hatchback() {
+	public car Hatchback() {
 		String carType = "Hatchback";
 
 		System.out.println("\nYou have chosen the " + carType + " car type!");
-		
+
 		System.out.print("\nWhat is your budget? Enter Minimum: ");
 		double minBudget = userInputDouble.nextDouble();
 
@@ -283,13 +288,13 @@ public class unregisteredUser {
 			sport="No";
 		}
 
-		viewByFilter (minBudget, maxBudget, sport, fuelType, carType, carSize);
+		return viewByFilter (minBudget, maxBudget, sport, fuelType, carType, carSize);
 	}
-	public void Luxurious() {
+	public car Luxurious() {
 		String carType = "Luxurious";
 
 		System.out.println("\nYou have chosen the " + carType + " car type!");
-		
+
 		System.out.print("\nWhat is your budget? Enter Minimum: ");
 		double minBudget = userInputDouble.nextDouble();
 
@@ -339,14 +344,14 @@ public class unregisteredUser {
 			sport="No";
 		}
 
-		viewByFilter (minBudget, maxBudget, sport, fuelType, carType, carSize);
+		return viewByFilter (minBudget, maxBudget, sport, fuelType, carType, carSize);
 	}
-	public void SUV() {
+	public car SUV() {
 		String carType = "SUV";
 
 
 		System.out.println("\nYou have chosen the " + carType + " car type!");
-		
+
 		System.out.print("\nWhat is your budget? Enter Minimum: ");
 		double minBudget = userInputDouble.nextDouble();
 
@@ -397,7 +402,7 @@ public class unregisteredUser {
 			sport="No";
 		}
 
-		viewByFilter (minBudget, maxBudget, sport, fuelType,carType,carSize);
+		return viewByFilter (minBudget, maxBudget, sport, fuelType,carType,carSize);
 	}
 
 
@@ -407,7 +412,7 @@ public class unregisteredUser {
 		car foundCar=null;
 
 
-		System.out.println("Your filters were: ");
+		System.out.println("\nYour filters were: ");
 		System.out.println("Car Type = " + carType +"\n"+
 				"Min Price= " + min +"\n"+
 				"Max Price= " + max +"\n"+
@@ -416,7 +421,7 @@ public class unregisteredUser {
 				"FuelType= " + fuelType+"\n");
 		System.out.println("Searching our database. please wait....");
 
-		for(int i=0;i<carArrayList.size();i++){
+		for(int i = 0;i < carArrayList.size(); i++){
 			if(carArrayList.get(i).getBasePrice() <=max && carArrayList.get(i).getBasePrice() >=min &&
 					carArrayList.get(i).getFuelType().equalsIgnoreCase(fuelType) &&
 					carArrayList.get(i).isSport().equalsIgnoreCase(sport)&&
@@ -436,11 +441,11 @@ public class unregisteredUser {
 
 				if(choiceDetails == 1){
 					System.out.println("Details of recommended car: " + carArrayList.get(i).toString());
-				}		                
+				}
 			}
 		} //end for loop     
 		if(foundCar==null){;
-		viewByFilterPrice (sport, fuelType, carType, carSize);
+		foundCar = viewByFilterPrice (sport, fuelType, carType, carSize);
 		}      
 		return foundCar;
 	}
@@ -467,7 +472,7 @@ public class unregisteredUser {
 
 				if(choiceDetails == 1){
 					System.out.println("Details of recommended car: " + carArrayList.get(i).toString());
-					
+
 				}		                
 			}
 		}
@@ -475,51 +480,51 @@ public class unregisteredUser {
 		if(foundCar==null){
 			System.out.println("Sorry, no match found!");
 		}
-		
+
 		return foundCar;
-		
+
 	}
 
-public void saveCarList(){
-    Object obj= this.carArrayList;
-    FileOutputStream f = null;
-    try {
-        f = new FileOutputStream(new File("car_List.txt"));
+	public void saveCarList(){
+		Object obj= this.carArrayList;
+		FileOutputStream f = null;
+		try {
+			f = new FileOutputStream(new File("car_List.txt"));
 
-        ObjectOutputStream o = new ObjectOutputStream(f);
+			ObjectOutputStream o = new ObjectOutputStream(f);
 
-        // Write objects to file
-        o.writeObject(obj);
+			// Write objects to file
+			o.writeObject(obj);
 
-        o.close();
-        f.close();
-    } catch (IOException e) {
-        e.printStackTrace();
-        System.out.println("Error Saving car List");
-    }   
+			o.close();
+			f.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Error Saving car List");
+		}   
 
-}
+	}
 
 	public static ArrayList<car> readCarList(){
 		FileInputStream fi = null;
 		try {
 			fi = new FileInputStream("car_List.txt");
 
-    ObjectInputStream oi = new ObjectInputStream(fi);
+			ObjectInputStream oi = new ObjectInputStream(fi);
 
-    // Read objects
-    @SuppressWarnings("unchecked")
-	ArrayList<car> carArrayList = (ArrayList<car>) oi.readObject();
+			// Read objects
+			@SuppressWarnings("unchecked")
+			ArrayList<car> carArrayList = (ArrayList<car>) oi.readObject();
 
-    oi.close();
-    fi.close();
-    return carArrayList;
+			oi.close();
+			fi.close();
+			return carArrayList;
 
-} catch (IOException | ClassNotFoundException e) {
-	e.printStackTrace();
-	System.out.println("Error Loading Car List");
-}
+		} catch (IOException | ClassNotFoundException e) {
+			e.printStackTrace();
+			System.out.println("Error Loading Car List");
+		}
 
-return new ArrayList<car>();
-}
+		return new ArrayList<car>();
 	}
+}

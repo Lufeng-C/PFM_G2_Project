@@ -8,8 +8,8 @@ public class registeredUser extends unregisteredUser { // created inheritance
 	static Scanner userInputInt = new Scanner(System.in); 
 	static Scanner userInputString = new Scanner(System.in); 
 	static Scanner userInputDouble = new Scanner(System.in);
-	private ArrayList<car> carArrayList; //car array list
-	
+	//private static ArrayList<car> carArrayList; //car array list
+
 	private String emailAddress;
 	private String password;
 	private String firstName;
@@ -22,7 +22,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 	static int num_registeredUser = getTotalLines();
 	admin runcarOps = new admin();
 
-	
+
 	public void userInterface() {
 
 		System.out.println("                   _____________\r\n"
@@ -74,38 +74,59 @@ public class registeredUser extends unregisteredUser { // created inheritance
 		System.out.println("Choose 1 to request a car recommendation.");
 		System.out.println("Choose 2 to view your list of favourite car recommendations.");
 		System.out.println("Choose 3 to delete your account.");
-		System.out.println("Choose 4 to exit the system.");
+		System.out.println("Choose 4 to log out and return to the last menu.");
+		System.out.println("Choose 5 to exit the system.");
 		System.out.println("What do you want to choose?");
 
 
 		int Choice = userInputInt.nextInt();
-		
+
 		switch (Choice) {
 		case 1:
-			unregisteredUserMethod();
-			/*int ChoiceFavorite = userInputInt.nextInt();
-	        System.out.println("Do you want to save your recommendation? "
-	        		+ "Choose 1 for yes"
-	        		+ "Choose 2 for no");
-	        if (ChoiceFavorite == 1) {
-	        	addFavorite();
-	        }*/
-	        
-			break;
+			car carFound = null;
+			carFound = this.registeredUserMethod();
+
+			if (carFound != null) {
+				System.out.println("\nDo you want to save your recommendation? "
+						+ "Enter: 1: Yes (previous fav car will be lost) || 2: No ");
+				int ChoiceFavorite = userInputInt.nextInt();
+				if (ChoiceFavorite == 1) {
+					this.addFavorite(carFound);
+					System.out.println("\nYour favorite car has been saved successfully."
+							+ "\nYou may view your favorite car any time you wish."
+							+ "\nYou are now being redirected to the last menu.\n\n");
+					this.userInterface();
+					break;
+				}
+			}//end if
+			else {
+				System.out.println("\nSorry you haven't found your dream car :("
+						+ "\nYou are now being redirected to the last menu."
+						+ "\nFeel free to start a new recommendation request by pressing 1.");
+				this.userInterface();
+				break;
+			}//end else
+
 		case 2:
-			viewFavorite(carArrayList);
+			viewFavorite(mainClass.carArrayList);
 			break;
 		case 3:
-			this.deleteAccount(); //insert a user object here
+			this.deleteAccount(); 
 			break;
 		case 4:
+			unregisteredUser.beginMenu(mainClass.userList);
 			break;
-		default: 
+		case 5:
+			System.out.println("\n\nThanks for using our system."
+					+ "\nSee you next time!");
+			break;
+			/*default: 
 			System.out.println("\nInvalid Choice!");
 			userInterface();
 			break;
+			 */
 
-		}
+		}//end switch
 	}
 
 
@@ -146,8 +167,9 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			}
 			br2.close();
 
-		}	catch (Exception ex) {
-			System.out.println ("Something went wrong for I/O!");
+		}	catch (IOException ex) {
+			System.out.println ("Something went wrong here I/O! "
+					+ "Catch source: assignAttributes, registeredUser:150");
 		}
 
 		return userList;
@@ -224,9 +246,9 @@ public class registeredUser extends unregisteredUser { // created inheritance
 	public static void register (ArrayList<registeredUser> userList) {
 
 		try {
-			System.out.print("Welcome to register process!\nPlease type relevant info when prompted.\n");
+			System.out.print("\n\nWelcome to register process!\nPlease type relevant info when prompted.\n");
 
-			System.out.print("Your email address (used for log in): ");
+			System.out.print("\nYour email address (used for log in): ");
 			String email = userInputString.nextLine();	
 
 			System.out.print("Your password: ");
@@ -241,17 +263,12 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			System.out.print("Your phone number: ");
 			String phoneNumber = userInputString.nextLine();
 
-			// find out the biggest userID and add 1 
-			ArrayList<Integer> userIDList = new ArrayList<Integer>();
-			for (int i = 0; i < userList.size(); i++) {
-				userIDList.add(userList.get(i).getUserID());
-			}
-			int userID = Collections.max(userIDList) + 1;
+			int userID = (int)(Math.random()*10000);
 
 			boolean logInStatus = false; // reserved for any possible future use
 
 			String line = (email + "\t" + password + "\t" + firstName + "\t" + lastName + 
-					"\t" + phoneNumber + "\t" + userID + "\t" + logInStatus + "\t" + " ");
+					"\t" + phoneNumber + "\t" + userID + "\t" + logInStatus + "\t" + "99999"); //99999-no fav
 
 			appendFileTemp(line); // store in temp file, awaiting admin approval
 			System.out.println("\n\nThanks for your registration! :D \n"
@@ -260,7 +277,8 @@ public class registeredUser extends unregisteredUser { // created inheritance
 					+ "As of right now, you will be redirected to the main menu.\n"
 					+ "You can either continue as a guest, or wait patiently for the registration results.\n");
 		} catch (Exception ex) {
-			System.out.println("Something went wrong for I/O!");
+			System.out.println("\nSomething went wrong here!"
+					+ "Catch source: register, registeredUser:264");
 		}
 	}	// end register()
 
@@ -319,7 +337,8 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			br.close();
 
 		}	catch (IOException ex) {
-			System.out.println ("Something went wrong for I/O!");
+			System.out.println ("Something went wrong for I/O!"
+					+ "Catch source: removeUser, registeredUser:325");
 		}
 
 		boolean flag = false;
@@ -339,7 +358,8 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			wr.close();
 		}
 		catch(IOException e) {
-			System.out.print("There is an I/O error in overwriting the file!");		
+			System.out.print("There is an I/O error in overwriting the file!"
+					+ "Catch source: removeUser, registeredUser:346");		
 		} // end catch & try
 		return flag;
 	} //end removeUser(int userID)
@@ -365,7 +385,8 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			br.close();
 
 		}	catch (IOException ex) {
-			System.out.println ("Something went wrong for I/O!");
+			System.out.println ("Something went wrong for I/O!"
+					+ "Catch source: addFavorite, registeredUser:373");
 		} //end catch & try
 
 		// update storedLine with new favorite
@@ -377,7 +398,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 		uCurrent = originalLine.split("\t"); // uCurrent [0] is email; [1] password; 
 		//[2]first name; [3] last name; [4] phone; [5] userID [6] logInStatus [7] favorite
 		updatedLine = (uCurrent[0] + "\t" + uCurrent[1] + "\t" + uCurrent[2] + "\t" + uCurrent[3] + "\t" 
-				+ uCurrent[4] + uCurrent[5] + "\t" + uCurrent[6] + "\t" + carObject.getCarID());
+				+ uCurrent[4] +"\t" +  uCurrent[5] + "\t" + uCurrent[6] + "\t" + carObject.getCarID());
 		storedLine.add(updatedLine);
 
 		// write the permRegistration database again
@@ -390,7 +411,8 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			wr.close();		
 		} 
 		catch(IOException e) {
-			System.out.print("There is an I/O error in overwriting the file!");		
+			System.out.print("There is an I/O error in overwriting the file!"
+					+ "Catch source: addFavorite, registeredUser:399");		
 		} //end catch & try
 
 	} //end addFavorite()
@@ -399,36 +421,56 @@ public class registeredUser extends unregisteredUser { // created inheritance
 	// This method returns details of a user's fav car
 	public void viewFavorite (ArrayList<car> carArrayList) {
 		String favCarID = this.getFavorite();
-		ArrayList<Integer> carIDList = new ArrayList<Integer>();
-		for (int i = 0; i < carArrayList.size(); i++) {
-			carIDList.add(Integer.parseInt(carArrayList.get(i).getCarID()));
-		}
-		int indx = carIDList.indexOf(Integer.parseInt(favCarID));
-		car favCar = carArrayList.get(indx);
 
-		System.out.print("Your favorite car model is " + favCar.getCarName() 
-		+ ". Would you like to view more details? \n(1)Yes\n(2)No");
+		if (!favCarID.equals("99999")) {
+			ArrayList<Integer> carIDList = new ArrayList<Integer>();
+			for (int i = 0; i < carArrayList.size(); i++) {
+				carIDList.add(Integer.parseInt(carArrayList.get(i).getCarID()));
+			}
+			int indx = carIDList.indexOf(Integer.parseInt(favCarID));
+			car favCar = carArrayList.get(indx);
 
-		int choiceDetails = userInputInt.nextInt();
-		switch (choiceDetails) {
-		case 1:
-			System.out.printf("Car Name: %s\n"
-					+ "Car Type: %s\n"
-					+ "Base Price: %s\n"
-					+ "Size: %s\n"
-					// + "Sport: %s\n"
-					+ "Fuel Type: %s\n",
-					favCar.getCarName(), favCar.getCarType(), favCar.getBasePrice(), 
-					favCar.getSize(), favCar.getFuelType());
+			System.out.print("Your favorite car model is " + favCar.getCarName() 
+			+ ". Would you like to view more details [1] YES  [2] NO? ");
+			try {
+				int choiceDetails = userInputInt.nextInt();
+				switch (choiceDetails) {
+				case 1:
+					System.out.printf("Car Name: %s\n"
+							+ "Car Type: %s\n"
+							+ "Base Price: %s\n"
+							+ "Size: %s\n"
+							// + "Sport: %s\n"
+							+ "Fuel Type: %s\n",
+							favCar.getCarName(), favCar.getCarType(), favCar.getBasePrice(), 
+							favCar.getSize(), favCar.getFuelType());
+					System.out.println( "\nThanks for viewing your favorite car!"
+							+ "\nYou are now being redirected to the previous menu." 
+							+ "\n*******************************\n\n");
+					this.userInterface();
+				case 2:
+					System.out.println( "\nThanks for viewing your favorite car!"
+							+ "\nYou are now being redirected to the previous menu." 
+							+ "\n*******************************\n\n");
+					this.userInterface();
+				default: 
+					System.out.println("\nInvalid Choice!");
+					this.viewFavorite(carArrayList);
+					break;
+				}//end switch
+			} catch (Exception ex) {
+				System.out.println("Something went wrong for I/O!"
+						+ "Catch source: viewFavorite, registeredUser:462");
+			} //end catch & try
+		}//end if
+		else {
+			System.out.println("\nYou haven't got any favorite car yet."
+					+ "\nPlease add one by the end of the recommendation process."
+					+ "\nYou are now being redirected to the previous menu." 
+					+ "\n*******************************\n\n");
 			this.userInterface();
-		case 2:
-			this.userInterface();
-		default: 
-			System.out.println("\nInvalid Choice!");
-			this.viewFavorite(carArrayList); //TODO missing input here
-			break;
-		}
-	}
+		}//end else
+	}//end viewFavorite()
 
 
 	// This method appends a line to the tempRegistration.txt
@@ -440,7 +482,8 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			wr1.close();
 
 		} catch (IOException ex) {
-			System.out.println ("Something went wrong for I/O!");
+			System.out.println ("Something went wrong for I/O!"
+					+ "Catch source: appendFileTemp, registeredUser:450");
 		}
 	}
 
@@ -457,7 +500,8 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			br1.close();
 
 		} catch (IOException ex) {
-			System.out.println ("Something went wrong for I/O!");
+			System.out.println ("Something went wrong for I/O!"
+					+ "Catch source: getTotalLines, registeredUser:468");
 		}
 
 		return countlines;
@@ -570,5 +614,51 @@ public class registeredUser extends unregisteredUser { // created inheritance
 	public void setFavorite(String favorite) {
 		this.favorite = favorite;
 	}
+
+	// This method is the equivalent of unregisteredUserMethod() from super class
+	public car registeredUserMethod() {
+
+		System.out.println("\nThese are the car types for Mercedes Benz:" );	
+		System.out.println("(1) Sedan" );
+		System.out.println("(2) Van" );
+		System.out.println("(3) Hatchback" );
+		System.out.println("(4) Luxurious" );
+		System.out.println("(5) SUV" );
+		System.out.print("What cartype would you prefer? ");
+
+		int userChoice= userInputInt.nextInt();
+		switch (userChoice) {	
+
+
+		case 1:
+			return this.Sedan();
+			//break;
+
+		case 2:
+			return this.Van();
+			//break;
+
+		case 3:
+			return this.Hatchback();
+			//break;
+
+		case 4:
+			return this.Luxurious();
+			//break;
+
+		case 5:
+			return this.SUV();
+			//break;
+		default: 
+			System.out.println("\nInvalid Choice!");
+			registeredUserMethod();
+			return null;
+			//break;
+
+		} //end switch
+	} //end registerUserMethod()
+
+
+
 
 } // end class registeredUser

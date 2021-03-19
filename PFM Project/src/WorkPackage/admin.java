@@ -213,7 +213,8 @@ public class admin { //extends unregisteredUser{
 
 		}
 		catch(IOException e) {
-			System.out.print("There is an I/O error in overwriting the file!");		
+			System.out.print("There is an I/O error in overwriting the file!"
+					+ "Catch source: overWriteTempFile, unregisteredUser:217");		
 		}
 	}
 
@@ -229,7 +230,8 @@ public class admin { //extends unregisteredUser{
 			wr1.close();
 
 		} catch (IOException ex) {
-			System.out.println ("Something went wrong for I/O!");
+			System.out.println ("Something went wrong for I/O!"
+					+ "Catch source: appendPermFile, unregisteredUser:233");
 		}
 	}
 
@@ -369,7 +371,8 @@ public class admin { //extends unregisteredUser{
 
 		}
 		catch(IOException e) {
-			System.out.print("There is an I/O error in overwriting the file!");		
+			System.out.print("There is an I/O error in overwriting the file!"
+					+ "Catch source: overWritePermFile, unregisteredUser:375");		
 		}
 	}
 
@@ -724,7 +727,7 @@ public class admin { //extends unregisteredUser{
 		System.out.println("\nThanks for your time Admin. You have now been logged out!");
 		System.out.println("Have a great day!");
 
-		testDrive.main(null); 	//move back to starting screen of application
+		mainClass.main(null); 	//move back to starting screen of application
 
 	}
 
