@@ -561,6 +561,12 @@ public class registeredUser extends unregisteredUser { // created inheritance
 		this.favorite = favorite;
 	}
 
+
+	public static void setNum_registeredUser() {
+		registeredUser.num_registeredUser = getTotalLines();
+	}
+
+
 	// This method is the equivalent of unregisteredUserMethod() from super class
 	public car registeredUserMethod() {
 
