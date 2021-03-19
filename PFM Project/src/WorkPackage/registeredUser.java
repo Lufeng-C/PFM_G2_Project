@@ -413,7 +413,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			System.out.print("\nYour favorite car is:\n****" + favCar.getCarName() + "****\n");
 			System.out.printf("***Car details*** \n"
 					+ "Car type: %s\n"
-					+ "Base price: �%s\n"
+					+ "Base price: $%s\n"
 					+ "Size: %s\n"
 					+ "Sport: %s\n"
 					+ "Fuel type: %s\n",
