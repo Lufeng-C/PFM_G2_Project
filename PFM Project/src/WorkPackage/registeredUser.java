@@ -406,7 +406,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			int indx = carIDList.indexOf(Integer.parseInt(favCarID));
 			car favCar = carArrayList.get(indx);
 			
-			System.out.print("\nYour favorite car is:\n" + favCar.getCarName() + "\n\n");
+			System.out.print("\nYour favorite car is:\n\n" + favCar.getCarName() + "\n\n");
 			System.out.printf("***		Car details		*** \n"
 					+ "Car type: %s\n"
 					+ "Base price: $%s\n"
