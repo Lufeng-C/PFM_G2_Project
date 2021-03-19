@@ -46,7 +46,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 
 			if (carFound != null) {
 				System.out.println("\nDo you want to save your recommendation? "
-						+ "Enter: 1: Yes (previous fav car will be lost) || 2: No ");
+						+ "Enter: 1: Yes (previous favorite car will be lost) || 2: No ");
 				int ChoiceFavorite = userInputInt.nextInt();
 				if (ChoiceFavorite == 1) {
 					this.addFavorite(carFound);
@@ -56,16 +56,29 @@ public class registeredUser extends unregisteredUser { // created inheritance
 							+ "\nEmail: " + this.getEmailAddress()
 							+ "\nPhonenumber: " + this.getPhoneNumber()
 							+ "\n"
-							+ "\nYou are now being redirected to the last menu.\n\n");
-					this.userInterface();
+							+ "\nWhat do you want to do?\n"
+							+ "Choose 1 to return to the user menu\n"
+							+ "Choose 2 to return to the main menu");
+					int ChoiceMenu = userInputInt.nextInt();
+						if (ChoiceMenu == 1)
+							this.userInterface();
+								else if (ChoiceMenu == 2)
+									unregisteredUser.beginMenu(null);
 					break;
 				}
 			}//end if
 			else {
 				System.out.println("\nSorry you haven't found your dream car :("
 						+ "\nYou are now being redirected to the last menu."
-						+ "\nFeel free to start a new recommendation request by pressing 1.");
-				this.userInterface();
+						+ "\nFeel free to start a new recommendation request by pressing 1."
+						+ "\nWhat do you want to do?\n"
+						+ "Choose 1 to return to the user menu\n"
+						+ "Choose 2 to return to the main menu");
+				int ChoiceMenu = userInputInt.nextInt();
+					if (ChoiceMenu == 1)
+					this.userInterface();
+						else if (ChoiceMenu == 2)
+							unregisteredUser.beginMenu(null);
 				break;
 			}//end else
 
