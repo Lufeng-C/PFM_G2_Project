@@ -14,11 +14,15 @@ public class admin { //extends unregisteredUser{
 
 	private ArrayList<car> carArrayList; //car array list
 	Scanner scanner=new Scanner(System.in);
-		
-
+	
+	public void main() {
+		carArrayList = readCarList();
+		}
 
 	public static void adminMenu () {
+		
 		admin runcarOps = new admin();
+		runcarOps.main();
 		
 		System.out.println("\n-----------------------------");
 		System.out.println("ADMIN MAIN MENU");
