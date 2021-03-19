@@ -436,14 +436,14 @@ public class registeredUser extends unregisteredUser { // created inheritance
 				int choiceDetails = userInputInt.nextInt();
 				switch (choiceDetails) {
 				case 1:
-					System.out.printf("Car Name: %s\n"
-							+ "Car Type: %s\n"
-							+ "Base Price: %s\n"
+					System.out.printf("Car name: %s\n"
+							+ "Car type: %s\n"
+							+ "Base price: %s\n"
 							+ "Size: %s\n"
-							// + "Sport: %s\n"
-							+ "Fuel Type: %s\n",
+							+ "Sport: %s\n"
+							+ "Fuel type: %s\n",
 							favCar.getCarName(), favCar.getCarType(), favCar.getBasePrice(), 
-							favCar.getSize(), favCar.getFuelType());
+							favCar.getSize(), favCar.isSport(), favCar.getFuelType());
 					System.out.println( "\nThanks for viewing your favorite car!"
 							+ "\nYou are now being redirected to the previous menu." 
 							+ "\n*******************************\n\n");
