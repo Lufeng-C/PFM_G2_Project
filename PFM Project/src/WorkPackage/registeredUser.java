@@ -212,7 +212,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 				return dummy;
 			}
 			else {
-				System.out.println("Login Successful!\n");
+				System.out.println("\nLogin Successful!\n");
 				userList.get(userIndex).logInStatus = true;	
 				registeredUser itsMe = userList.get(userIndex);
 				return (itsMe);
