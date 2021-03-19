@@ -450,9 +450,9 @@ public class unregisteredUser {
 					carArrayList.get(i).getSize().equalsIgnoreCase(carSize)
 					){
 
-				System.out.println("******Congratulations! Found a match. Recommended car for you: \n"
-						 + carArrayList.get(i).getCarName() + "\t" +
-						"\n€ " + carArrayList.get(i).getBasePrice() + "*********");
+				System.out.println("Congratulations! Found a match. Recommended car for you: \n****"
+						 + carArrayList.get(i).getCarName() + "****" +
+						"\n****€ " + carArrayList.get(i).getBasePrice() + "****");
 				foundCar = carArrayList.get(i);
 
 				System.out.println("Do you want to see all the details of the recommended car?:\n"
@@ -481,9 +481,9 @@ public class unregisteredUser {
 					carArrayList.get(i).getSize().equalsIgnoreCase(carSize)
 					) {
 
-				System.out.println("Sorry, No match found! We only found a car outside your price range: \n"
-						+ carArrayList.get(i).getCarName() + "\t" 
-						+ "\n€" + carArrayList.get(i).getBasePrice());
+				System.out.println("Sorry, No match found! We only found a car outside your price range: \n****"
+						+ carArrayList.get(i).getCarName() + "****" 
+						+ "\n****€" + carArrayList.get(i).getBasePrice() + "****");
 				foundCar = carArrayList.get(i);
 
 				System.out.println("Do you want to see all the details of the recommended car?\n"
