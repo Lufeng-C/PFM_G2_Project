@@ -57,9 +57,8 @@ public class registeredUser extends unregisteredUser { // created inheritance
 							+ "\nPhonenumber: " + this.getPhoneNumber()
 							+ "\n"
 							+ "\nWhat do you want to do?\n"
-							+ "Choose 1 to return to the user menu\n"
-							+ "Choose 2 to return to the main menu\n"
-							+ "What do you want to choose? ");
+							+ "1: Return to the user menu || 2: to return to the main menu\n");
+		
 					int ChoiceMenu = userInputInt.nextInt();
 						if (ChoiceMenu == 1)
 							this.userInterface();
@@ -70,9 +69,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 					else if (ChoiceFavorite == 2) {
 						
 						System.out.print("\nWhat do you want to do?\n"
-								+ "Choose 1 to return to the user menu\n"
-								+ "Choose 2 to return to the main menu\n"
-								+ "What do you want to choose? ");
+								+ "1: Return to the user menu || 2: to return to the main menu\n");
 						int ChoiceMenu2 = userInputInt.nextInt();
 						if (ChoiceMenu2 == 1)
 							this.userInterface();
@@ -86,8 +83,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 						+ "\nYou are now being redirected to the last menu."
 						+ "\nFeel free to start a new recommendation request by pressing 1."
 						+ "\nWhat do you want to do?\n"
-						+ "Choose 1 to return to the user menu\n"
-						+ "Choose 2 to return to the main menu");
+						+ "1: Return to the user menu || 2: to return to the main menu\n");
 				int ChoiceMenu = userInputInt.nextInt();
 					if (ChoiceMenu == 1)
 					this.userInterface();
@@ -420,8 +416,13 @@ public class registeredUser extends unregisteredUser { // created inheritance
 					favCar.getCarType(), favCar.getBasePrice(), 
 					favCar.getSize(), favCar.isSport(), favCar.getFuelType());
 			
-			System.out.println("\n");
-			this.userInterface();
+			System.out.print("\nWhat do you want to do?\n"
+					+ "1: Return to the user menu || 2: to return to the main menu\n");
+			int ChoiceMenu2 = userInputInt.nextInt();
+			if (ChoiceMenu2 == 1)
+				this.userInterface();
+					else if (ChoiceMenu2 == 2)
+						unregisteredUser.beginMenu(null);
 			
 		}//end if*/
 		else {
