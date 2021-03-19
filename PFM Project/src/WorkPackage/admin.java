@@ -721,6 +721,7 @@ public class admin { //extends unregisteredUser{
 
 		System.out.println("\nThanks for your time Admin. You have now been logged out!");
 		System.out.println("Have a great day!");
+		registeredUser.setNum_registeredUser();
 		mainClass.setUserList(registeredUser.createObjects());
 		unregisteredUser.beginMenu(mainClass.userList); 	//move back to starting screen of application
 	
