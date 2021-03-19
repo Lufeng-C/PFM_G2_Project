@@ -408,7 +408,7 @@ public class admin { //extends unregisteredUser{
 				
 				
 				//return message
-				System.out.print("\n\nWould you like to perform another Car operation? Enter: 1: Yes || 2: No (return to Admin Menu): ");
+				System.out.print("\n\nWould you like to perform another Car operation? 1: Yes || 2: No (return to Admin Menu): ");
 				int adminchoice = scanner.nextInt();
 
 				switch (adminchoice) {
@@ -549,7 +549,7 @@ public class admin { //extends unregisteredUser{
 		            System.out.println("\nRemoved!");
 		        }
 		        else {
-		            System.out.println("Invalid Choice!");
+		            System.out.println("\nInvalid Choice!");
 		        }
 		    }
 		    
@@ -647,7 +647,7 @@ public class admin { //extends unregisteredUser{
 		                    System.out.println("\nChanged!");
 		                    break;
 		                } else {
-		                    System.out.println("\nInvalid Input!");
+		                    System.out.println("\nInvalid Choice!");
 		                	}
 		                }
 		                System.out.print("\nEditing Completed? \n" +
@@ -664,7 +664,7 @@ public class admin { //extends unregisteredUser{
 
 		        }
 		        else {
-		            System.out.println("Invalid Choice!");
+		            System.out.println("\nInvalid Choice!");
 		        }
 		    }
 		    
