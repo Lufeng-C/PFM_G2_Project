@@ -393,14 +393,27 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			ArrayList<Integer> carIDList = new ArrayList<Integer>();
 			for (int i = 0; i < carArrayList.size(); i++) {
 				carIDList.add(Integer.parseInt(carArrayList.get(i).getCarID()));
-				this.userInterface();
+				
 			}
-		}
-			/*int indx = carIDList.indexOf(Integer.parseInt(favCarID));
+			int indx = carIDList.indexOf(Integer.parseInt(favCarID));
 			car favCar = carArrayList.get(indx);
-
-			System.out.print("Your favorite car model is " + favCar.getCarName() 
-			+ ". Would you like to view more details [1] YES  [2] NO? ");
+			
+			System.out.print("\nYour favorite car is:\n ****" + favCar.getCarName() + "****\n");
+			System.out.printf("***Car details*** \n"
+					+"Car name: %s\n"
+					+ "Car type: %s\n"
+					+ "Base price: %s\n"
+					+ "Size: %s\n"
+					+ "Sport: %s\n"
+					+ "Fuel type: %s\n",
+					favCar.getCarName(), favCar.getCarType(), favCar.getBasePrice(), 
+					favCar.getSize(), favCar.isSport(), favCar.getFuelType());
+			
+			System.out.println("\n");
+			this.userInterface();
+			
+		}
+			/*+ ". Would you like to view more details [1] YES  [2] NO? ");
 			try {
 				int choiceDetails = userInputInt.nextInt();
 				switch (choiceDetails) {
@@ -421,9 +434,9 @@ public class registeredUser extends unregisteredUser { // created inheritance
 					System.out.println( "\nThanks for viewing your favorite car!"
 							+ "\nYou are now being redirected to the previous menu." 
 							+ "\n*******************************\n\n");
-					this.userInterface();*/
+					this.userInterface();
 			
-				/*default: 
+				default: 
 					System.out.println("\nInvalid Choice!");
 					this.viewFavorite(carArrayList);
 					break;
