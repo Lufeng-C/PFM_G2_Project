@@ -212,9 +212,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 				return dummy;
 			}
 			else {
-				System.out.println("Login Successful! Welcome, " 
-						+ userList.get(userIndex).firstName 
-						+ " " + userList.get(userIndex).lastName);
+				System.out.println("Login Successful!\n");
 				userList.get(userIndex).logInStatus = true;	
 				registeredUser itsMe = userList.get(userIndex);
 				return (itsMe);
@@ -415,7 +413,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			System.out.print("\nYour favorite car is:\n****" + favCar.getCarName() + "****\n");
 			System.out.printf("***Car details*** \n"
 					+ "Car type: %s\n"
-					+ "Base price: €%s\n"
+					+ "Base price: ï¿½%s\n"
 					+ "Size: %s\n"
 					+ "Sport: %s\n"
 					+ "Fuel type: %s\n",
