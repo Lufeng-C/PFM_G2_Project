@@ -392,7 +392,7 @@ public class admin { //extends unregisteredUser{
 			 	System.out.println("\n-----------------------------");
 				System.out.println("CAR OPERATIONS");
 				System.out.println("-----------------------------");
-				System.out.println("\nYou have 4 choices:");
+				System.out.println("\nYou have 5 choices:");
 				System.out.println("Choose 1 to Add a new Car");
 				System.out.println("Choose 2 to View all Cars");
 				System.out.println("Choose 3 to Delete a Car");
