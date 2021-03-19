@@ -393,8 +393,10 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			ArrayList<Integer> carIDList = new ArrayList<Integer>();
 			for (int i = 0; i < carArrayList.size(); i++) {
 				carIDList.add(Integer.parseInt(carArrayList.get(i).getCarID()));
+				this.userInterface();
 			}
-			int indx = carIDList.indexOf(Integer.parseInt(favCarID));
+		}
+			/*int indx = carIDList.indexOf(Integer.parseInt(favCarID));
 			car favCar = carArrayList.get(indx);
 
 			System.out.print("Your favorite car model is " + favCar.getCarName() 
@@ -419,17 +421,18 @@ public class registeredUser extends unregisteredUser { // created inheritance
 					System.out.println( "\nThanks for viewing your favorite car!"
 							+ "\nYou are now being redirected to the previous menu." 
 							+ "\n*******************************\n\n");
-					this.userInterface();
+					this.userInterface();*/
+			
 				/*default: 
 					System.out.println("\nInvalid Choice!");
-					this.viewFavorite(carArrayList);*/
+					this.viewFavorite(carArrayList);
 					break;
 				}//end switch
 			} catch (Exception ex) {
 				System.out.println("Something went wrong for I/O!"
 						+ "Catch source: viewFavorite, registeredUser:462");
 			} //end catch & try
-		}//end if
+		}//end if*/
 		else {
 			System.out.println("\nYou haven't got any favorite car yet."
 					+ "\nPlease add one by the end of the recommendation process."
