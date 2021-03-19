@@ -24,7 +24,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 
 	public void userInterface() {
 
-		System.out.println("Welcome: " + this.getFirstName() + " " + this.getLastName());
+		System.out.println("\nWelcome: " + this.getFirstName() + " " + this.getLastName());
 
 		System.out.println("-----------------------------");
 		System.out.println("User Overview");
@@ -264,7 +264,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 
 	public void deleteAccount() {
 
-		System.out.print("Are you sure you want to delete your account? Enter 1 for yes, enter 2 to cancel and go back to the user interface: ");
+		System.out.print("Are you sure you want to delete your account? 1: Yes || 2: No (return to user interface) ");
 		int confirmation = userInputInt.nextInt();
 
 		if(confirmation == 1) {
