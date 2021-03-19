@@ -68,7 +68,7 @@ public class unregisteredUser {
 			System.out.println("Welcome guest, please register for more facilities.\n" +
 					"for now, you can create one recommendation. Thank You!");
 			unregisteredUserMethod();
-			System.out.println("You created one recommendation. Please register for more facilities. You exited the system now");
+			System.out.println("You created one recommendation. Please register for more facilities. You exited the system now.");
 			break;
 		case 4:
 			System.out.println("\n\nThanks for using our system."
