@@ -12,19 +12,18 @@ Main class:
    
    1: log In (for registered users & the admin)
         When you want to login, you first need to have registered as a user. 
-        
         Private:
         If you want to login as admin, you need to fill in the following details:
         email: adminPFM
         password: admin
-
-    2: register as a user
+        
+   2: register as a user
         Once you register, you need admin approval before you can login. So, after registering, make sure to log in as admin to approve yourself. 
-
-    3: continue as a guest
+   
+   3: continue as a guest
         If you continue as a guest, you can obtain only one car recommendation and miss out on the great perks of being a registered user...
-
-    4: exit the system
+   
+   4: exit the system
 
 
 Registered User:
