@@ -19,16 +19,36 @@ public class unregisteredUser {
 	admin runcarOps = new admin();
 
 
-	// This is reserved space for the main method
-
-	public static ArrayList<car> main() {
-		return carArrayList = readCarList();
-
-	}
-
 	// This is the very first menu
 	public static void beginMenu(ArrayList<registeredUser> userList) {
 
+		System.out.println("                   _____________\r\n"
+				+ "                                  ..---:::::::-----------. ::::;;.\r\n"
+				+ "                               .'\"\"\"\"\"\"                  ;;   \\  \":.\r\n"
+				+ "                            .''                          ;     \\   \"\\__.\r\n"
+				+ "                          .'                            ;;      ;   \\\\\";\r\n"
+				+ "                        .'                              ;   _____;   \\\\/\r\n"
+				+ "                      .'                               :; ;\"     \\ ___:'.\r\n"
+				+ "                    .'--...........................    : =   ____:\"    \\ \\\r\n"
+				+ "               ..-\"\"                               \"\"\"'  o\"\"\"     ;     ; :\r\n"
+				+ "          .--\"\"  .----- ..----...    _.-    --.  ..-\"     ;       ;     ; ;\r\n"
+				+ "       .\"\"_-     \"--\"\"-----'\"\"    _-\"        .-\"\"         ;        ;    .-.\r\n"
+				+ "    .'  .'                      .\"         .\"              ;       ;   /. |\r\n"
+				+ "   /-./'                      .\"          /           _..  ;       ;   ;;;|\r\n"
+				+ "  :  ;-.______               /       _________==.    /_  \\ ;       ;   ;;;;\r\n"
+				+ "  ;  / |      \"\"\"\"\"\"\"\"\"\"\".---.\"\"\"\"\"\"\"          :    /\" \". |;       ; _; ;;;\r\n"
+				+ " /\"-/  |                /   /                  /   /     ;|;      ;-\" | ;';\r\n"
+				+ ":-  :   \"\"\"----______  /   /              ____.   .  .\"'. ;;   .-\"..T\"   .\r\n"
+				+ "'. \"  ___            \"\":   '\"\"\"\"\"\"\"\"\"\"\"\"\"\"    .   ; ;    ;; ;.\" .\"   '--\"\r\n"
+				+ " \",   __ \"\"\"  \"\"---... :- - - - - - - - - ' '  ; ;  ;    ;;\"  .\"\r\n"
+				+ "  /. ;  \"\"\"---___                             ;  ; ;     ;|.\"\"\r\n"
+				+ " :  \":           \"\"\"----.    .-------.       ;   ; ;     ;:\r\n"
+				+ "  \\  '--__               \\   \\        \\     /    | ;     ;;\r\n"
+				+ "   '-..   \"\"\"\"---___      :   .______..\\ __/..-\"\"|  ;   ; ;\r\n"
+				+ "       \"\"--..       \"\"\"--\"                      .   \". . ;\r\n"
+				+ "             \"\"------...                  ..--\"\"      \" :\r\n"
+				+ "                        \"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"    \\        /\r\n"
+				+ "                                               \"------\"");
 
 		System.out.println("   ,--------------------------------------------------------------.\r\n"
 				+ "  |============================,------.============================|\r\n"
@@ -129,7 +149,7 @@ public class unregisteredUser {
 	public car Sedan() {
 		String carType = "Sedan";
 
-		System.out.println("\nYou have chosen the Sedan car type!");
+		System.out.println("\nYou have chosen the " + carType + " car type!");
 
 		System.out.print("\nWhat is your budget? Enter Minimum: ");
 		double minBudget = userInputDouble.nextDouble();
@@ -138,10 +158,10 @@ public class unregisteredUser {
 		double maxBudget = userInputDouble.nextDouble();
 
 		System.out.println("\nThese are the fueltypes for car Type " + carType + ":");
-		System.out.println("(1) Petrol"); //c250 or s500
-		System.out.println("(2) Diesel"); //c220d or s400d
-		System.out.println("(3) Hybrid"); //c300e or s400e
-		System.out.println("(4) Electric"); //EQS
+		System.out.println("(1) Petrol"); 
+		System.out.println("(2) Diesel"); 
+		System.out.println("(3) Hybrid"); 
+		System.out.println("(4) Electric"); 
 		System.out.print("What fueltype do you prefer? ");
 		int choiceFuel = userInputInt.nextInt();
 
@@ -157,8 +177,8 @@ public class unregisteredUser {
 		}
 
 		System.out.println("\nAvailable car sizes: ");
-		System.out.println("(1) Medium"); //c class
-		System.out.println("(2) Large"); //s class
+		System.out.println("(1) Medium"); 
+		System.out.println("(2) Large"); 
 		System.out.print("What car size do you prefer? ");
 		int choiceSize = userInputInt.nextInt();
 
@@ -170,7 +190,7 @@ public class unregisteredUser {
 			carSize="Large";
 		}
 		System.out.println("\nDo you prefer a car sport look? ");
-		System.out.println("(1) Yes"); //c63 or s63 amg,
+		System.out.println("(1) Yes"); 
 		System.out.println("(2) No"); 
 		System.out.print("Enter your choice: ");
 		int choiceSport = userInputInt.nextInt();
@@ -197,8 +217,8 @@ public class unregisteredUser {
 		double maxBudget = userInputDouble.nextDouble();
 
 		System.out.println("\nThese are the fueltypes for car Type " + carType + ":");
-		System.out.println("(1) Diesel"); //v200, v220 or v300
-		System.out.println("(2) Electric"); //eqv
+		System.out.println("(1) Diesel"); 
+		System.out.println("(2) Electric"); 
 		System.out.print("What fueltype do you prefer? ");
 		int choiceFuel = userInputInt.nextInt();
 
@@ -209,8 +229,8 @@ public class unregisteredUser {
 			fuelType = "Electric";
 		}
 		System.out.println("\nAvailable " + carType + " sizes:");
-		System.out.println("(1) Standard"); //v class
-		System.out.println("(2) Extra long"); //v class L
+		System.out.println("(1) Standard"); 
+		System.out.println("(2) Extra long"); 
 		System.out.print("What size " + carType + " do you prefer? ");
 		int choiceSize = userInputInt.nextInt();
 
@@ -222,8 +242,8 @@ public class unregisteredUser {
 			carSize="Extra long";
 		}
 		System.out.println("\nDo you prefer a " + carType + " with a sport look? ");
-		System.out.println("(1) Yes"); //amg line,
-		System.out.println("(2) No"); //default v class
+		System.out.println("(1) Yes"); 
+		System.out.println("(2) No"); 
 		System.out.print("Enter your choice: ");
 		int choiceSport = userInputInt.nextInt();
 
@@ -250,8 +270,8 @@ public class unregisteredUser {
 
 
 		System.out.println("\nThese are the fueltypes for car type " + carType + ":");
-		System.out.println("(1) Petrol"); //a200, a45
-		System.out.println("(2) Diesel"); //a220d
+		System.out.println("(1) Petrol"); 
+		System.out.println("(2) Diesel"); 
 		System.out.println("What fueltype do you prefer? ");
 		int choiceFuel = userInputInt.nextInt();
 
@@ -263,8 +283,8 @@ public class unregisteredUser {
 		} 
 
 		System.out.println("\nAvailable " + carType + " sizes:");
-		System.out.println("(1) Small"); //a class
-		System.out.println("(2) Medium"); //gla class
+		System.out.println("(1) Small"); 
+		System.out.println("(2) Medium"); 
 		System.out.print("What size " + carType + " do you prefer? ");
 		int choiceSize = userInputInt.nextInt();
 
@@ -276,7 +296,7 @@ public class unregisteredUser {
 			carSize="Medium";
 		}
 		System.out.println("\nDo you prefer a " + carType + " with a sport look? ");
-		System.out.println("(1) Yes"); //a45 or a220 amg line
+		System.out.println("(1) Yes"); 
 		System.out.println("(2) No"); 
 		System.out.print("Enter choice: "); 
 		int choiceSport = userInputInt.nextInt();
@@ -305,7 +325,6 @@ public class unregisteredUser {
 		System.out.println("\nThese are the fueltypes for car Type " + carType + ":");
 		System.out.println("(1) Petrol");
 		System.out.println("(2) Diesel");
-		System.out.println("(3) Hybrid");
 		System.out.print("What fueltype do you prefer? ");
 		int choiceFuel = userInputInt.nextInt();
 
@@ -314,13 +333,11 @@ public class unregisteredUser {
 			fuelType = "Petrol";
 		} else if (choiceFuel == 2) {
 			fuelType = "Diesel";
-		} else if (choiceFuel == 3) {
-			fuelType = "Hybrid";
 		}
 
 		System.out.println("\nAvailable " + carType + " car sizes:");
-		System.out.println("(1) Medium"); //s class
-		System.out.println("(2) Large"); //gls class, v class luxury edition
+		System.out.println("(1) Medium");
+		System.out.println("(2) Large"); 
 		System.out.print("What size " + carType + " do you prefer? ");
 		int choiceSize = userInputInt.nextInt();
 
@@ -332,7 +349,7 @@ public class unregisteredUser {
 			carSize="Large";
 		}
 		System.out.println("\nDo you prefer a " + carType + " car with a sport look? ");
-		System.out.println("(1) Yes"); //amg line
+		System.out.println("(1) Yes"); 
 		System.out.println("(2) No"); 
 		System.out.print("Enter choice: ");
 		int choiceSport = userInputInt.nextInt();
@@ -361,10 +378,10 @@ public class unregisteredUser {
 
 
 		System.out.println("\nThese are the fueltypes for car Type " + carType + ":");
-		System.out.println("(1) Petrol"); //gle400 //gle63s amg
-		System.out.println("(2) Diesel"); //gle300d
-		System.out.println("(3) Hybrid"); //gle400e
-		System.out.print("What fueltype do you prefer? "); //all can be gle or gls
+		System.out.println("(1) Petrol"); 
+		System.out.println("(2) Diesel"); 
+		System.out.println("(3) Hybrid"); 
+		System.out.print("What fueltype do you prefer? "); 
 		int choiceFuel = userInputInt.nextInt();
 
 		String fuelType = "Petrol";//default
@@ -377,8 +394,8 @@ public class unregisteredUser {
 		}
 
 		System.out.println("\nAvailable " + carType + " sizes:");
-		System.out.println("(1) Medium"); //glc, gle coupe
-		System.out.println("(2) Large"); //gle, gls class
+		System.out.println("(1) Medium"); 
+		System.out.println("(2) Large"); 
 		System.out.print("What size " + carType + " do you prefer? ");
 		int choiceSize = userInputInt.nextInt();
 
@@ -390,7 +407,7 @@ public class unregisteredUser {
 			carSize="Large";
 		}
 		System.out.println("\nDo you prefer a " + carType + " with a sport look? ");
-		System.out.println("(1) Yes"); //amg
+		System.out.println("(1) Yes"); 
 		System.out.println("(2) No"); 
 		System.out.print("Enter choice: "); 
 		int choiceSport = userInputInt.nextInt();
@@ -487,7 +504,7 @@ public class unregisteredUser {
 	}
 
 	public void saveCarList(){
-		Object obj= this.carArrayList;
+		Object obj= carArrayList;
 		FileOutputStream f = null;
 		try {
 			f = new FileOutputStream(new File("car_List.txt"));
