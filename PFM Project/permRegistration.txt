@@ -5,3 +5,8 @@
 4@test.com	qwerty	Doge	Coin	310644444	4	false	99999
 2@test.com	qwerty	Alice	Wonderland	310622222	2	false	1008
 1@test.com	qwerty	John	Doe	310611111	1	false	1003
+10@test.com	qwerty	Zara	Explorer	1222555888	8	false	99999
+12@test.com	asdfg	Mini	Cooper	852666000	884	false	99999
+11@test.com	password	Taylor	Swift	11110002	20	false	99999
+123	123	123	123	123	2863	false	99999
+1234	1234	1234	1234	1234	7662	false	99999
