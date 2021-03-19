@@ -24,7 +24,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 
 	public void userInterface() {
 
-		System.out.println("Welcome: " + this.getFirstName() + " " + this.getLastName());
+		System.out.println("\nWelcome: " + this.getFirstName() + " " + this.getLastName());
 
 		System.out.println("-----------------------------");
 		System.out.println("User Overview");
@@ -34,7 +34,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 		System.out.println("Choose 2 to view your list of favourite car recommendations.");
 		System.out.println("Choose 3 to delete your account.");
 		System.out.println("Choose 4 to log out and return to the last menu.");
-		System.out.print("What do you want to choose? ");
+		System.out.print("\nWhat do you want to choose? ");
 
 
 		int Choice = userInputInt.nextInt();
@@ -45,21 +45,19 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			carFound = this.registeredUserMethod();
 
 			if (carFound != null) {
-				System.out.println("\nDo you want to save your recommendation? "
+				System.out.print("\nDo you want to save your recommendation? "
 						+ "Enter: 1: Yes (previous favorite car will be lost) || 2: No ");
 				int ChoiceFavorite = userInputInt.nextInt();
 				if (ChoiceFavorite == 1) {
 					this.addFavorite(carFound);
 					System.out.print("\nYour favorite car has been saved successfully."
 							+ "\nYou may view your favorite car any time you wish.\n"
-							+ "\nWe have sent the car details of your recommended car to your email and phonenumber: "
+							+ "\nWe have sent the car details of your recommended car to your email and phone number: "
 							+ "\nEmail: " + this.getEmailAddress()
 							+ "\nPhonenumber: " + this.getPhoneNumber()
 							+ "\n"
 							+ "\nWhat do you want to do?\n"
-							+ "Choose 1 to return to the user menu\n"
-							+ "Choose 2 to return to the main menu"
-							+ "What do you want to choose? ");
+							+ "1: Return to the user menu || 2: Return to the main menu ");
 					int ChoiceMenu = userInputInt.nextInt();
 						if (ChoiceMenu == 1)
 							this.userInterface();
@@ -70,9 +68,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 					else if (ChoiceFavorite == 2) {
 						
 						System.out.print("\nWhat do you want to do?\n"
-								+ "Choose 1 to return to the user menu\n"
-								+ "Choose 2 to return to the main menu\n"
-								+ "What do you want to choose? ");
+								+ "1: Return to the user menu || 2: Return to the main menu ");
 						int ChoiceMenu2 = userInputInt.nextInt();
 						if (ChoiceMenu2 == 1)
 							this.userInterface();
@@ -86,8 +82,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 						+ "\nYou are now being redirected to the last menu."
 						+ "\nFeel free to start a new recommendation request by pressing 1."
 						+ "\nWhat do you want to do?\n"
-						+ "Choose 1 to return to the user menu\n"
-						+ "Choose 2 to return to the main menu");
+						+ "1: Return to the user menu || 2: Return to the main menu ");
 				int ChoiceMenu = userInputInt.nextInt();
 					if (ChoiceMenu == 1)
 					this.userInterface();
@@ -172,7 +167,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 
 		while (loginAttempts > 0) {
 
-			System.out.print("Enter your email adress: ");
+			System.out.print("\nEnter your email adress: ");
 			String entered_email = userInputString.nextLine();
 
 			System.out.print("Enter your password: ");
@@ -196,7 +191,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 
 				if (userIndex == -1) {
 					loginAttempts--;
-					System.out.println("Email/password incorrect. Please try again!");
+					System.out.println("\nEmail/password incorrect. Please try again!");
 					System.out.println("You have " + loginAttempts + " login attempts left.");	
 					System.out.println("");
 				}
@@ -212,9 +207,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 				return dummy;
 			}
 			else {
-				System.out.println("Login Successful! Welcome, " 
-						+ userList.get(userIndex).firstName 
-						+ " " + userList.get(userIndex).lastName);
+				System.out.println("\nLogin Successful!");
 				userList.get(userIndex).logInStatus = true;	
 				registeredUser itsMe = userList.get(userIndex);
 				return (itsMe);
@@ -226,7 +219,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 		}
 		return dummy;
 
-	} // end logIn (ArrayList<registeredUser> userList) -> user UX / admin UX (if username == admin & password == adminPassword)
+	} // end logIn 
 
 	// This method asks for input and record in tempRegistration.txt
 	public static void register (ArrayList<registeredUser> userList) {
@@ -270,7 +263,7 @@ public class registeredUser extends unregisteredUser { // created inheritance
 
 	public void deleteAccount() {
 
-		System.out.print("Are you sure you want to delete your account? Enter 1 for yes, enter 2 to cancel and go back to the user interface: ");
+		System.out.print("Are you sure you want to delete your account? 1: Yes || 2: No (Return to user interface): ");
 		int confirmation = userInputInt.nextInt();
 
 		if(confirmation == 1) {
@@ -412,18 +405,23 @@ public class registeredUser extends unregisteredUser { // created inheritance
 			int indx = carIDList.indexOf(Integer.parseInt(favCarID));
 			car favCar = carArrayList.get(indx);
 			
-			System.out.print("\nYour favorite car is:\n****" + favCar.getCarName() + "****\n");
-			System.out.printf("***Car details*** \n"
-					+ "Car type: %s\n"
-					+ "Base price: €%s\n"
+			System.out.print("\nYour favorite car is:\n\n" + favCar.getCarName() + "\n\n");
+			System.out.printf("***	Car details	*** \n"
+					+ "\nCar type: %s\n"
+					+ "Base price: $%s\n"
 					+ "Size: %s\n"
 					+ "Sport: %s\n"
 					+ "Fuel type: %s\n",
 					favCar.getCarType(), favCar.getBasePrice(), 
 					favCar.getSize(), favCar.isSport(), favCar.getFuelType());
 			
-			System.out.println("\n");
-			this.userInterface();
+			System.out.print("\nWhat do you want to do?\n"
+					+ "1: Return to the user menu || 2: Return to the main menu ");
+			int ChoiceMenu2 = userInputInt.nextInt();
+			if (ChoiceMenu2 == 1)
+				this.userInterface();
+					else if (ChoiceMenu2 == 2)
+						unregisteredUser.beginMenu(null);
 			
 		}//end if*/
 		else {
